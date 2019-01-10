@@ -1,0 +1,8 @@
+<%= search_form_with model: ExtraDay.new do |f| %>
+  <div class="fields">
+    <%= f.select :country, options_for_select(Office.countries) %>
+    <%= f.submit 'Search' %>
+  </div>
+<% end %>
+
+

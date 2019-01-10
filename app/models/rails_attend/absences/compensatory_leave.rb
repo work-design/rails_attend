@@ -1,0 +1,3 @@
+class CompensatoryLeave < Absence
+
+end

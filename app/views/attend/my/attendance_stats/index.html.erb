@@ -1,0 +1,49 @@
+<%= render 'nav_attendances' %>
+
+<div class="ui attached segment">
+  <%#= render 'search_form' %>
+</div>
+
+<table class="ui bottom attached table">
+  <thead>
+    <tr>
+      <th><%= AttendanceStat.human_attribute_name(:id) %></th>
+      <th><%= AttendanceStat.human_attribute_name(:financial_month) %></th>
+      <th><%= AttendanceStat.human_attribute_name(:allowance_days) %></th>
+      <th><%= AttendanceStat.human_attribute_name(:late_days) %></th>
+      <th><%= AttendanceStat.human_attribute_name(:cost_absence_hours) %></th>
+      <th>
+        <p><%= AttendanceStat.human_attribute_name(:absence_redeeming_hours) %></p>
+        <p><%= AttendanceStat.human_attribute_name(:holiday_redeeming_hours) %></p>
+      </th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+  <% @attendance_stats.each do |attendance_stat| %>
+    <tr>
+      <td><%= attendance_stat.id %></td>
+      <td>
+        <p><%= attendance_stat.financial_month.begin_date %></p>
+        <p><%= attendance_stat.financial_month.end_date %></p>
+      </td>
+      <td><%= attendance_stat.allowance_days %></td>
+      <td><%= attendance_stat.late_days %></td>
+      <td>
+        <%= attendance_stat.cost_absence_hours %>
+      </td>
+      <td>
+        <p><%= attendance_stat.absence_redeeming_hours %></p>
+        <p><%= attendance_stat.holiday_redeeming_hours %></p>
+      </td>
+      <td class="ui labels">
+        <%= link_to my_attendance_stat_path(attendance_stat), class: 'ui blue mini icon button' do %>
+          <i class="location arrow icon"></i>
+        <% end %>
+      </td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>
+
+<%= paginate @attendance_stats %>

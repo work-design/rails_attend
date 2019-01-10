@@ -1,0 +1,3 @@
+class MaternityLeave < WelfareLeave
+
+end

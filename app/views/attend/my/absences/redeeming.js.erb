@@ -1,0 +1,6 @@
+<% form_object = default_form_object(@absence, on: { wrapper_id: true }) %>
+
+var template = '<%= j(render partial: 'redeeming_form', locals: { f: form_object }) %>'
+
+$('#absence_redeeming_days_wrapper').replaceWith(template);
+$('#absence_redeeming_days').dropdown();

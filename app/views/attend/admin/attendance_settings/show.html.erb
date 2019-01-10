@@ -1,0 +1,22 @@
+<div class="ui segment breadcrumb">
+  <%= link_to 'Back', hr_attendance_settings_path, class: 'section' %>
+  <div class="divider"> / </div>
+  <div class="active section">Show</div>
+</div>
+
+<table class="ui very basic large table">
+  <tbody>
+    <tr>
+      <td class="right aligned"><%= AttendanceSetting.human_attribute_name(:on_time) %></td>
+      <td><%= @attendance_setting.on_time %></td>
+    </tr>
+    <tr>
+      <td class="right aligned"><%= AttendanceSetting.human_attribute_name(:state) %></td>
+      <td><%= @attendance_setting.state %></td>
+    </tr>
+    <tr>
+      <td class="right aligned"><%= AttendanceSetting.human_attribute_name(:note) %></td>
+      <td><%= @attendance_setting.note %></td>
+    </tr>
+  </tbody>
+</table>

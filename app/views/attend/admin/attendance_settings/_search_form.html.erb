@@ -1,0 +1,9 @@
+<%= search_form_with model: AttendanceSetting.new do |f| %>
+  <div class="fields">
+    <%= f.text_field :'member.name' %>
+    <%= f.text_field :'member.email' %>
+    <%= f.submit 'Search' %>
+  </div>
+<% end %>
+
+

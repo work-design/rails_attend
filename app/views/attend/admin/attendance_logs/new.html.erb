@@ -1,0 +1,11 @@
+<div class="ui segment breadcrumb">
+  <%= link_to 'Back', hr_attendance_logs_path, class: 'section' %>
+  <div class="divider"> / </div>
+  <div class="active section">Add</div>
+</div>
+
+<div class="ui segment">
+  <%= form_with model: @attendance_log, url: hr_attendance_logs_path do |f| %>
+    <%= render partial: 'form', locals: { f: f } %>
+  <% end %>
+</div>

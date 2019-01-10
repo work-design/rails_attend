@@ -1,0 +1,56 @@
+<table class="ui bottom attached table">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th><%= Absence.human_attribute_name(:member) %></th>
+      <th><%= Absence.human_attribute_name(:type) %></th>
+      <th>
+        <p><%= Absence.human_attribute_name(:start_at) %></p>
+        <p><%= Absence.human_attribute_name(:finish_at) %></p>
+      </th>
+      <th><%= Absence.human_attribute_name(:hours) %></th>
+      <th><%= Absence.human_attribute_name(:comment) %></th>
+      <th><%= Absence.human_attribute_name(:state) %></th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+
+  <tbody>
+  <% @absences.each do |absence| %>
+    <tr>
+      <td><%= absence.id %></td>
+      <td><%= absence.member.name %></td>
+      <td><%= absence.type_i18n %></td>
+      <td>
+        <p><time data-format="YYYY-MM-DD HH:mm"><%= absence.start_at.to_s(:rfc822) %></time></p>
+        <p><time data-format="YYYY-MM-DD HH:mm"><%= absence.finish_at.to_s(:rfc822) %></time></p>
+      </td>
+      <td><%= absence.hours %></td>
+      <td><%= absence.comment %></td>
+      <td class="ui labels">
+        <label class="ui label"><%= absence.state_i18n %></label>
+        <% if absence.init? %>
+          <div class="ui mini buttons">
+            <%= link_to 'Approve', new_check_path('Absence', absence.id, state: 'approved'), remote: true, class: 'ui positive button' %>
+            <div class="or"></div>
+            <%= link_to 'Deny', new_check_path('Absence', absence.id, state: 'denied'), remote: true, class: 'ui negative button' %>
+          </div>
+        <% end %>
+      </td>
+      <td class="ui labels">
+        <%= link_to admin_absence_path(absence), data: { tooltip: t('.show') }, remote: true, class: 'ui blue mini icon button' do %>
+          <i class="location arrow icon"></i>
+        <% end %>
+        <%= link_to edit_admin_absence_path(absence), data: { tooltip: t('.edit') }, class: 'ui pink mini icon button' do %>
+          <i class="pencil icon"></i>
+        <% end %>
+        <%= link_to admin_absence_path(absence), method: :delete, data: { tooltip: t('.destroy'), confirm: 'Are you sure?' }, class: 'ui red mini icon button' do %>
+          <i class="times icon"></i>
+        <% end %>
+      </td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>
+
+<%= paginate @absences %>

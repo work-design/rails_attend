@@ -1,0 +1,53 @@
+<%= render 'nav_attendances' %>
+
+<div class="ui attached segment">
+  <%= render 'search_form' %>
+</div>
+
+<table class="ui bottom attached table">
+  <thead>
+    <tr>
+      <th><%= AttendanceLog.human_attribute_name(:id) %></th>
+      <th><%= AttendanceLog.human_attribute_name(:record_at) %></th>
+      <th><%= AttendanceLog.human_attribute_name(:kind) %></th>
+      <th>
+        <p><%= AttendanceLog.human_attribute_name(:source) %></p>
+        <p><%= AttendanceLog.human_attribute_name(:state) %></p>
+      </th>
+      <th><%= AttendanceLog.human_attribute_name(:note) %></th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+  <% @attendance_logs.each do |attendance_log| %>
+    <tr>
+      <td><%= attendance_log.id %></td>
+      <td>
+        <% if attendance_log.record_at %>
+          <time data-format="YYYY-MM-DD HH:mm"><%= attendance_log.record_at.to_s(:rfc822) %></time>
+        <% else %>
+          <%= attendance_log.record_at_str %>
+        <% end %>
+      </td>
+      <td><%= attendance_log.kind_i18n %></td>
+      <td>
+        <p><%= attendance_log.source_i18n %></p>
+        <p><%= attendance_log.state_i18n %></p>
+      </td>
+      <td><%= attendance_log.note %></td>
+      <td class="ui labels">
+        <% if attendance_log.editable? %>
+        <%= link_to edit_my_attendance_log_path(attendance_log), class: 'ui pink mini icon button' do %>
+          <i class="pencil alternate icon"></i>
+        <% end %>
+        <%= link_to my_attendance_log_path(attendance_log), method: :delete, data: { confirm: 'Are you sure?' }, class: 'ui red mini icon button' do %>
+          <i class="times icon"></i>
+        <% end %>
+        <% end %>
+      </td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>
+
+<%= paginate @attendance_logs %>

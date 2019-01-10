@@ -1,0 +1,79 @@
+<div class="ui attached segment">
+  <%= link_to 'confirm', check_hr_attendance_logs_path, id: 'checked_attendance_log', method: 'post', class: 'ui big green label' %>
+</div>
+
+<table class="ui bottom attached table">
+  <thead>
+    <tr>
+      <th>
+        <%= AttendanceLog.human_attribute_name(:id) %>
+        <%= check_box_tag :attendance_log_all, 1, false, onclick: "toggleAll(this, 'attendance_log_id')", id: nil %>
+      </th>
+      <th>
+        <p><%= AttendanceLog.human_attribute_name(:name) %></p>
+        <p><%= AttendanceLog.human_attribute_name(:number) %></p>
+      </th>
+      <th>
+        <p><%= AttendanceLog.human_attribute_name(:record_at) %></p>
+        <p><%= AttendanceLog.human_attribute_name(:created_at) %></p>
+      </th>
+      <th><%= AttendanceLog.human_attribute_name(:kind) %></th>
+      <th>
+        <p><%= AttendanceLog.human_attribute_name(:processed) %></p>
+        <p><%= AttendanceLog.human_attribute_name(:source) %></p>
+      </th>
+      <th><%= AttendanceLog.human_attribute_name(:state) %></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+  <% @attendance_logs.each do |attendance_log| %>
+    <tr>
+      <td>
+        <%= attendance_log.id %>
+        <%= check_box_tag :attendance_log_id, attendance_log.id, false, id: nil %>
+      </td>
+      <td>
+        <p><%= attendance_log.member&.name || attendance_log.name %></p>
+        <p><%= attendance_log.number %></p>
+      </td>
+      <td>
+        <p>
+          <% if attendance_log.record_at %>
+            <time class="green text"><%= attendance_log.record_at.to_s(:rfc822) %></time>
+          <% else %>
+            <%= attendance_log.record_at_str %>
+          <% end %>
+        </p>
+        <p class="grey text"><time><%= attendance_log.created_at.to_s(:rfc822) %></time></p>
+      </td>
+      <td><%= attendance_log.kind_i18n %></td>
+      <td>
+        <% if attendance_log.processed %>
+          <i class="green checkmark icon"></i>
+        <% else %>
+          <i class="grey remove icon"></i>
+        <% end %>
+        <p><span class="ui label"><%= attendance_log.source %></span></p>
+      </td>
+      <td class="ui labels">
+        <span class="ui label"><%= attendance_log.state_i18n %></span>
+        <% if attendance_log.state_init? %>
+          <div class="ui mini buttons">
+            <%= link_to 'Approve', new_check_path('AttendanceLog', attendance_log.id, state: 'valid'), remote: true, class: 'ui positive button' %>
+            <div class="or"></div>
+            <%= link_to 'Deny', new_check_path('AttendanceLog', attendance_log.id, state: 'invalid'), remote: true, class: 'ui negative button' %>
+          </div>
+        <% end %>
+      </td>
+      <td>
+        <%= link_to 'analyze', analyze_hr_attendance_log_path(attendance_log), method: :patch, data: { confirm: 'Are you sure?' }, class: 'ui blue label' %>
+        <%= link_to t('.destroy'), hr_attendance_log_path(attendance_log), method: :delete, data: { confirm: 'Are you sure?' }, class: 'ui red label' %>
+      </td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>
+
+<%= paginate @attendance_logs %>

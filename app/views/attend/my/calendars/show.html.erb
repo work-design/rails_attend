@@ -1,0 +1,12 @@
+<%= search_form_with model: Member.new do |f| %>
+  <div class="inline fields">
+    <%= render partial: 'nodes/outer_search', locals: { f: f, node: @department } %>
+  </div>
+  <div class="fields">
+    <%= f.submit 'Search', class: 'ui green small button' %>
+  </div>
+<% end %>
+
+<div class="ui segment">
+  <div id='calendar' data-department-id="<%= @department.id %>"></div>
+</div>

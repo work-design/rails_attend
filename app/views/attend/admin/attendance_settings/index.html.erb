@@ -1,0 +1,14 @@
+<div class="ui top attached borderless menu">
+  <div class="header item">Attendance Settings</div>
+  <div class="right menu">
+    <div class="item">
+      <%= link_to 'Add new', new_hr_attendance_setting_path, class: 'ui teal button' %>
+    </div>
+  </div>
+</div>
+
+<div class="ui attached segment">
+  <%= render 'search_form' %>
+</div>
+
+<%= render 'list' %>

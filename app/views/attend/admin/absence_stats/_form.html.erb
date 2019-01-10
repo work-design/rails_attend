@@ -1,0 +1,12 @@
+<%= form_with model: [:hr, @absence_stat], local: true do |f| %>
+  <%= render 'shared/error_messages', target: @absence_stat %>
+  <%= f.select :member_id, options_for_select([[@absence_stat.member&.name, @absence_stat.member_id]], @absence_stat.member_id), { include_blank: true } %>
+  <div class="inline fields">
+    <%= f.label :year %>
+    <div class="two wide field">
+      <%= select_year Date.today, field_name: 'year', prefix: 'absence_stat' %>
+    </div>
+  </div>
+  <%= f.number_field :annual_days, step: 0.5 %>
+  <%= f.submit %>
+<% end %>

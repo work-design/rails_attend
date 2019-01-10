@@ -1,0 +1,3 @@
+class WelfareLeave < Absence
+
+end

@@ -1,0 +1,3 @@
+class PersonalLeave < Absence
+
+end

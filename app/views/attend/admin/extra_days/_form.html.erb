@@ -1,0 +1,8 @@
+<%= form_with model: [:hr, @extra_day], local: true do |f| %>
+  <%= render 'shared/error_messages', target: @extra_day %>
+  <%= f.text_field :name %>
+  <%= f.date_field :the_day %>
+  <%= f.select :kind, options_for_select(ExtraDay.options_i18n(:kind), @extra_day.kind) %>
+  <%= f.select :country, options_for_select(Office.countries, @extra_day.country) %>
+  <%= f.submit %>
+<% end %>

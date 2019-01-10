@@ -1,0 +1,36 @@
+<div class="ui vertical fluid icon menu">
+  <div class="header center link item" id="close_side">
+    <i class="content icon"></i>
+  </div>
+  
+  <% if current_member.any_role?('oa/admin/financial_months', 'oa/admin/attendances', 'oa/admin/attendance_settings', 'oa/admin/attendance_logs', 'oa/admin/absences', 'oa/admin/overtimes') %>
+  <div class="item ui dropdown">
+    <a class="<%= active_helper(controllers: ['financial_months', 'extra_days', 'attendances', 'attendance_stats', 'attendance_logs', 'absences', 'absence_stats', 'overtimes', 'attendance_settings'], active_class: 'title active', item_class: 'title') %>">
+      <i class="calendar check icon"></i>
+      <span>Attendance</span>
+    </a>
+    <div class="<%= active_helper(controllers: ['financial_months', 'extra_days', 'attendances', 'attendance_stats', 'attendance_logs', 'absences', 'absence_stats', 'overtimes', 'attendance_settings'], active_class: 'menu content active', item_class: 'menu content') %>">
+      <%= link_to 'Financial Months', admin_financial_months_path, class: active_helper(controllers: ['financial_months', 'extra_days']) %>
+      <%= link_to 'Attendances', admin_attendances_path, class: active_helper(controllers: ['attendances', 'attendance_stats', 'attendance_logs']) %>
+      <%= link_to 'Absences', admin_absences_path, class: active_helper(controllers: 'absences') %>
+      <%= link_to 'Absence Stats', admin_absence_stats_path, class: active_helper(controllers: 'absence_stats') %>
+      <%= link_to 'Overtimes', admin_overtimes_path, class: active_helper(controllers: 'overtimes') %>
+      <%= link_to 'Attendance Settings', admin_attendance_settings_path, class: active_helper(controllers: 'attendance_settings') %>
+    </div>
+  </div>
+  <% end %>
+  
+  <% if current_member.any_role?('oa/admin/dinners') %>
+  <div class="item ui dropdown">
+    <a class="<%= active_helper(controllers: ['dinners'], active_class: 'title active', item_class: 'title') %>">
+      <i class="gift icon"></i>
+      <span>Welfare</span>
+    </a>
+    <div class="<%= active_helper(controllers: ['dinners'], active_class: 'menu content active', item_class: 'menu content') %>">
+      <%= link_to 'Dinner', admin_dinners_path, class: active_helper(controllers: ['dinners']) %>
+    </div>
+  </div>
+  <% end %>
+  
+</div>
+

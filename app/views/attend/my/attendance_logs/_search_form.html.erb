@@ -1,0 +1,9 @@
+<%= search_form_with model: AttendanceLog.new do |f| %>
+  <div class="fields">
+    <%= f.date_field :'record_at-gte' %>
+    <%= f.date_field :'record_at-lte' %>
+    <%= f.submit 'Search' %>
+  </div>
+<% end %>
+
+

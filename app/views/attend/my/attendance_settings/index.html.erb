@@ -1,0 +1,56 @@
+<%= render 'my_my/base/nav_attendance_settings' %>
+
+<table class="ui very basic large table">
+  <thead>
+    <tr>
+      <th></th>
+      <th><%= AttendanceSetting.human_attribute_name(:financial_month) %></th>
+      <th><%= AttendanceSetting.human_attribute_name(:on_time) %></th>
+      <th><%= AttendanceSetting.human_attribute_name(:state) %></th>
+      <th><%= AttendanceSetting.human_attribute_name(:note) %></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>
+        <span>Current Financial Month</span>
+      </td>
+      <td>
+        <p><%= @attendance_setting.financial_month&.begin_date %></p>
+        <p><%= @attendance_setting.financial_month&.end_date %></p>
+      </td>
+      <td>
+        <p><%= @attendance_setting.on_time %></p>
+        <p><%= @attendance_setting.off_time %></p>
+      </td>
+      <td><i class="green checkmark icon"></i></td>
+      <td><%= @attendance_setting.note %></td>
+      <td></td>
+    </tr>
+    <% @attendance_settings.each_with_index do |attendance_setting| %>
+    <tr>
+      <td>
+        <span>Next Financial Months</span>
+      </td>
+      <td>
+        <p><%= attendance_setting.financial_month&.begin_date %></p>
+        <p><%= attendance_setting.financial_month&.end_date %></p>
+      </td>
+      <td>
+        <p><%= attendance_setting.on_time %></p>
+        <p><%= attendance_setting.off_time %></p>
+      </td>
+      <td>
+        <span class="ui label"><%= attendance_setting.state_i18n %></span>
+      </td>
+      <td><%= attendance_setting.note %></td>
+      <td>
+        <%= link_to edit_my_attendance_setting_path(attendance_setting), data: { tooltip: t('.edit') }, class: 'ui pink mini icon button' do %>
+          <i class="pencil alternate icon"></i>
+        <% end %>
+      </td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>

@@ -1,0 +1,3 @@
+class SickLeave < WelfareLeave
+
+end

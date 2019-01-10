@@ -1,0 +1,6 @@
+<%= render 'shared/error_messages', target: @attendance_log %>
+<%= f.hidden_field :member_id %>
+<%= f.hidden_field :attendance_id %>
+<%= f.datetime_field :record_at %>
+<%= f.text_area :note %>
+<%= f.submit %>

@@ -1,0 +1,62 @@
+<%= render 'nav_absences' %>
+
+<div class="ui attached segment">
+  <%= render 'search_form' %>
+</div>
+
+<table class="ui bottom attached table">
+  <thead>
+  <tr>
+    <th>ID</th>
+    <th><%= Absence.human_attribute_name(:type) %></th>
+    <th>
+      <p><%= Absence.human_attribute_name(:start_at) %></p>
+      <p><%= Absence.human_attribute_name(:finish_at) %></p>
+    </th>
+    <th><%= Absence.human_attribute_name(:hours) %></th>
+    <th><%= Absence.human_attribute_name(:note) %></th>
+    <th><%= Absence.human_attribute_name(:state) %></th>
+    <th>Actions</th>
+  </tr>
+  </thead>
+
+  <tbody>
+  <% @absences.each do |absence| %>
+    <tr>
+      <td><%= absence.id %></td>
+      <td><%= absence.type_i18n %></td>
+      <td>
+        <p><time data-format="YYYY-MM-DD HH:mm"><%= absence.start_at.to_s(:rfc822) %></time></p>
+        <p><time data-format="YYYY-MM-DD HH:mm"><%= absence.finish_at.to_s(:rfc822) %></time></p>
+      </td>
+      <td>
+        <%= absence.hours.to_s(:human) %>
+      </td>
+      <td><%= absence.note %></td>
+      <td>
+        <% if absence.init? %>
+          <span class="ui label"><%= absence.state_i18n %></span>
+        <% elsif absence.approved? %>
+          <span class="ui green label"><%= absence.state_i18n %></span>
+        <% elsif absence.denied? %>
+          <span class="ui red label"><%= absence.state_i18n %></span>
+        <% end %>
+      </td>
+      <td>
+        <% unless absence.approved? %>
+          <%= link_to t('.edit'), edit_my_absence_path(absence), class: 'ui pink label' %>
+          <%= link_to t('.destroy'), my_absence_path(absence), method: :delete, data: {confirm: 'Are you sure?'}, class: 'ui red label' %>
+        <% end %>
+      </td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>
+
+<%= paginate @absences %>
+
+<div>
+  <h3>Note:</h3>
+  <p>1. Do not apply holiday cross two financial month, you can apply more times;</p>
+  <p>2. Do not apply holiday at sometime, but leave with punch before that time.</p>
+</div>

@@ -1,0 +1,3 @@
+class ChildrenDayLeave < WelfareLeave
+
+end

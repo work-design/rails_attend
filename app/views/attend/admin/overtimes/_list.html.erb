@@ -1,0 +1,48 @@
+<table class="ui bottom attached table">
+  <thead>
+    <tr>
+      <th><%= Overtime.human_attribute_name(:id) %></th>
+      <th><%= Overtime.human_attribute_name(:member) %></th>
+      <th>
+        <p><%= Overtime.human_attribute_name(:start_at) %></p>
+        <p><%= Overtime.human_attribute_name(:finish_at) %></p>
+      </th>
+      <th><%= Overtime.human_attribute_name(:note) %></th>
+      <th><%= Overtime.human_attribute_name(:hours) %></th>
+      <th><%= Overtime.human_attribute_name(:state) %></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+  <% @overtimes.each do |overtime| %>
+    <tr>
+      <td><%= overtime.id %></td>
+      <td>
+        <%= link_to overtime.member.name, admin_member_path(overtime.member_id) if overtime.member %>
+      </td>
+      <td>
+        <p><time data-format="YYYY-MM-DD HH:mm"><%= overtime.start_at.to_s(:rfc822) %></time></p>
+        <p><time data-format="YYYY-MM-DD HH:mm"><%= overtime.finish_at.to_s(:rfc822) %></time></p>
+      </td>
+      <td><%= simple_format overtime.note %></td>
+      <td><%= overtime.hours %></td>
+      <td>
+        <label class="ui label"><%= overtime.state_i18n %></label>
+        <% if overtime.init? %>
+          <div class="ui mini buttons">
+            <%= link_to 'Approve', new_check_path('Overtime', overtime.id, state: 'approved'), remote: true, class: 'ui positive button' %>
+            <div class="or"></div>
+            <%= link_to 'Reject', new_check_path('Overtime', overtime.id, state: 'denied'), remote: true, class: 'ui negative button' %>
+          </div>
+        <% end %>
+      </td>
+      <td class="ui labels">
+        <%= link_to t('.edit'), edit_admin_overtime_path(overtime), class: 'ui pink label' %>
+      </td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>
+
+

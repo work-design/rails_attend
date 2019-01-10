@@ -1,0 +1,3 @@
+class MarriageLeave < WelfareLeave
+
+end

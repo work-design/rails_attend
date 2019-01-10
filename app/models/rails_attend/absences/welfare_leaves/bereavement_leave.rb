@@ -1,0 +1,3 @@
+class BereavementLeave < WelfareLeave
+
+end
