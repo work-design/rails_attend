@@ -1,4 +1,4 @@
-class Oa::Admin::AbsenceStatsController < Oa::Admin::BaseController
+class Attend::Admin::AbsenceStatsController < Attend::Admin::BaseController
   before_action :set_absence_stat, only: [:show, :edit, :update, :destroy]
 
   def index

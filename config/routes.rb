@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
-  scope :admin, module: 'oa/admin', as: 'admin' do
+  scope :admin, module: 'attend/admin', as: 'admin' do
     resources :financial_months do
       get :events, on: :collection
       patch :attendance_setting, on: :member
@@ -30,9 +30,7 @@ Rails.application.routes.draw do
     end
   end
 
-  scope :my, module: 'oa/my', as: 'my' do
-    root to: 'profiles#show', as: :root
-
+  scope :my, module: 'attend/my', as: 'my' do
     resource :calendar do
       get :events
     end

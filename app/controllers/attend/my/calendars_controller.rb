@@ -1,4 +1,4 @@
-class Oa::My::CalendarsController < Oa::My::BaseController
+class Attend::My::CalendarsController < Attend::My::BaseController
 
   def show
     @query_params = {

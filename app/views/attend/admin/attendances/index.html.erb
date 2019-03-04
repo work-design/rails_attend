@@ -45,7 +45,7 @@
           <% if attendance.finish_at %>
             <time data-format="HH:mm"><%= attendance.finish_at.to_s(:rfc822) %></time>
           <% elsif attendance.finish_at.blank? && attendance.start_at.present? %>
-            <%= link_to 'Re-Punch', new_hr_attendance_log_path(attendance_id: attendance.id), remote: true, class: 'ui teal mini button' %>
+            <%= link_to 'Re-Punch', new_admin_attendance_log_path(attendance_id: attendance.id), remote: true, class: 'ui teal mini button' %>
           <% end %>
         </p>
       </td>
@@ -55,13 +55,13 @@
           <% if attendance.interval_finish_at %>
             <time data-format="HH:mm"><%= attendance.interval_finish_at.to_s(:rfc822) %></time>
           <% elsif attendance.interval_finish_at.blank? && attendance.interval_start_at.present? %>
-            <%= link_to 'Re-Punch', new_hr_attendance_log_path(attendance_id: attendance.id), remote: true, class: 'ui teal mini button' %>
+            <%= link_to 'Re-Punch', new_admin_attendance_log_path(attendance_id: attendance.id), remote: true, class: 'ui teal mini button' %>
           <% end %>
         </p>
       </td>
       <td class="ui labels">
         <% if attendance.interval_absence_id %>
-          <p><%= link_to attendance.interval_hours, hr_absence_path(attendance.interval_absence_id), remote: true, class: 'ui green label' %></p>
+          <p><%= link_to attendance.interval_hours, admin_absence_path(attendance.interval_absence_id), remote: true, class: 'ui green label' %></p>
         <% elsif attendance.interval_hours.to_f > 0 %>
           <p><span class="ui label"><%= attendance.interval_hours %></span></p>
         <% end %>
@@ -69,14 +69,14 @@
       <td class="ui labels">
         <% if attendance.late_absence_id %>
           <p>
-            <%= link_to attendance.late_minutes.to_i.minutes.inspect, hr_absence_path(attendance.late_absence_id), remote: true, class: 'ui green label' %>
+            <%= link_to attendance.late_minutes.to_i.minutes.inspect, admin_absence_path(attendance.late_absence_id), remote: true, class: 'ui green label' %>
           </p>
         <% elsif attendance.late_minutes %>
           <p><span class="ui label"><%= attendance.late_minutes.to_i.minutes.inspect %></span></p>
         <% end %>
         <% if attendance.leave_absence_id %>
           <p>
-            <%= link_to attendance.late_minutes.to_i.minutes.inspect, hr_absence_path(attendance.leave_absence_id), remote: true, class: 'ui green label' %>
+            <%= link_to attendance.late_minutes.to_i.minutes.inspect, admin_absence_path(attendance.leave_absence_id), remote: true, class: 'ui green label' %>
           </p>
         <% elsif attendance.leave_minutes %>
           <p><span class="ui label"><%= attendance.leave_minutes.to_i.minutes.inspect %></span></p>
@@ -95,8 +95,8 @@
       </td>
       <td><%= attendance.kind_i18n %></td>
       <td class="ui labels">
-        <%= link_to 'logs', hr_attendance_logs_path(attendance_id: attendance.id), class: 'ui blue label' %>
-        <%= link_to t('.edit'), edit_hr_attendance_path(attendance), class: 'ui pink label' %>
+        <%= link_to 'logs', admin_attendance_logs_path(attendance_id: attendance.id), class: 'ui blue label' %>
+        <%= link_to t('.edit'), edit_admin_attendance_path(attendance), class: 'ui pink label' %>
       </td>
     </tr>
   <% end %>

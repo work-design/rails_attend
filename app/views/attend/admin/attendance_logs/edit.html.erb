@@ -1,11 +1,11 @@
 <div class="ui segment breadcrumb">
-  <%= link_to 'Back', hr_attendance_logs_path, class: 'section' %>
+  <%= link_to 'Back', admin_attendance_logs_path, class: 'section' %>
   <div class="divider"> / </div>
   <div class="active section">Edit</div>
 </div>
 
 <div class="ui segment">
-  <%= form_with model: @attendance_log, url: hr_attendance_log_path(@attendance_log), method: :patch do |f| %>
+  <%= form_with model: @attendance_log, url: admin_attendance_log_path(@attendance_log), method: :patch do |f| %>
     <%= render 'shared/error_messages', target: @attendance_log %>
     <%= f.text_area :note %>
     <%= f.submit %>

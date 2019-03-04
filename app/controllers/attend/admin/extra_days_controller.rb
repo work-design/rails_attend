@@ -1,4 +1,4 @@
-class Oa::Admin::ExtraDaysController < Oa::Admin::BaseController
+class Attend::Admin::ExtraDaysController < Attend::Admin::BaseController
   before_action :set_extra_day, only: [:show, :edit, :update, :destroy]
 
   def index

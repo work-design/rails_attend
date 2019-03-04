@@ -2,7 +2,7 @@
   <div class="header item">Hr Absence Stats</div>
   <div class="right menu">
     <div class="item">
-      <%= link_to 'New Hr Absence Stat', new_hr_absence_stat_path, class: 'ui teal button' %>
+      <%= link_to 'New Hr Absence Stat', new_admin_absence_stat_path, class: 'ui teal button' %>
     </div>
   </div>
 </div>
@@ -29,13 +29,13 @@
       <td><%= absence_stat.annual_days %></td>
       <td><%= absence_stat.year %></td>
       <td class="ui labels">
-        <%#= link_to hr_absence_stat_path(absence_stat), data: { tooltip: t('.show') }, class: 'ui blue mini icon button' do %>
+        <%#= link_to admin_absence_stat_path(absence_stat), data: { tooltip: t('.show') }, class: 'ui blue mini icon button' do %>
 <!--          <i class="location arrow icon"></i>-->
         <%# end %>
-        <%= link_to edit_hr_absence_stat_path(absence_stat), data: { tooltip: t('.edit') }, class: 'ui pink mini icon button' do %>
+        <%= link_to edit_admin_absence_stat_path(absence_stat), data: { tooltip: t('.edit') }, class: 'ui pink mini icon button' do %>
           <i class="pencil alternate icon"></i>
         <% end %>
-        <%= link_to hr_absence_stat_path(absence_stat), method: :delete, data: { tooltip: t('.destroy'), confirm: 'Are you sure?' }, class: 'ui red mini icon button' do %>
+        <%= link_to admin_absence_stat_path(absence_stat), method: :delete, data: { tooltip: t('.destroy'), confirm: 'Are you sure?' }, class: 'ui red mini icon button' do %>
           <i class="times icon"></i>
         <% end %>
       </td>

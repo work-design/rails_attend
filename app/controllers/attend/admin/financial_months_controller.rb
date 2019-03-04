@@ -1,4 +1,4 @@
-class Oa::Admin::FinancialMonthsController < Oa::Admin::BaseController
+class Attend::Admin::FinancialMonthsController < Attend::Admin::BaseController
   before_action :set_financial_month, only: [:show, :attendance_setting, :edit, :update, :destroy]
 
   def index

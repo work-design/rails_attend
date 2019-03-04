@@ -39,13 +39,13 @@
         <p><%= attendance_stat.absence_redeeming_hours %></p>
       </td>
       <td class="ui labels">
-        <%#= link_to hr_attendance_stat_path(attendance_stat), class: 'ui blue mini icon button' do %>
+        <%#= link_to admin_attendance_stat_path(attendance_stat), class: 'ui blue mini icon button' do %>
 <!--          <i class="location arrow icon"></i>-->
         <%# end %>
-        <%= link_to edit_hr_attendance_stat_path(attendance_stat), class: 'ui pink mini icon button' do %>
+        <%= link_to edit_admin_attendance_stat_path(attendance_stat), class: 'ui pink mini icon button' do %>
           <i class="pencil alternate icon"></i>
         <% end %>
-        <%= link_to hr_attendance_stat_path(attendance_stat), method: :delete, data: { confirm: 'Are you sure?' }, class: 'ui red mini icon button' do %>
+        <%= link_to admin_attendance_stat_path(attendance_stat), method: :delete, data: { confirm: 'Are you sure?' }, class: 'ui red mini icon button' do %>
           <i class="times icon"></i>
         <% end %>
       </td>

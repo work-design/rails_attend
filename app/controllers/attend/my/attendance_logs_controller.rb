@@ -1,4 +1,4 @@
-class Oa::My::AttendanceLogsController < Oa::My::BaseController
+class Attend::My::AttendanceLogsController < Attend::My::BaseController
   before_action :set_attendance_log, only: [:show, :edit, :update, :destroy]
 
   def index

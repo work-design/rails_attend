@@ -1,4 +1,4 @@
-class Oa::Admin::OvertimesController < Oa::Admin::BaseController
+class Attend::Admin::OvertimesController < Attend::Admin::BaseController
   before_action :set_overtime, only: [:show, :edit, :update, :trigger, :destroy]
 
   def index

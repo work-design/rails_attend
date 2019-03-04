@@ -1,4 +1,4 @@
-class Oa::Admin::BaseController < Hr::Admin::BaseController
+class Attend::Admin::BaseController < Hr::Admin::BaseController
 
 
 end

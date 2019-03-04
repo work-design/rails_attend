@@ -1,4 +1,4 @@
-class Oa::My::AttendanceStatsController < Oa::My::BaseController
+class Attend::My::AttendanceStatsController < Attend::My::BaseController
   before_action :set_attendance_stat, only: [:show]
 
   def index

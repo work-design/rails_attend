@@ -77,7 +77,7 @@ class Absence < ApplicationRecord
   def send_notification
     to_notification(
       receiver: member.parent,
-      link: url_helpers.my_hr_absences_url(id: self.id),
+      link: url_helpers.my_admin_absences_url(id: self.id),
       code: :request,
       verbose: true
     )

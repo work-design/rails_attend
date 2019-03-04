@@ -70,7 +70,7 @@ class AttendanceLog < ApplicationRecord
       cc_emails: [
         self.member.office&.absence_email
       ],
-      link: url_helpers.my_hr_attendance_logs_url(id: self.id),
+      link: url_helpers.my_admin_attendance_logs_url(id: self.id),
       code: :request,
       verbose: true,
       )

@@ -1,5 +1,5 @@
 <div class="ui attached segment">
-  <%= link_to 'confirm', check_hr_attendance_settings_path, id: 'checked_attendance_setting', method: 'post', class: 'ui big green label' %>
+  <%= link_to 'confirm', check_admin_attendance_settings_path, id: 'checked_attendance_setting', method: 'post', class: 'ui big green label' %>
 </div>
 
 <table class="ui bottom attached table">
@@ -36,13 +36,13 @@
       </td>
       <td><%= attendance_setting.note %></td>
       <td class="ui labels">
-        <%= link_to hr_attendance_setting_path(attendance_setting), data: { tooltip: t('.show') }, class: 'ui blue mini icon button' do %>
+        <%= link_to admin_attendance_setting_path(attendance_setting), data: { tooltip: t('.show') }, class: 'ui blue mini icon button' do %>
           <i class="location arrow icon"></i>
         <% end %>
-        <%= link_to edit_hr_attendance_setting_path(attendance_setting), data: { tooltip: t('.edit') }, class: 'ui pink mini icon button' do %>
+        <%= link_to edit_admin_attendance_setting_path(attendance_setting), data: { tooltip: t('.edit') }, class: 'ui pink mini icon button' do %>
           <i class="pencil alternate icon"></i>
         <% end %>
-        <%= link_to hr_attendance_setting_path(attendance_setting), method: :delete, data: { tooltip: t('.destroy'), confirm: 'Are you sure?' }, class: 'ui red mini icon button' do %>
+        <%= link_to admin_attendance_setting_path(attendance_setting), method: :delete, data: { tooltip: t('.destroy'), confirm: 'Are you sure?' }, class: 'ui red mini icon button' do %>
           <i class="times icon"></i>
         <% end %>
       </td>

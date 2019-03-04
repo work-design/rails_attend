@@ -3,7 +3,7 @@
   <%= link_to 'Workday & Holiday', admin_extra_days_path, class: 'item' %>
   <div class="right menu">
     <div class="item">
-      <%= link_to 'New Financial Month', new_hr_financial_month_path, class: 'ui teal button' %>
+      <%= link_to 'New Financial Month', new_admin_financial_month_path, class: 'ui teal button' %>
     </div>
   </div>
 </div>
@@ -35,9 +35,9 @@
         <span class="ui label" style="background-color: <%= financial_month.color %>;"><%= financial_month.color %></span>
       </td>
       <td class="ui labels">
-        <%= link_to 'Attendance Setting', attendance_setting_hr_financial_month_path(financial_month), method: :patch, data: { confirm: 'Are you sure?' }, class: 'ui blue label' %>
-        <%= link_to 'Show', hr_financial_month_path(financial_month), remote: true, class: 'ui blue label' %>
-        <%= link_to t('.edit'), edit_hr_financial_month_path(financial_month), class: 'ui pink label' %>
+        <%= link_to 'Attendance Setting', attendance_setting_admin_financial_month_path(financial_month), method: :patch, data: { confirm: 'Are you sure?' }, class: 'ui blue label' %>
+        <%= link_to 'Show', admin_financial_month_path(financial_month), remote: true, class: 'ui blue label' %>
+        <%= link_to t('.edit'), edit_admin_financial_month_path(financial_month), class: 'ui pink label' %>
       </td>
     </tr>
   <% end %>

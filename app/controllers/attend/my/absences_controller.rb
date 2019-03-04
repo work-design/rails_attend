@@ -1,4 +1,4 @@
-class Oa::My::AbsencesController < Oa::My::BaseController
+class Attend::My::AbsencesController < Attend::My::BaseController
   before_action :set_absence, only: [:show, :edit, :update, :destroy]
   skip_before_action :verify_authenticity_token, only: [:redeeming] #todo removed
 

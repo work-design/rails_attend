@@ -1,4 +1,4 @@
-class Oa::My::BaseController < My::BaseController
+class Attend::My::BaseController < My::BaseController
   before_action :require_member
 
   def require_member

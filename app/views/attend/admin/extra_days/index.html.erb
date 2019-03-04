@@ -1,9 +1,9 @@
 <div class="ui top attached borderless menu">
-  <%= link_to 'Financial Months', hr_financial_months_path, class: 'item' %>
+  <%= link_to 'Financial Months', admin_financial_months_path, class: 'item' %>
   <div class="header item">Workday & Holiday</div>
   <div class="right menu">
     <div class="item">
-      <%= link_to 'New Extra Day', new_hr_extra_day_path, class: 'ui teal button' %>
+      <%= link_to 'New Extra Day', new_admin_extra_day_path, class: 'ui teal button' %>
     </div>
   </div>
 </div>
@@ -33,8 +33,8 @@
       <td><%= extra_day.kind_i18n %></td>
       <td><%= extra_day.country %></td>
       <td>
-        <%= link_to t('.edit'), edit_hr_extra_day_path(extra_day), class: 'ui pink label' %>
-        <%= link_to t('.destroy'), hr_extra_day_path(extra_day), method: :delete, data: { confirm: 'Are you sure?' }, class: 'ui red label' %>
+        <%= link_to t('.edit'), edit_admin_extra_day_path(extra_day), class: 'ui pink label' %>
+        <%= link_to t('.destroy'), admin_extra_day_path(extra_day), method: :delete, data: { confirm: 'Are you sure?' }, class: 'ui red label' %>
       </td>
     </tr>
   <% end %>
