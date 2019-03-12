@@ -125,6 +125,24 @@ class RailsAuthInit < ActiveRecord::Migration[5.1]
       t.index ["member_id"], name: "index_overtimes_on_member_id"
     end
 
+    create_table "extra_days", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+      t.date "the_day"
+      t.string "name"
+      t.string "kind", comment: "holiday, workday"
+      t.string "scope"
+      t.datetime "created_at", null: false
+      t.datetime "updated_at", null: false
+      t.string "country"
+    end
+
+    create_table "financial_months", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+      t.date "begin_date"
+      t.date "end_date"
+      t.string "working_days"
+      t.datetime "created_at", null: false
+      t.datetime "updated_at", null: false
+      t.string "color"
+    end
 
 
   end
