@@ -2,7 +2,7 @@ class RailsAttendInit < ActiveRecord::Migration[5.1]
   def change
 
     create_table :attendances do |t|
-      t.reference :member
+      t.references :member
       t.integer :late_minutes
       t.integer :leave_minutes
       t.float :overtime_hours
@@ -41,36 +41,6 @@ class RailsAttendInit < ActiveRecord::Migration[5.1]
       t.timestamps
     end
 
-    create_table :absence_stats do |t|
-      t.references :member
-      t.string :year
-      t.float :annual_days
-      t.float :annual_add
-      t.float :left_annual_days
-      t.float :vacation_days
-      t.string :details, limit: 1024
-      t.timestamps
-    end
-
-    create_table :absences do |t|
-      t.references :member
-      t.string :kind
-      t.string :type
-      t.float :hours
-      t.datetime :start_at
-      t.datetime :finish_at
-      t.string :state
-      t.string :note, limit: 2048
-      t.string :comment, limit: 2048
-      t.boolean :redeeming
-      t.string :cc_emails
-      t.string :redeeming_days
-      t.boolean :processed, default: false
-      t.integer :merged_id
-      t.boolean :divided, default: false
-      t.timestamps
-    end
-
     create_table :attendance_settings do |t|
       t.references :member
       t.references :financial_month
@@ -96,6 +66,35 @@ class RailsAttendInit < ActiveRecord::Migration[5.1]
       t.timestamps
     end
 
+    create_table :absences do |t|
+      t.references :member
+      t.string :kind
+      t.string :type
+      t.float :hours
+      t.datetime :start_at
+      t.datetime :finish_at
+      t.string :state
+      t.string :note, limit: 2048
+      t.string :comment, limit: 2048
+      t.boolean :redeeming
+      t.string :redeeming_days
+      t.boolean :processed, default: false
+      t.integer :merged_id
+      t.boolean :divided, default: false
+      t.timestamps
+    end
+
+    create_table :absence_stats do |t|
+      t.references :member
+      t.string :year
+      t.float :annual_days
+      t.float :annual_add
+      t.float :left_annual_days
+      t.float :vacation_days
+      t.string :details, limit: 1024
+      t.timestamps
+    end
+
     create_table :overtimes do |t|
       t.references :member
       t.datetime :start_at
@@ -108,6 +107,7 @@ class RailsAttendInit < ActiveRecord::Migration[5.1]
     end
 
     create_table :extra_days do |t|
+      t.references :organ
       t.date :the_day
       t.string :name
       t.string :kind, comment: 'holiday, workday'
@@ -116,6 +116,7 @@ class RailsAttendInit < ActiveRecord::Migration[5.1]
     end
 
     create_table :financial_months do |t|
+      t.references :organ
       t.date :begin_date
       t.date :end_date
       t.string :working_days

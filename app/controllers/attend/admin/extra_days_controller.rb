@@ -2,7 +2,7 @@ class Attend::Admin::ExtraDaysController < Attend::Admin::BaseController
   before_action :set_extra_day, only: [:show, :edit, :update, :destroy]
 
   def index
-    q_params = params.fetch(:q, {}).permit!
+    q_params = default_params.merge! params.fetch(:q, {}).permit!
     @extra_days = ExtraDay.default_where(q_params).page(params[:page])
   end
 
@@ -45,13 +45,14 @@ class Attend::Admin::ExtraDaysController < Attend::Admin::BaseController
   end
 
   def extra_day_params
-    params.fetch(:extra_day, {}).permit(
+    p = params.fetch(:extra_day, {}).permit(
       :name,
       :the_day,
       :kind,
       :scope,
       :country
     )
+    p.merge! default_params
   end
 
 end

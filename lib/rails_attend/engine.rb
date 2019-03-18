@@ -22,8 +22,8 @@ module RailsAttend
       g.templates.unshift File.expand_path('lib/templates', RailsCom::Engine.root)
     end
 
-    initializer 'rails_booking.assets.precompile' do |app|
-      app.config.assets.precompile += ['rails_booking_manifest.js']
+    initializer 'rails_attend.assets.precompile' do |app|
+      app.config.assets.precompile += ['rails_attend_manifest.js']
     end
   end
 end

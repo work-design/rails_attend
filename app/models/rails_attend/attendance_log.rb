@@ -1,6 +1,6 @@
 class AttendanceLog < ApplicationRecord
   include CheckMachine
-  include TheNotifiable
+  include RailsNoticeNotifiable
   attribute :source, :string, default: 'machine'
   attribute :state, :string, default: 'init'
   belongs_to :unsure_member, class_name: 'Member', foreign_key: 'number', primary_key: 'attendance_number', optional: true

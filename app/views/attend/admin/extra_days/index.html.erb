@@ -19,7 +19,6 @@
       <th><%= ExtraDay.human_attribute_name(:the_day) %></th>
       <th><%= ExtraDay.human_attribute_name(:name) %></th>
       <th><%= ExtraDay.human_attribute_name(:kind) %></th>
-      <th><%= ExtraDay.human_attribute_name(:country) %></th>
       <th>Actions</th>
     </tr>
   </thead>
@@ -31,7 +30,6 @@
       <td><%= extra_day.the_day %></td>
       <td><%= extra_day.name %></td>
       <td><%= extra_day.kind_i18n %></td>
-      <td><%= extra_day.country %></td>
       <td>
         <%= link_to t('.edit'), edit_admin_extra_day_path(extra_day), class: 'ui pink label' %>
         <%= link_to t('.destroy'), admin_extra_day_path(extra_day), method: :delete, data: { confirm: 'Are you sure?' }, class: 'ui red label' %>

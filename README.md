@@ -5,20 +5,8 @@ Short description and motivation.
 How to use my plugin.
 
 ## Installation
-Add this line to your application's Gemfile:
-
-```ruby
-gem 'rails_attend'
 ```
-
-And then execute:
-```bash
-$ bundle
-```
-
-Or install it yourself as:
-```bash
-$ gem install rails_attend
+yarn add fullcalendar
 ```
 
 ## Contributing

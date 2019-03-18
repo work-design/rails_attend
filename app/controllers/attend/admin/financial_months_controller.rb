@@ -2,7 +2,8 @@ class Attend::Admin::FinancialMonthsController < Attend::Admin::BaseController
   before_action :set_financial_month, only: [:show, :attendance_setting, :edit, :update, :destroy]
 
   def index
-    @financial_months = FinancialMonth.page(params[:page])
+    q_params = default_params
+    @financial_months = FinancialMonth.default_where(q_params).page(params[:page])
   end
 
   def events
@@ -59,12 +60,13 @@ class Attend::Admin::FinancialMonthsController < Attend::Admin::BaseController
   end
 
   def financial_month_params
-    params.fetch(:financial_month, {}).permit(
+    p = params.fetch(:financial_month, {}).permit(
       :begin_date,
       :end_date,
       :color,
       :working_days
     )
+    p.merge! default_params
   end
 
 end

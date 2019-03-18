@@ -1,0 +1,3 @@
+class AbsenceStat < ApplicationRecord
+  
+end
