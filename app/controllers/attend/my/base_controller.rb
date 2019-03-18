@@ -1,4 +1,4 @@
-class Attend::My::BaseController < My::BaseController
+class Attend::My::BaseController < RailsAttend.config.my_class.constantize
   before_action :require_member
 
   def require_member

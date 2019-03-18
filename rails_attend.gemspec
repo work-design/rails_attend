@@ -1,26 +1,25 @@
 $:.push File.expand_path('lib', __dir__)
 require 'rails_attend/version'
 
-# Describe your gem and declare its dependencies:
-Gem::Specification.new do |spec|
-  spec.name = 'rails_attend'
-  spec.version = RailsAttend::VERSION
-  spec.authors = ['qinmingyuan']
-  spec.email = ['mingyuan0715@foxmail.com']
-  spec.homepage = 'TODO'
-  spec.summary = 'TODO: Summary of RailsAttend.'
-  spec.description = 'TODO: Description of RailsAttend.'
-  spec.license = 'MIT'
+Gem::Specification.new do |s|
+  s.name = 'rails_attend'
+  s.version = RailsAttend::VERSION
+  s.authors = ['qinmingyuan']
+  s.email = ['mingyuan0715@foxmail.com']
+  s.homepage = 'https://github.com/work-design/rails_attend'
+  s.summary = 'Summary of RailsAttend.'
+  s.description = 'Description of RailsAttend.'
+  s.license = 'MIT'
 
 
-  spec.files = Dir[
+  s.files = Dir[
     '{app,config,db,lib}/**/*',
     'MIT-LICENSE',
     'Rakefile',
     'README.md'
   ]
 
-  spec.add_dependency 'rails', '>= 5.2'
+  s.add_dependency 'rails', '>= 5.2'
 
-  spec.add_development_dependency 'sqlite3'
+  s.add_development_dependency 'sqlite3'
 end

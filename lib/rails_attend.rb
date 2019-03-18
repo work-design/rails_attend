@@ -1,5 +1,2 @@
-require "rails_attend/engine"
-
-module RailsAttend
-  # Your code goes here...
-end
+require_relative 'rails_attend/config'
+require_relative 'rails_attend/engine'

@@ -1,4 +1,4 @@
-class Attend::Admin::BaseController < Hr::Admin::BaseController
+class Attend::Admin::BaseController < RailsAttend.config.panel_class.constantize
 
 
 end
