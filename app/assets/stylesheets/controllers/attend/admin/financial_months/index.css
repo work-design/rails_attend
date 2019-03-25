@@ -1,3 +1,4 @@
 /*
-*= require fullcalendar/dist/fullcalendar
+*= require @fullcalendar/core/main
+*= require @fullcalendar/daygrid/main
 */

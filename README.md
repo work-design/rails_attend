@@ -6,7 +6,8 @@ How to use my plugin.
 
 ## Installation
 ```
-yarn add fullcalendar
+yarn add @fullcalendar/core
+yarn add @fullcalendar/daygrid
 ```
 
 ## Contributing

@@ -1,6 +1,4 @@
 //= require rails_taxon/outer_search
-//= require moment
-//= require fullcalendar
 
 $(document).ready(function() {
 

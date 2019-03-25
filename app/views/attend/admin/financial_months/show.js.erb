@@ -1,37 +1,39 @@
-$('#finance_modal').replaceWith('<%= j(render 'show') %>');
+$('#modal').replaceWith('<%= j(render 'show') %>');
 
-$('#calendar').fullCalendar({
-  header: {
-    left: 'prev,next',
-    center: 'title',
-    right: ''
-  },
-  showNonCurrentDates: false,
-  fixedWeekCount: false,
-  validRange: {
-    start: '<%= @financial_month.begin_date.to_s %>',
-    end: '<%= @financial_month.end_date.next.to_s %>'
-  },
+var calendarEl = document.getElementById('calendar');
+var calendar = new FullCalendar.Calendar(calendarEl, {
+  plugins: [ 'dayGrid' ]
+});
+calendar.render();
+//({
+//  header: {
+//    left: 'prev,next',
+//    center: 'title',
+//    right: ''
+//  },
+//  showNonCurrentDates: false,
+//  fixedWeekCount: false,
+//  validRange: {
+//    start: '<%= @financial_month.begin_date.to_s %>',
+//    end: '<%#= @financial_month.end_date.next.to_s %>'
+//  },
 
-  // height
-  aspectRatio: 3,
-  height: 'auto',
-  firstDay: 1,
+//  // height
+//  aspectRatio: 3,
+//  height: 'auto',
+//  firstDay: 1,
 
-  // events
-  eventSources: [
-    {
-      events: <%= raw json_escape(@financial_month.events.to_json) %>,
-      color: '#8fdf82',
-      rendering: 'background'
-    }
-  ]
-})
+//  // events
+//  eventSources: [
+//    {
+//      events: <%#= raw json_escape(@financial_month.events.to_json) %>,
+//      color: '#8fdf82',
+//      rendering: 'background'
+//    }
+//  ]
+//})
 
-$('#finance_modal').modal('setting', {
-  autofocus: false
-}).modal('show');
-
+$('#modal').modal('show');
 
 function reloadCalendar(source, newSource) {
   $('#calendar').fullCalendar('removeEventSource', source).fullCalendar('addEventSource', newSource)
