@@ -34,8 +34,6 @@ Rails.application.routes.draw do
     resource :calendar do
       get :events
     end
-    resource :member
-
     resources :attendance_stats
     resources :attendance_settings
     resources :attendances
@@ -46,6 +44,6 @@ Rails.application.routes.draw do
       get :redeeming, on: :collection
     end
     resources :overtimes
-
   end
+
 end

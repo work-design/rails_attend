@@ -1,0 +1,12 @@
+<div class="item">
+  <span class="header">Administration</span>
+  <div class="menu">
+    <%= link_to 'Attendance Setting', oa_attendance_settings_path, class: active_helper(controllers: 'attendance_settings') %>
+    <%= link_to 'Attendance', oa_attendances_path, class: active_helper(controllers: ['attendances', 'attendance_stats', 'attendance_logs']) %>
+    <% unless Rails.env.production? %>
+      <%= link_to 'Holiday application', oa_absences_path, class: active_helper(controllers: ['absences']) %>
+      <%= link_to 'Work Overtime', oa_overtimes_path, class: active_helper(controllers: ['overtimes']) %>
+      <%= link_to 'Dinner', dinners_my_orders_path, class: active_helper(controllers: ['dinners'], 'my/orders': ['dinners', 'new']) %>
+    <% end %>
+  </div>
+</div>
