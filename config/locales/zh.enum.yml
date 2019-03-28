@@ -29,6 +29,9 @@ zh:
       attendance_setting/state:
         init: Pending
         approved: Approved
+      extra_day/kind:
+        workday: 工作日
+        holiday: 假日
       overtime/state:
         init: 申请
         approved: 批准

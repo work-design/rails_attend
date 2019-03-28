@@ -29,6 +29,9 @@ en:
       attendance_setting/state:
         init: Pending
         approved: Approved
+      extra_day/kind:
+        workday: Workday
+        holiday: Holiday
       overtime/state:
         init: Pending
         approved: Approved
