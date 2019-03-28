@@ -1,0 +1,34 @@
+zh:
+  activerecord:
+    attributes:
+      absence:
+        hours: 时长(小时）
+        member: 职员
+        member_name: 姓名
+        type_i18n: 类别
+        state_i18n: 状态
+        start_at: 开始时间
+        finish_at: 结束时间
+        note: 说明
+      attendance:
+        member: 职员
+        start_at: Start
+        finish_at: Leave
+        interval_start_at: Interval Leave start
+        interval_finish_at: Finish
+        total_hours: Total
+        late_minutes: Late
+        leave_minutes: Leave
+        overtime_hours: Overtime
+      attendance_log:
+        member_name: 姓名
+        record_at: 时间
+        note: 说明
+        state_i18n: 状态
+      overtime:
+        member: 职员
+        member_name: 姓名
+        start_at: 开始时间
+        finish_at: 结束时间
+        state_i18n: 状态
+        hours: 时长（小时）

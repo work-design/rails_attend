@@ -29,3 +29,7 @@ en:
       attendance_setting/state:
         init: Pending
         approved: Approved
+      overtime/state:
+        init: Pending
+        approved: Approved
+        denied: Rejected

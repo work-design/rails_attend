@@ -29,3 +29,7 @@ zh:
       attendance_setting/state:
         init: Pending
         approved: Approved
+      overtime/state:
+        init: 申请
+        approved: 批准
+        denied: 拒绝
