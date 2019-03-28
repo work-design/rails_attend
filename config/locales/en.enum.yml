@@ -1,0 +1,31 @@
+en:
+  activerecord:
+    enum:
+      absence/compensatory:
+        never: Never Compensatory Work
+        previous: Pre Compensatory Work
+        later: Later Compensatory Work
+      absence/state:
+        init: Pending
+        approved: Approved
+        denied: Rejected
+      absence/type:
+        BusinessTrip: Business Trip
+        PersonalLeave: Personal Leave
+        AnnualLeave: Annual Leave
+        CompensatoryLeave: Adjustment(Weekend/Holiday)
+        BereavementLeave: Bereavement Leave
+        ChildrenDayLeave: Children's Day
+        MarriageLeave: Marriage Leave
+        MaternityLeave: Maternity Leave
+        ParentalLeave: Parental Leave
+        PrenatalLeave: Prenatal Leave
+        SickLeave: Sick Leave
+      attendance/kind:
+        start: Start
+        finish: Finish
+      attendance/status:
+        init: Pending
+      attendance_setting/state:
+        init: Pending
+        approved: Approved
