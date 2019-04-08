@@ -1,9 +1,8 @@
-<div class="ui top attached borderless menu">
-  <div class="item"><strong>Financial Months</strong></div>
+<div class="ui top attached tabular menu">
+  <div class="active item">Financial Months</div>
   <%= link_to 'Workday & Holiday', admin_extra_days_path, class: 'item' %>
   <div class="right menu">
     <div class="item">
-      <%= link_to 'New Financial Month', new_admin_financial_month_path, class: 'ui teal button' %>
     </div>
   </div>
 </div>
@@ -20,7 +19,9 @@
       <th><%= FinancialMonth.human_attribute_name(:end_date) %></th>
       <th><%= FinancialMonth.human_attribute_name(:working_days) %></th>
       <th><%= FinancialMonth.human_attribute_name(:color) %></th>
-      <th>Actions</th>
+      <th>
+        <%= link_to 'New Financial Month', new_admin_financial_month_path, class: 'ui teal button' %>
+      </th>
     </tr>
   </thead>
 

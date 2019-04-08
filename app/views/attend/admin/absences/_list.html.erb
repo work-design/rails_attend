@@ -11,7 +11,9 @@
       <th><%= Absence.human_attribute_name(:hours) %></th>
       <th><%= Absence.human_attribute_name(:comment) %></th>
       <th><%= Absence.human_attribute_name(:state) %></th>
-      <th>Actions</th>
+      <th>
+        <div class="item"><%= link_to 'New Absence', new_admin_absence_path, class: 'ui teal button' %></div>
+      </th>
     </tr>
   </thead>
 
