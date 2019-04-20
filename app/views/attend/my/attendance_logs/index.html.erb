@@ -40,7 +40,7 @@
         <%= link_to edit_my_attendance_log_path(attendance_log), class: 'ui pink mini icon button' do %>
           <i class="pencil alternate icon"></i>
         <% end %>
-        <%= link_to my_attendance_log_path(attendance_log), method: :delete, data: { confirm: 'Are you sure?' }, class: 'ui red mini icon button' do %>
+        <%= link_to my_attendance_log_path(attendance_log), method: :delete, data: { confirm: t('.confirm') }, class: 'ui red mini icon button' do %>
           <i class="times icon"></i>
         <% end %>
         <% end %>
