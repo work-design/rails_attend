@@ -1,7 +1,7 @@
 <% if current_user.any_role?('attend/admin/financial_months', 'attend/admin/attendances', 'attend/admin/attendance_settings', 'attend/admin/attendance_logs', 'attend/admin/absences', 'attend/admin/overtimes') %>
 <div class="item">
   <a class="<%= active_helper(controllers: ['financial_months', 'extra_days', 'attendances', 'attendance_stats', 'attendance_logs', 'absences', 'absence_stats', 'overtimes', 'attendance_settings'], active_class: 'title active', item_class: 'title') %>">
-    <i class="home inverted blue calendar alternate outline icon"></i>
+    <i class="fas fa-calendar-alt"></i>
     <span>出勤管理</span>
     <i class="dropdown icon"></i>
   </a>
