@@ -30,10 +30,10 @@
       <td><%= absence_stat.year %></td>
       <td class="ui labels">
         <%#= link_to admin_absence_stat_path(absence_stat), data: { tooltip: t('.show') }, class: 'ui blue mini icon button' do %>
-<!--          <i class="location arrow icon"></i>-->
+<!--          <i class="fas fa-eye"></i>-->
         <%# end %>
         <%= link_to edit_admin_absence_stat_path(absence_stat), data: { tooltip: t('.edit') }, class: 'ui pink mini icon button' do %>
-          <i class="pencil alternate icon"></i>
+          <i class="fas fa-pencil-alt"></i>
         <% end %>
         <%= link_to admin_absence_stat_path(absence_stat), method: :delete, data: { tooltip: t('.destroy'), confirm: t('.confirm') }, class: 'ui red mini icon button' do %>
           <i class="times icon"></i>

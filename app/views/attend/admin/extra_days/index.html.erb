@@ -25,10 +25,10 @@
       <td><%= extra_day.kind_i18n %></td>
       <td>
         <%= link_to edit_admin_extra_day_path(extra_day), data: { tooltip: t('.edit') }, class: 'ui mini circular icon button' do %>
-          <i class="pencil alternate icon"></i>
+          <i class="fas fa-pencil-alt"></i>
         <% end %>
         <%= link_to admin_extra_day_path(extra_day), method: :delete, data: { tooltip: t('.destroy'), confirm: t('.confirm') }, class: 'ui mini circular icon button' do %>
-          <i class="trash alternate icon"></i>
+          <i class="fas fa-trash-alt"></i>
         <% end %>
       </td>
     </tr>
