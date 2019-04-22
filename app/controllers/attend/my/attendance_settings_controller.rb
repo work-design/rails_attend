@@ -14,7 +14,7 @@ class Attend::My::AttendanceSettingsController < Attend::My::BaseController
     @attendance_setting = current_member.attendance_settings.build(attendance_setting_params)
 
     if @attendance_setting.save
-      redirect_to my_attendance_settings_url, notice: 'Attendance setting was successfully created.'
+      redirect_to my_attendance_settings_url
     else
       render :new
     end
@@ -25,7 +25,7 @@ class Attend::My::AttendanceSettingsController < Attend::My::BaseController
 
   def update
     if @attendance_setting.update(attendance_setting_params)
-      redirect_to my_attendance_settings_url, notice: 'Attendance setting was successfully updated.'
+      redirect_to my_attendance_settings_url
     else
       render :edit
     end

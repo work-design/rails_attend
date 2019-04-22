@@ -15,7 +15,7 @@ class Attend::Admin::AbsenceStatsController < Attend::Admin::BaseController
     @absence_stat = AbsenceStat.new(absence_stat_params)
 
     if @absence_stat.save
-      redirect_to admin_absence_stats_url, notice: 'Absence stat was successfully created.'
+      redirect_to admin_absence_stats_url
     else
       render :new
     end
@@ -29,7 +29,7 @@ class Attend::Admin::AbsenceStatsController < Attend::Admin::BaseController
 
   def update
     if @absence_stat.update(absence_stat_params)
-      redirect_to admin_absence_stats_url, notice: 'Absence stat was successfully updated.'
+      redirect_to admin_absence_stats_url
     else
       render :edit
     end
@@ -37,7 +37,7 @@ class Attend::Admin::AbsenceStatsController < Attend::Admin::BaseController
 
   def destroy
     @absence_stat.destroy
-    redirect_to admin_absence_stats_url, notice: 'Absence stat was successfully destroyed.'
+    redirect_to admin_absence_stats_url
   end
 
   private

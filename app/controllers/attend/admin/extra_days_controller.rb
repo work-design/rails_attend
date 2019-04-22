@@ -14,7 +14,7 @@ class Attend::Admin::ExtraDaysController < Attend::Admin::BaseController
     @extra_day = ExtraDay.new(extra_day_params)
 
     if @extra_day.save
-      redirect_to admin_extra_days_url, notice: 'Extra day was successfully created.'
+      redirect_to admin_extra_days_url
     else
       render :new
     end
@@ -28,7 +28,7 @@ class Attend::Admin::ExtraDaysController < Attend::Admin::BaseController
 
   def update
     if @extra_day.update(extra_day_params)
-      redirect_to admin_extra_days_url, notice: 'Extra day was successfully updated.'
+      redirect_to admin_extra_days_url
     else
       render :edit
     end
@@ -36,7 +36,7 @@ class Attend::Admin::ExtraDaysController < Attend::Admin::BaseController
 
   def destroy
     @extra_day.destroy
-    redirect_to admin_extra_days_url, notice: 'Extra day was successfully destroyed.'
+    redirect_to admin_extra_days_url
   end
 
   private

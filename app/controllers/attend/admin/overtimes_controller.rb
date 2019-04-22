@@ -26,7 +26,7 @@ class Attend::Admin::OvertimesController < Attend::Admin::BaseController
 
   def update
     if @overtime.update(overtime_params)
-      redirect_to admin_overtimes_url, notice: 'Overtime was successfully updated.'
+      redirect_to admin_overtimes_url
     else
       render :edit
     end
@@ -39,7 +39,7 @@ class Attend::Admin::OvertimesController < Attend::Admin::BaseController
 
   def destroy
     @overtime.destroy
-    redirect_to admin_overtimes_url, notice: 'Overtime was successfully destroyed.'
+    redirect_to admin_overtimes_url
   end
 
   private

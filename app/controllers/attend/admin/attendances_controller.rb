@@ -14,7 +14,7 @@ class Attend::Admin::AttendancesController < Attend::Admin::BaseController
     @attendance = Attendance.new(attendance_params)
 
     if @attendance.save
-      redirect_to admin_attendances_url, notice: 'Attendance was successfully created.'
+      redirect_to admin_attendances_url
     else
       render :new
     end
@@ -28,7 +28,7 @@ class Attend::Admin::AttendancesController < Attend::Admin::BaseController
 
   def update
     if @attendance.update(attendance_params)
-      redirect_to admin_attendances_url, notice: 'Attendance was successfully updated.'
+      redirect_to admin_attendances_url
     else
       render :edit
     end
@@ -36,7 +36,7 @@ class Attend::Admin::AttendancesController < Attend::Admin::BaseController
 
   def destroy
     @attendance.destroy
-    redirect_to admin_attendances_url, notice: 'Attendance was successfully destroyed.'
+    redirect_to admin_attendances_url
   end
 
   private

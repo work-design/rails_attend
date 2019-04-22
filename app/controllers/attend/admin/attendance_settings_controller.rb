@@ -41,7 +41,7 @@ class Attend::Admin::AttendanceSettingsController < Attend::Admin::BaseControlle
     @attendance_setting = AttendanceSetting.new(attendance_setting_params)
 
     if @attendance_setting.save
-      redirect_to admin_attendance_settings_url(member_id: @attendance_setting.member_id), notice: 'Attendance setting was successfully created.'
+      redirect_to admin_attendance_settings_url(member_id: @attendance_setting.member_id)
     else
       render :new
     end
@@ -55,7 +55,7 @@ class Attend::Admin::AttendanceSettingsController < Attend::Admin::BaseControlle
 
   def update
     if @attendance_setting.update(attendance_setting_params)
-      redirect_to admin_attendance_settings_url, notice: 'Attendance setting was successfully updated.'
+      redirect_to admin_attendance_settings_url
     else
       render :edit
     end
@@ -63,7 +63,7 @@ class Attend::Admin::AttendanceSettingsController < Attend::Admin::BaseControlle
 
   def destroy
     @attendance_setting.destroy
-    redirect_to admin_attendance_settings_url, notice: 'Attendance setting was successfully destroyed.'
+    redirect_to admin_attendance_settings_url
   end
 
   private

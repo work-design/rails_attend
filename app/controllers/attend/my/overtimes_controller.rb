@@ -14,7 +14,7 @@ class Attend::My::OvertimesController < Attend::My::BaseController
     @overtime = current_member.overtimes.build(overtime_params)
 
     if @overtime.save
-      redirect_to my_overtimes_url, notice: 'Overtime was successfully created.'
+      redirect_to my_overtimes_url
     else
       render :new
     end
@@ -31,7 +31,7 @@ class Attend::My::OvertimesController < Attend::My::BaseController
     @overtime.state = 'init' if @overtime.changed?
 
     if @overtime.save
-      redirect_to my_overtimes_url, notice: 'Overtime was successfully updated.'
+      redirect_to my_overtimes_url
     else
       render :edit
     end
@@ -39,7 +39,7 @@ class Attend::My::OvertimesController < Attend::My::BaseController
 
   def destroy
     @overtime.destroy
-    redirect_to my_overtimes_url, notice: 'Overtime was successfully destroyed.'
+    redirect_to my_overtimes_url
   end
 
   private

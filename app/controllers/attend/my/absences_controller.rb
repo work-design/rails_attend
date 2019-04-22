@@ -20,7 +20,7 @@ class Attend::My::AbsencesController < Attend::My::BaseController
     @absence = current_member.absences.build(absence_params)
 
     if @absence.save
-      redirect_to my_absences_url, notice: 'Absence was successfully created.'
+      redirect_to my_absences_url
     else
       render :new
     end
@@ -45,7 +45,7 @@ class Attend::My::AbsencesController < Attend::My::BaseController
     @absence.state = 'init' if @absence.changed?
 
     if @absence.save
-      redirect_to my_absences_url, notice: 'Absence was successfully updated.'
+      redirect_to my_absences_url
     else
       render :edit
     end
@@ -53,7 +53,7 @@ class Attend::My::AbsencesController < Attend::My::BaseController
 
   def destroy
     @absence.destroy
-    redirect_to my_absences_url, notice: 'Absence was successfully destroyed.'
+    redirect_to my_absences_url
   end
 
   private

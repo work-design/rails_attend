@@ -24,7 +24,7 @@ class Attend::Admin::FinancialMonthsController < Attend::Admin::BaseController
     @financial_month = FinancialMonth.new(financial_month_params)
 
     if @financial_month.save
-      redirect_to admin_financial_months_url, notice: 'Financial month was successfully created.'
+      redirect_to admin_financial_months_url
     else
       render :new
     end
@@ -32,7 +32,7 @@ class Attend::Admin::FinancialMonthsController < Attend::Admin::BaseController
 
   def attendance_setting
     @financial_month.reset_attendance_settings
-    redirect_to admin_financial_months_url, notice: 'Financial month was successfully reset attendance setting.'
+    redirect_to admin_financial_months_url
   end
 
   def show
@@ -43,7 +43,7 @@ class Attend::Admin::FinancialMonthsController < Attend::Admin::BaseController
 
   def update
     if @financial_month.update(financial_month_params)
-      redirect_to admin_financial_months_url, notice: 'Financial month was successfully updated.'
+      redirect_to admin_financial_months_url
     else
       render :edit
     end
@@ -51,7 +51,7 @@ class Attend::Admin::FinancialMonthsController < Attend::Admin::BaseController
 
   def destroy
     @financial_month.destroy
-    redirect_to admin_financial_months_url, notice: 'Financial month was successfully destroyed.'
+    redirect_to admin_financial_months_url
   end
 
   private

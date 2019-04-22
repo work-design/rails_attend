@@ -48,7 +48,7 @@ class Attend::Admin::AttendanceLogsController < Attend::Admin::BaseController
 
     respond_to do |format|
       if @attendance_log.save
-        format.html { redirect_to admin_attendance_logs_url(attendance_id: @attendance_log.attendance_id), notice: 'Attendance log was successfully created.' }
+        format.html { redirect_to admin_attendance_logs_url(attendance_id: @attendance_log.attendance_id) }
         format.js do
           @attendance_log.compute
         end
@@ -67,7 +67,7 @@ class Attend::Admin::AttendanceLogsController < Attend::Admin::BaseController
 
   def update
     if @attendance_log.update(attendance_log_params)
-      redirect_to admin_attendance_logs_url(attendance_id: @attendance_log.attendance_id), notice: 'Attendance log was successfully updated.'
+      redirect_to admin_attendance_logs_url(attendance_id: @attendance_log.attendance_id)
     else
       render :edit
     end
@@ -80,7 +80,7 @@ class Attend::Admin::AttendanceLogsController < Attend::Admin::BaseController
 
   def destroy
     @attendance_log.destroy
-    redirect_to admin_attendance_logs_url(attendance_id: @attendance_log.attendance_id), notice: 'Attendance log was successfully destroyed.'
+    redirect_to admin_attendance_logs_url(attendance_id: @attendance_log.attendance_id)
   end
 
   private

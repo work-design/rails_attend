@@ -16,7 +16,7 @@ class Attend::My::AttendancesController < Attend::My::BaseController
 
   def update
     if @attendance.update(attendance_params)
-      redirect_to admin_attendances_url, notice: 'Attendance was successfully updated.'
+      redirect_to admin_attendances_url
     else
       render :edit
     end
@@ -24,7 +24,7 @@ class Attend::My::AttendancesController < Attend::My::BaseController
 
   def destroy
     @attendance.destroy
-    redirect_to admin_attendances_url, notice: 'Attendance was successfully destroyed.'
+    redirect_to admin_attendances_url
   end
 
   private
