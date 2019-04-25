@@ -1,10 +1,13 @@
-class FinancialMonth < ApplicationRecord
-  thread_mattr_accessor :current_country, instance_accessor: true
-  attribute :color, :string, default: '#8fdf82'
-  has_many :attendance_settings, dependent: :nullify
+module RailsAttend::FinancialMonth
+  extend ActiveSupport::Concern
+  included do
+    thread_mattr_accessor :current_country, instance_accessor: true
+    attribute :color, :string, default: '#8fdf82'
+    has_many :attendance_settings, dependent: :nullify
 
-  validate :validate_date_range, if: -> { begin_date_changed? || end_date_changed? }
-
+    validate :validate_date_range, if: -> { begin_date_changed? || end_date_changed? }
+  end
+  
   def workdays
     return @workdays if @workdays
     origin = (begin_date..end_date).reject { |day| day.on_weekend? }
@@ -75,25 +78,27 @@ class FinancialMonth < ApplicationRecord
   def next_month
     FinancialMonth.default_where('begin_date-gt': self.end_date).order(begin_date: :asc).first
   end
-
-  def self.current_all
-    FinancialMonth.default_where('end_date-gte': Date.today)
+  
+  class_methods do
+    def current_all
+      FinancialMonth.default_where('end_date-gte': Date.today)
+    end
+  
+    def next_all
+      FinancialMonth.default_where('begin_date-gt': Date.today)
+    end
+  
+    def current_month(day = Date.today)
+      FinancialMonth.default_where('begin_date-lte': day, 'end_date-gte': day).take
+    end
+  
+    def next_month(day = Date.today)
+      self.current_month(day).next_month
+    end
+  
+    def available_rest_days
+      Array(self.current_month&.rest_days) + Array(self.next_month&.rest_days)
+    end
   end
-
-  def self.next_all
-    FinancialMonth.default_where('begin_date-gt': Date.today)
-  end
-
-  def self.current_month(day = Date.today)
-    FinancialMonth.default_where('begin_date-lte': day, 'end_date-gte': day).take
-  end
-
-  def self.next_month(day = Date.today)
-    self.current_month(day).next_month
-  end
-
-  def self.available_rest_days
-    Array(self.current_month&.rest_days) + Array(self.next_month&.rest_days)
-  end
-
+  
 end

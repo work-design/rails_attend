@@ -1,21 +1,24 @@
-class Attendance < ApplicationRecord
-  serialize :lost_logs, Array
-  belongs_to :member
-  belongs_to :interval_absence, class_name: 'Absence', optional: true
-  belongs_to :late_absence, class_name: 'Absence', optional: true
-  belongs_to :leave_absence, class_name: 'Absence', optional: true
-  has_many :attendance_logs, dependent: :nullify
-
-  enum kind: {
-    belated: 'belated',
-    asked_leave: 'asked_leave',
-    no_meal: 'no_meal',
-    allowance: 'allowance'
-  }
-
-  validates :attend_on, uniqueness: { scope: :member_id }
-  before_save :sync_workday, if: -> { attend_on_changed? }
-
+module RailsAttend::Attendance
+  extend ActiveSupport::Concern
+  included do
+    serialize :lost_logs, Array
+    belongs_to :member
+    belongs_to :interval_absence, class_name: 'Absence', optional: true
+    belongs_to :late_absence, class_name: 'Absence', optional: true
+    belongs_to :leave_absence, class_name: 'Absence', optional: true
+    has_many :attendance_logs, dependent: :nullify
+  
+    enum kind: {
+      belated: 'belated',
+      asked_leave: 'asked_leave',
+      no_meal: 'no_meal',
+      allowance: 'allowance'
+    }
+  
+    validates :attend_on, uniqueness: { scope: :member_id }
+    before_save :sync_workday, if: -> { attend_on_changed? }
+  end
+  
   def compute_time_type(record_at)
     arr = [start_at, interval_start_at, interval_finish_at, finish_at, record_at].compact.uniq
     arr.sort!

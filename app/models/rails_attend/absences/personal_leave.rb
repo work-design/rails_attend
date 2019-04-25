@@ -1,3 +1,3 @@
-class PersonalLeave < Absence
+module RailsAttend::Absence::PersonalLeave
 
 end

@@ -1,3 +1,3 @@
-class CompensatoryLeave < Absence
+module RailsAttend::Absence::CompensatoryLeave
 
 end

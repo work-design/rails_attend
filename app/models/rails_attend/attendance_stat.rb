@@ -1,18 +1,21 @@
-class AttendanceStat < ApplicationRecord
-  serialize :costed_absence, Hash
-  serialize :redeeming_absence, Hash
-  serialize :free_absence, Hash
-  belongs_to :member
-  belongs_to :financial_month
-  has_many :absences,
-           ->(o){ default_where('start_at-gte': o.financial_month.begin_date.beginning_of_day, 'finish_at-lte': o.financial_month.end_date.end_of_day) },  #todo timezone consider
-           foreign_key: :member_id,
-           primary_key: :member_id
-  has_many :attendances,
-           ->(o){ default_where('attend_on-gte': o.financial_month.begin_date, 'attend_on-lte': o.financial_month.end_date, workday: true) },
-           foreign_key: :member_id,
-           primary_key: :member_id
-
+module RailsAttend::AttendanceStat
+  extend ActiveSupport::Concern
+  included do
+    serialize :costed_absence, Hash
+    serialize :redeeming_absence, Hash
+    serialize :free_absence, Hash
+    belongs_to :member
+    belongs_to :financial_month
+    has_many :absences,
+             ->(o){ default_where('start_at-gte': o.financial_month.begin_date.beginning_of_day, 'finish_at-lte': o.financial_month.end_date.end_of_day) },  #todo timezone consider
+             foreign_key: :member_id,
+             primary_key: :member_id
+    has_many :attendances,
+             ->(o){ default_where('attend_on-gte': o.financial_month.begin_date, 'attend_on-lte': o.financial_month.end_date, workday: true) },
+             foreign_key: :member_id,
+             primary_key: :member_id
+  end
+  
   def compute_summary
     self.late_days = self.attendances.default_where({ 'absence_minutes-gt': 0, late_absence_id: nil, leave_absence_id: nil }, allow: [nil]).count
     self.allowance_days = self.attendances.default_where('kind-not': 'no_meal').count

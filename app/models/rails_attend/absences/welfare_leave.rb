@@ -1,3 +1,3 @@
-class WelfareLeave < Absence
+module RailsAttend::Absence::WelfareLeave
 
 end

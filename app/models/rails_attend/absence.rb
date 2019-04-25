@@ -1,62 +1,65 @@
-class Absence < ApplicationRecord
-  include CheckMachine
-  serialize :cc_emails, Array
-  serialize :redeeming_days, Array
-  attribute :state, :string, default: 'init'
-  attribute :hours, :float, default: 0
-  belongs_to :member
-  belongs_to :merged, class_name: self.name, optional: true
-  has_many :divideds, class_name: self.name, foreign_key: 'merged_id'
-
-  composed_of :absent, mapping: [
-    ['member_id', 'member_id'],
-    ['type', 'type']
-  ]
-
-  enum state: {
-    init: 'init',
-    approved: 'approved',
-    denied: 'denied'
-  }
-
-  scope :current_range, -> (begin_date, finish_date) {
-    default_where('start_at-gte': begin_date, 'finish_at-lte': finish_date, state: ['init', 'approved'])
-  }
-  scope :current_range_stat, -> (begin_date, finish_date) {
-    current_range(begin_date, finish_date).group(:type).sum(:hours)
-  }
-  scope :current_range_events, -> (begin_date, finish_date, department_ids) {
-    current_range(begin_date, finish_date).default_where('member.department_id': department_ids).map do |i|
-      {
-        title: i.member.name,
-        start: i.start_at,
-        end: i.finish_at,
-        url: i.url_helpers.oa_absence_path(i.id)
-      }
-    end.as_json
-  }
-
-  validate :validate_same_month, if: -> { start_at_changed? || finish_at_changed? }
-  validates :start_at, presence: true
-  validates :finish_at, presence: true
-
-  before_save :compute_hours
-  after_create_commit :send_notification
-
-  delegate :name, to: :member, prefix: true
-  acts_as_notify :default,
-                 only: [:hours, :start_at, :finish_at, :note],
-                 methods: [:member_name, :type_i18n, :state_i18n]
-
-  acts_as_notify :request,
-                 only: [:hours, :start_at, :finish_at, :note],
-                 methods: [:member_name, :type_i18n, :state_i18n],
-                 cc_emails: [
-                    -> (o){ o.member.office&.absence_email },
-                    -> (o){ o.member.email },
-                    -> (o){ o.cc_emails }
-                  ]
-
+module RailsAttend::Absence
+  extend ActiveSupport::Concern
+  included do
+    include CheckMachine
+    serialize :cc_emails, Array
+    serialize :redeeming_days, Array
+    attribute :state, :string, default: 'init'
+    attribute :hours, :float, default: 0
+    belongs_to :member
+    belongs_to :merged, class_name: self.name, optional: true
+    has_many :divideds, class_name: self.name, foreign_key: 'merged_id'
+  
+    composed_of :absent, mapping: [
+      ['member_id', 'member_id'],
+      ['type', 'type']
+    ]
+  
+    enum state: {
+      init: 'init',
+      approved: 'approved',
+      denied: 'denied'
+    }
+  
+    scope :current_range, -> (begin_date, finish_date) {
+      default_where('start_at-gte': begin_date, 'finish_at-lte': finish_date, state: ['init', 'approved'])
+    }
+    scope :current_range_stat, -> (begin_date, finish_date) {
+      current_range(begin_date, finish_date).group(:type).sum(:hours)
+    }
+    scope :current_range_events, -> (begin_date, finish_date, department_ids) {
+      current_range(begin_date, finish_date).default_where('member.department_id': department_ids).map do |i|
+        {
+          title: i.member.name,
+          start: i.start_at,
+          end: i.finish_at,
+          url: i.url_helpers.oa_absence_path(i.id)
+        }
+      end.as_json
+    }
+  
+    validate :validate_same_month, if: -> { start_at_changed? || finish_at_changed? }
+    validates :start_at, presence: true
+    validates :finish_at, presence: true
+  
+    before_save :compute_hours
+    after_create_commit :send_notification
+  
+    delegate :name, to: :member, prefix: true
+    acts_as_notify :default,
+                   only: [:hours, :start_at, :finish_at, :note],
+                   methods: [:member_name, :type_i18n, :state_i18n]
+  
+    acts_as_notify :request,
+                   only: [:hours, :start_at, :finish_at, :note],
+                   methods: [:member_name, :type_i18n, :state_i18n],
+                   cc_emails: [
+                      -> (o){ o.member.office&.absence_email },
+                      -> (o){ o.member.email },
+                      -> (o){ o.cc_emails }
+                    ]
+  end
+  
   def do_trigger(params = {})
     self.trigger_to(params.slice(:state))
 

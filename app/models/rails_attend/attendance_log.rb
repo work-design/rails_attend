@@ -1,22 +1,25 @@
-class AttendanceLog < ApplicationRecord
-  include CheckMachine
-  include RailsNoticeNotifiable
-  attribute :source, :string, default: 'machine'
-  attribute :state, :string, default: 'init'
-  belongs_to :unsure_member, class_name: 'Member', foreign_key: 'number', primary_key: 'attendance_number', optional: true
-  belongs_to :member, optional: true
-  belongs_to :attendance, optional: true
-
-  validates :record_at, presence: true, unless: -> { self.source == 'machine' }
-  validates :record_at_str, presence: true, if: -> { self.source == 'machine' }
-
-  scope :pending, -> { where(state: 'init', processed: false) }
-
-  after_initialize if: :new_record? do
-    self.state ||= 'init'
+module RailsAttend::AttendanceLog
+  extend ActiveSupport::Concern
+  included do
+    include CheckMachine
+    include RailsNoticeNotifiable
+    attribute :source, :string, default: 'machine'
+    attribute :state, :string, default: 'init'
+    belongs_to :unsure_member, class_name: 'Member', foreign_key: 'number', primary_key: 'attendance_number', optional: true
+    belongs_to :member, optional: true
+    belongs_to :attendance, optional: true
+  
+    validates :record_at, presence: true, unless: -> { self.source == 'machine' }
+    validates :record_at_str, presence: true, if: -> { self.source == 'machine' }
+  
+    scope :pending, -> { where(state: 'init', processed: false) }
+  
+    after_initialize if: :new_record? do
+      self.state ||= 'init'
+    end
+    before_save :sync_member_id, if: -> { number_changed? }
   end
-  before_save :sync_member_id, if: -> { number_changed? }
-
+  
   def sync_member_id
     self.member_id = self.unsure_member&.id
     if self.member

@@ -1,3 +1,7 @@
-class BusinessTrip < Absence
-  validates :note, presence: true
+module RailsAttend::Absence::BusinessTrip
+  extend ActiveSupport::Concern
+  included do
+    validates :note, presence: true
+  end
+  
 end

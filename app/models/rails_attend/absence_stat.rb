@@ -1,3 +1,3 @@
-class AbsenceStat < ApplicationRecord
+module RailsAttend::AbsenceStat
 
 end
