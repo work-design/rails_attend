@@ -1,4 +1,4 @@
-module RailsAttendUser
+module RailsAttend::User
   extend ActiveSupport::Concern
 
   included do

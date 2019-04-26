@@ -1,3 +1,3 @@
 class BereavementLeave < WelfareLeave
 
-end
+end unless defined? BereavementLeave

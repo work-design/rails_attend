@@ -1,3 +1,3 @@
 class ChildrenDayLeave < WelfareLeave
 
-end
+end unless defined? ChildrenDayLeave

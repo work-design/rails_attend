@@ -2,7 +2,7 @@ module RailsAttend::AttendanceLog
   extend ActiveSupport::Concern
   included do
     include CheckMachine
-    include RailsNoticeNotifiable
+    include RailsNotice::Notifiable
     attribute :source, :string, default: 'machine'
     attribute :state, :string, default: 'init'
     belongs_to :unsure_member, class_name: 'Member', foreign_key: 'number', primary_key: 'attendance_number', optional: true
@@ -13,7 +13,34 @@ module RailsAttend::AttendanceLog
     validates :record_at_str, presence: true, if: -> { self.source == 'machine' }
   
     scope :pending, -> { where(state: 'init', processed: false) }
-  
+
+    enum state: {
+      init: 'init',
+      valid: 'valid',
+      invalid: 'invalid'
+    }, _prefix: true
+
+    enum kind: {
+      start_at: 'start_at',
+      finish_at: 'finish_at',
+      interval_start_at: 'interval_start_at',
+      interval_finish_at: 'interval_finish_at'
+    }
+
+    enum source: {
+      machine: 'machine',
+      myself: 'myself',
+      admin: 'admin'
+    }
+
+    delegate :name, to: :member, prefix: true
+    acts_as_notify :default,
+                   only: [:record_at, :note],
+                   methods: [:member_name, :state_i18n]
+    acts_as_notify :request,
+                   only: [:record_at, :note],
+                   methods: [:member_name]
+    
     after_initialize if: :new_record? do
       self.state ||= 'init'
     end
@@ -26,33 +53,6 @@ module RailsAttend::AttendanceLog
       self.record_at = self.record_at_str.in_time_zone(member.timezone)
     end
   end
-
-  enum state: {
-    init: 'init',
-    valid: 'valid',
-    invalid: 'invalid'
-  }, _prefix: true
-
-  enum kind: {
-    start_at: 'start_at',
-    finish_at: 'finish_at',
-    interval_start_at: 'interval_start_at',
-    interval_finish_at: 'interval_finish_at'
-  }
-
-  enum source: {
-    machine: 'machine',
-    myself: 'myself',
-    admin: 'admin'
-  }
-
-  delegate :name, to: :member, prefix: true
-  acts_as_notify :default,
-                 only: [:record_at, :note],
-                 methods: [:member_name, :state_i18n]
-  acts_as_notify :request,
-                 only: [:record_at, :note],
-                 methods: [:member_name]
 
   def do_trigger(params = {})
     self.trigger_to(params.slice(:state))
@@ -131,25 +131,26 @@ module RailsAttend::AttendanceLog
       log.save!
     end
   end
+  
+  class_methods do
+    def analyze
+      AttendanceLog.where(processed: false).each do |al|
+        al.analyze
+      end
+    end
 
-  def self.analyze
-    AttendanceLog.where(processed: false).each do |al|
-      al.analyze
+    def prepare
+      Attendance.where(member_id: nil).each do |i|
+        i.sync_member_id
+        i.save
+      end
+    end
+
+    def self.analyze_number
+      Member.where(enabled: true, attendance_number: [nil, '']).each do |member|
+        num = AttendanceLog.find_by(source: 'machine', name: member.profile&.real_name)&.number
+        member.update(attendance_number: num)
+      end
     end
   end
-
-  def self.prepare
-    Attendance.where(member_id: nil).each do |i|
-      i.sync_member_id
-      i.save
-    end
-  end
-
-  def self.analyze_number
-    Member.where(enabled: true, attendance_number: [nil, '']).each do |member|
-      num = AttendanceLog.find_by(source: 'machine', name: member.profile&.real_name)&.number
-      member.update(attendance_number: num)
-    end
-  end
-
 end

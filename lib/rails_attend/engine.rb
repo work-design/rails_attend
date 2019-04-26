@@ -3,7 +3,8 @@ module RailsAttend
   class Engine < ::Rails::Engine
     
     config.autoload_paths += Dir[
-      "#{config.root}/app/models/rails_attend/absence"
+      "#{config.root}/app/models/absence",
+      "#{config.root}/app/models/absence/welfare_leave"
     ]
 
     config.factory_bot.definition_file_paths += Dir["#{config.root}/test/factories"] if defined?(FactoryBotRails)

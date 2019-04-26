@@ -1,3 +1,3 @@
 class MarriageLeave < WelfareLeave
 
-end
+end unless defined? MarriageLeave

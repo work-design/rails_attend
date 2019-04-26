@@ -1,3 +1,3 @@
 class SickLeave < WelfareLeave
 
-end
+end unless defined? SickLeave

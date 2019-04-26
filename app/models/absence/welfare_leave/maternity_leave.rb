@@ -1,3 +1,3 @@
 class MaternityLeave < WelfareLeave
 
-end
+end unless defined? MaternityLeave
