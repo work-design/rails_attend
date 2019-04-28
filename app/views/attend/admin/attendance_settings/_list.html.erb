@@ -11,8 +11,10 @@
       <th><%= AttendanceSetting.human_attribute_name(:state) %></th>
       <th><%= AttendanceSetting.human_attribute_name(:note) %></th>
       <th>
-        <%= link_to 'Add new', new_admin_attendance_setting_path, class: 'ui teal button' %>
-        <%= link_to 'confirm', check_admin_attendance_settings_path, id: 'checked_attendance_setting', method: 'post', class: 'ui big green label' %>
+        <%= link_to new_admin_attendance_setting_path, class: 'ui mini primary button' do %>
+          <i class="fas fa-plus"></i><%= t('.new') %>
+        <% end %>
+        <%= link_to 'confirm', check_admin_attendance_settings_path, id: 'checked_attendance_setting', method: 'post', class: 'ui mini secondary button' %>
       </th>
     </tr>
   </thead>

@@ -11,7 +11,9 @@
       <th><%= ExtraDay.human_attribute_name(:name) %></th>
       <th><%= ExtraDay.human_attribute_name(:kind) %></th>
       <th>
-        <%= link_to 'New Extra Day', new_admin_extra_day_path, class: 'ui teal button' %>
+        <%= link_to new_admin_extra_day_path, class: 'ui mini primary button' do %>
+          <i class="fas fa-plus"></i><%= t('.new') %>
+        <% end %>
       </th>
     </tr>
   </thead>
