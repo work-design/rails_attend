@@ -1,7 +1,6 @@
 module RailsAttend::Overtime
   extend ActiveSupport::Concern
   included do
-    serialize :cc_emails, Array
     attribute :state, :string, default: 'init'
     include CheckMachine
     belongs_to :member

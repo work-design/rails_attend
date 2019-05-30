@@ -1,9 +1,9 @@
 module RailsAttend::AttendanceStat
   extend ActiveSupport::Concern
   included do
-    serialize :costed_absence, Hash
-    serialize :redeeming_absence, Hash
-    serialize :free_absence, Hash
+    attribute :costed_absence, :json, default: {}
+    attribute :redeeming_absence, :json, default: {}
+    attribute :free_absence, :json, default: {}
     belongs_to :member
     belongs_to :financial_month
     has_many :absences,

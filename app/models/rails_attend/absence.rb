@@ -2,7 +2,6 @@ module RailsAttend::Absence
   extend ActiveSupport::Concern
   included do
     include CheckMachine
-    serialize :cc_emails, Array
     serialize :redeeming_days, Array
     attribute :state, :string, default: 'init'
     attribute :hours, :float, default: 0
