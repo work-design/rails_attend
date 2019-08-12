@@ -52,7 +52,7 @@ class Attend::Admin::ExtraDaysController < Attend::Admin::BaseController
       :scope,
       :country
     )
-    p.merge! default_params
+    p.merge! default_form_params
   end
 
 end

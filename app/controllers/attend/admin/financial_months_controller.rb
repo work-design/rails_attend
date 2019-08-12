@@ -66,7 +66,7 @@ class Attend::Admin::FinancialMonthsController < Attend::Admin::BaseController
       :color,
       :working_days
     )
-    p.merge! default_params
+    p.merge! default_form_params
   end
 
 end
