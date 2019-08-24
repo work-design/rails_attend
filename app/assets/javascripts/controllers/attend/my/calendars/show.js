@@ -1,4 +1,4 @@
-//= require rails_taxon/outer_search
+import 'rails_taxon/outer_search'
 
 $(document).ready(function() {
 

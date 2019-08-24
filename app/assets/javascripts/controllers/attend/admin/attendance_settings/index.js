@@ -1,1 +1,1 @@
-//= require ./my
+import './my'

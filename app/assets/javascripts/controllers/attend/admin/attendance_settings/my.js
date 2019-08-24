@@ -1,5 +1,4 @@
-//= require rails_com/checkbox
-
+import 'rails_com/checkbox'
 
 listenCheckedIds('attendance_setting_id');
 
