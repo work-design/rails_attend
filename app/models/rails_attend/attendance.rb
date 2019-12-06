@@ -1,7 +1,25 @@
 module RailsAttend::Attendance
   extend ActiveSupport::Concern
+
   included do
-    serialize :lost_logs, Array
+    attribute :late_minutes, :integer
+    attribute :leave_minutes, :integer
+    attribute :overtime_hours, :float
+    attribute :attend_hours, :float
+    attribute :interval_hours, :float
+    attribute :total_hours, :float
+    attribute :attend_on, :date
+    attribute :start_at, :datetime
+    attribute :finish_at, :datetime
+    attribute :interval_start_at, :datetime
+    attribute :interval_finish_at, :datetime
+    attribute :kind, :string
+    attribute :absence_minutes, :integer
+    attribute :absence_redeeming, :boolean
+    attribute :lost_logs, :string, array: true
+    attribute :workday, :boolean, default: true
+    attribute :processed, :boolean, default: false
+    
     belongs_to :member
     belongs_to :interval_absence, class_name: 'Absence', optional: true
     belongs_to :late_absence, class_name: 'Absence', optional: true
@@ -269,24 +287,26 @@ module RailsAttend::Attendance
   def rest_day?
     financial_month.rest_day?(self.attend_on)
   end
-
-  def self.compute_summary!
-    self.where(processed: false).each do |at|
-      at.compute_summary!
+  
+  class_methods do
+    def compute_summary!
+      self.where(processed: false).each do |at|
+        at.compute_summary!
+      end
     end
-  end
-
-  def self.notify_completion
-    normal_ids = self.distinct(:member_id).where(finish_time: nil).where.not(start_at: nil).pluck(:member_id)
-    normal_ids.each do |member_id|
-      AttendanceMailer.normal_completion(member_id).deliver_later
+  
+    def notify_completion
+      normal_ids = self.distinct(:member_id).where(finish_time: nil).where.not(start_at: nil).pluck(:member_id)
+      normal_ids.each do |member_id|
+        AttendanceMailer.normal_completion(member_id).deliver_later
+      end
+  
+      interval_ids = self.distinct(:member_id).where(interval_finish_at: nil).where.not(interval_start_at: nil).pluck(:member_id)
+      interval_ids.each do |member_id|
+        AttendanceMailer.interval_completion(member_id).deliver_later
+      end
+      [normal_ids, interval_ids]
     end
-
-    interval_ids = self.distinct(:member_id).where(interval_finish_at: nil).where.not(interval_start_at: nil).pluck(:member_id)
-    interval_ids.each do |member_id|
-      AttendanceMailer.interval_completion(member_id).deliver_later
-    end
-    [normal_ids, interval_ids]
   end
 
 end

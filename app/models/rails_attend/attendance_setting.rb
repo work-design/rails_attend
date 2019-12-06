@@ -1,30 +1,31 @@
 module RailsAttend::AttendanceSetting
   extend ActiveSupport::Concern
+
   included do
-    include CheckMachine
     attribute :state, :string, default: 'init'
     attribute :on_time, :string, default: '08:30'
-  
+    attribute :off_time, :string
+    attribute :note, :string
+
     belongs_to :member
     belongs_to :financial_month
-  
+
     validates :member_id, uniqueness: { scope: :financial_month_id }
-  
+
     enum state: {
       init: 'init',
       approved: 'approved',
       denied: 'denied'
     }
-  
-    acts_as_notify
-  
-  
+
     after_initialize do
       self.compute_off_time
     end
     before_save :compute_off_time, if: -> { on_time_changed? }
+
+    acts_as_notify
   end
-  
+
   def do_trigger(params = {})
     self.trigger_to(params.slice(:state))
 

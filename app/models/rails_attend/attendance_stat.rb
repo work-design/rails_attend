@@ -1,9 +1,20 @@
 module RailsAttend::AttendanceStat
   extend ActiveSupport::Concern
+
   included do
     attribute :costed_absence, :json, default: {}
     attribute :redeeming_absence, :json, default: {}
     attribute :free_absence, :json, default: {}
+    attribute :allowance_days, :integer
+    attribute :late_days, :integer
+    attribute :absence_redeeming_hours, :float
+    attribute :costed_absence, :string, limit: 1024
+    attribute :cost_absence_hours, :float
+    attribute :free_absence, :string, limit: 1024
+    attribute :redeeming_absence, :string, limit: 1024
+    attribute :holiday_redeeming_hours, :float
+    attribute :processed, :boolean, default: false
+    
     belongs_to :member
     belongs_to :financial_month
     has_many :absences,
@@ -71,18 +82,20 @@ module RailsAttend::AttendanceStat
     self.compute_summary
     self.save
   end
-
-  def self.init
-    _financial_month = FinancialMonth.current_month
-
-    Attendance.distinct(:member_id).default_where('attend_on-gte': _financial_month.begin_date, 'attend_on-lte': _financial_month.end_date).pluck(:member_id).each do |member_id|
-      AttendanceStat.find_or_create_by(member_id: member_id, financial_month_id: _financial_month.id)
+  
+  class_methods do
+    def init
+      _financial_month = FinancialMonth.current_month
+  
+      Attendance.distinct(:member_id).default_where('attend_on-gte': _financial_month.begin_date, 'attend_on-lte': _financial_month.end_date).pluck(:member_id).each do |member_id|
+        AttendanceStat.find_or_create_by(member_id: member_id, financial_month_id: _financial_month.id)
+      end
     end
-  end
-
-  def self.compute_summary!
-    self.where(processed: false).each do |at|
-      at.compute_summary!
+  
+    def compute_summary!
+      self.where(processed: false).each do |at|
+        at.compute_summary!
+      end
     end
   end
 

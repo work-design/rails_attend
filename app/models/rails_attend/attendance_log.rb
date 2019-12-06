@@ -1,10 +1,16 @@
 module RailsAttend::AttendanceLog
   extend ActiveSupport::Concern
+
   included do
-    include CheckMachine
-    include RailsNotice::Notifiable
     attribute :source, :string, default: 'machine'
     attribute :state, :string, default: 'init'
+    attribute :name, :string
+    attribute :record_at, :datetime
+    attribute :processed, :boolean, default: false
+    attribute :kind, :string
+    attribute :note, :string
+    attribute :record_at_str, :string
+    
     belongs_to :unsure_member, class_name: 'Member', foreign_key: 'number', primary_key: 'attendance_number', optional: true
     belongs_to :member, optional: true
     belongs_to :attendance, optional: true

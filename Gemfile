@@ -2,15 +2,8 @@ source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 gemspec
 
-gem 'rails', '6.0.0.beta3'
+gem 'rails'
 gem 'puma'
-#
-gem 'factory_bot_rails', github: 'thoughtbot/factory_bot_rails'
-gem 'default_form', github: 'qinmingyuan/default_form'
-gem 'rails_com', github: 'work-design/rails_com', branch: '6.0'
-gem 'jbuilder'
-
-# gem 'sprockets', '~> 4.0.0.beta4'
 gem 'turbolinks'
 #
 # gem 'omniauth-facebook'
@@ -18,3 +11,8 @@ gem 'turbolinks'
 gem 'pry-rails'
 gem 'awesome_print'
 gem 'sdoc'
+
+gem 'factory_bot_rails', require: false
+gem 'default_form', github: 'qinmingyuan/default_form'
+gem 'rails_com', github: 'work-design/rails_com'
+gem 'jbuilder'

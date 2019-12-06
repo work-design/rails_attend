@@ -1,10 +1,20 @@
 module RailsAttend::Absence
   extend ActiveSupport::Concern
+  
   included do
-    include CheckMachine
-    serialize :redeeming_days, Array
+    attribute :type, :string
     attribute :state, :string, default: 'init'
     attribute :hours, :float, default: 0
+    attribute :kind, :string
+    attribute :start_at, :datetime
+    attribute :finish_at, :datetime
+    attribute :note, :string, limit: 2048
+    attribute :comment, :string, limit: 2048
+    attribute :redeeming, :boolean
+    attribute :redeeming_days, :string, array: true
+    attribute :processed, :boolean, default: false
+    attribute :divided, :boolean, default: false
+    
     belongs_to :member
     belongs_to :merged, class_name: self.name, optional: true
     has_many :divideds, class_name: self.name, foreign_key: 'merged_id'
@@ -45,18 +55,21 @@ module RailsAttend::Absence
     after_create_commit :send_notification
   
     delegate :name, to: :member, prefix: true
-    acts_as_notify :default,
-                   only: [:hours, :start_at, :finish_at, :note],
-                   methods: [:member_name, :type_i18n, :state_i18n]
-  
-    acts_as_notify :request,
-                   only: [:hours, :start_at, :finish_at, :note],
-                   methods: [:member_name, :type_i18n, :state_i18n],
-                   cc_emails: [
-                      -> (o){ o.member.office&.absence_email },
-                      -> (o){ o.member.email },
-                      -> (o){ o.cc_emails }
-                    ]
+    acts_as_notify(
+      :default,
+      only: [:hours, :start_at, :finish_at, :note],
+      methods: [:member_name, :type_i18n, :state_i18n]
+    )
+    acts_as_notify(
+      :request,
+      only: [:hours, :start_at, :finish_at, :note],
+      methods: [:member_name, :type_i18n, :state_i18n],
+      cc_emails: [
+        -> (o){ o.member.office&.absence_email },
+        -> (o){ o.member.email },
+        -> (o){ o.cc_emails }
+      ]
+    )
   end
   
   def do_trigger(params = {})
@@ -185,11 +198,13 @@ module RailsAttend::Absence
       self.errors.add :base, 'Start time can not be later than end'
     end
   end
-
-  def self.available_rest_days
-    # todo improve performance, use bsearch
-    _rest_days = FinancialMonth.available_rest_days.select { |d| d >= Date.today }
-    Array(_rest_days).map { |d| [d.to_s, d.to_s] }
+  
+  class_methods do
+    def available_rest_days
+      # todo improve performance, use bsearch
+      _rest_days = FinancialMonth.available_rest_days.select { |d| d >= Date.today }
+      Array(_rest_days).map { |d| [d.to_s, d.to_s] }
+    end
   end
 
 end

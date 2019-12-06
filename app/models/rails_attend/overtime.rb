@@ -1,32 +1,43 @@
 module RailsAttend::Overtime
   extend ActiveSupport::Concern
+
   included do
+    attribute :start_at, :datetime
+    attribute :finish_at, :datetime
+    attribute :note, :string, limit: 1024
+    attribute :comment, :string, limit: 1024
+    attribute :hours, :float
     attribute :state, :string, default: 'init'
-    include CheckMachine
+
     belongs_to :member
+
     validates :start_at, presence: true
     validates :finish_at, presence: true
-  
+
     enum state: {
       init: 'init',
       approved: 'approved',
       denied: 'denied',
       confirmed: 'confirmed'
     }
-  
+
     before_save :compute_hours
     after_create_commit :send_notification
   
     validate :validate_same_date
   
     delegate :name, to: :member, prefix: true
-  
-    acts_as_notify :default,
-                   only: [:hours, :start_at, :finish_at, :note],
-                   methods: [:state_i18n]
-    acts_as_notify :request,
-                   only: [:hours, :start_at, :finish_at, :note],
-                   methods: [:member_name]
+
+    acts_as_notify(
+      :default,
+      only: [:hours, :start_at, :finish_at, :note],
+      methods: [:state_i18n]
+    )
+    acts_as_notify(
+      :request,
+      only: [:hours, :start_at, :finish_at, :note],
+      methods: [:member_name]
+    )
   end
   
   def do_trigger(params = {})

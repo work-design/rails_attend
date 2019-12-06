@@ -1,8 +1,15 @@
 module RailsAttend::FinancialMonth
   extend ActiveSupport::Concern
+  
   included do
     thread_mattr_accessor :current_country, instance_accessor: true
+
+    attribute :begin_date, :date
+    attribute :end_date, :date
+    attribute :working_days, :string
     attribute :color, :string, default: '#8fdf82'
+    
+    belongs_to :organ, optional: true
     has_many :attendance_settings, dependent: :nullify
 
     validate :validate_date_range, if: -> { begin_date_changed? || end_date_changed? }
