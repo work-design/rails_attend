@@ -1,5 +1,4 @@
-<% if rails_role_user.any_role?('attend/admin') %>
-<div class="item">
+<div class="item" data-controller="menu">
   <a class="<%= active_helper(controllers: ['financial_months', 'extra_days', 'attendances', 'attendance_stats', 'attendance_logs', 'absences', 'absence_stats', 'overtimes', 'attendance_settings'], active_class: 'title active', item_class: 'title') %>">
     <i class="fas fa-calendar-alt fa-fw"></i>
     <span>出勤管理</span>
@@ -14,5 +13,3 @@
     <%= link_to '出勤设置', admin_attendance_settings_path, class: active_helper(controllers: 'attendance_settings') %>
   </div>
 </div>
-<% end %>
-
