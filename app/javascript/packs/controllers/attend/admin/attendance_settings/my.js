@@ -1,4 +1,4 @@
-import 'rails_com/checkbox'
+import 'stimulus_com/checkbox'
 
 listenCheckedIds('attendance_setting_id');
 

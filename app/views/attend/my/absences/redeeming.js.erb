@@ -1,4 +1,4 @@
-<% form_object = default_form_object(@absence, on: { wrapper_id: true }) %>
+<% form_object = default_form_object(@absence, can: { wrap_id: true }) %>
 
 var template = '<%= j(render partial: 'redeeming_form', locals: { f: form_object }) %>'
 

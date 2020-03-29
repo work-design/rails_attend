@@ -46,7 +46,7 @@
       </td>
       <td><%= attendance_setting.note %></td>
       <td>
-        <%= link_to edit_my_attendance_setting_path(attendance_setting), data: { tooltip: t('.edit') }, class: 'ui pink mini icon button' do %>
+        <%= link_to edit_my_attendance_setting_path(attendance_setting), aria: { label: t('.edit') }, class: 'ui pink mini icon button' do %>
           <i class="fas fa-pencil-alt"></i>
         <% end %>
       </td>

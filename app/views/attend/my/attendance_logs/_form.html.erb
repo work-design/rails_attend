@@ -3,7 +3,7 @@
   <div class="inline fields">
     <%= f.label :record_at %>
     <div class="four wide field">
-      <%= f.date_field :'record_at(date)', on: {wrapper_input: false, wrapper_all: false}, label: false %>
+      <%= f.date_field :'record_at(date)', can: { wrap_input: false, wrap_all: false }, label: false %>
     </div>
     <div class="three wide field">
       <%= f.time_select :record_at, start_hour: 8, end_hour: 19 %>
