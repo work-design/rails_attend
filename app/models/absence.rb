@@ -1,4 +1,4 @@
 class Absence < ApplicationRecord
-  included RailsAttend::Absence
+  include RailsAttend::Absence
   include RailsAudit::CheckMachine
 end unless defined? Absence

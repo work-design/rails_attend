@@ -12,7 +12,7 @@
       <th><%= Absence.human_attribute_name(:comment) %></th>
       <th><%= Absence.human_attribute_name(:state) %></th>
       <th>
-        <%= link_to new_admin_absence_path, class: 'ui mini primary button' do %>
+        <%= link_to new_admin_absence_path, class: 'button is-link is-small', remote: true do %>
           <i class="fas fa-plus"></i><%= t('.new') %>
         <% end %>
       </th>

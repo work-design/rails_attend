@@ -1,3 +1,3 @@
 class Attendance < ApplicationRecord
-  included RailsAttend::Attendance
+  include RailsAttend::Attendance
 end unless defined? Attendance

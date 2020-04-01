@@ -1,3 +1,3 @@
 class FinancialMonth < ApplicationRecord
-  included RailsAttend::FinancialMonth
+  include RailsAttend::FinancialMonth
 end unless defined? FinancialMonth

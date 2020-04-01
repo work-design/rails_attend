@@ -1,2 +1,2 @@
-require_relative 'rails_attend/config'
-require_relative 'rails_attend/engine'
+require 'rails_attend/config'
+require 'rails_attend/engine'

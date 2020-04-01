@@ -7,7 +7,6 @@ module RailsAttend #:nodoc:
     config.app_controller = 'ApplicationController'
     config.my_controller = 'MyController'
     config.admin_controller = 'AdminController'
-    config.disabled_models = []
   end
 
 end

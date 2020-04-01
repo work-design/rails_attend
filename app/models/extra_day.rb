@@ -1,3 +1,3 @@
 class ExtraDay < ApplicationRecord
-  included RailsAttend::ExtraDay
+  include RailsAttend::ExtraDay
 end unless defined? ExtraDay

@@ -1,3 +1,3 @@
 class AbsenceStat < ApplicationRecord
-  included RailsAttend::AbsenceStat
+  include RailsAttend::AbsenceStat
 end unless defined? AbsenceStat
