@@ -1,8 +1,10 @@
-<%= search_form_with model: AttendanceSetting.new do |f| %>
-  <div class="fields">
+<%= form_with theme: 'search', model: AttendanceSetting.new do |f| %>
+  <div class="field-body">
     <%= f.text_field :'member.name' %>
     <%= f.text_field :'member.email' %>
-    <%= f.submit %>
+    <div class="field is-narrow">
+      <%= f.submit %>
+    </div>
   </div>
 <% end %>
 

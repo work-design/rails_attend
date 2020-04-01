@@ -1,8 +1,6 @@
 <%= render 'nav_attendances' %>
 
-<div class="ui attached segment">
-  <%= render 'search_form' %>
-</div>
+<%= render 'filter' %>
 
 <table class="table is-hoverable is-fullwidth">
   <thead>
@@ -17,7 +15,7 @@
         <p><%= AttendanceStat.human_attribute_name(:holiday_redeeming_hours) %></p>
         <p><%= AttendanceStat.human_attribute_name(:absence_redeeming_hours) %></p>
       </th>
-      <th>Actions</th>
+      <th></th>
     </tr>
   </thead>
   <tbody>

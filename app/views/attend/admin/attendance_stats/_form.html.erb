@@ -1,4 +1,4 @@
-<%= form_with model: @attendance_stat, url: admin_attendance_stats_path, local: true do |f| %>
+<%= form_with model: @attendance_stat, url: admin_attendance_stats_path do |f| %>
   <%= render 'shared/error_messages', target: @attendance_stat %>
   <%= f.text_field :member_id %>
   <%= f.collection_select :financial_month_id, FinancialMonth.all, :id, :end_date %>

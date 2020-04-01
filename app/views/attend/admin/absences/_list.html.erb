@@ -1,7 +1,6 @@
 <table class="table is-hoverable is-fullwidth">
   <thead>
     <tr>
-      <th>ID</th>
       <th><%= Absence.human_attribute_name(:member) %></th>
       <th><%= Absence.human_attribute_name(:type) %></th>
       <th>
@@ -22,7 +21,6 @@
   <tbody>
   <% @absences.each do |absence| %>
     <tr>
-      <td><%= absence.id %></td>
       <td><%= absence.member.name %></td>
       <td><%= absence.type_i18n %></td>
       <td>
