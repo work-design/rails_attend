@@ -1,8 +1,8 @@
 require 'test_helper'
 
-class AttendancesControllerTest < ActionDispatch::IntegrationTest
+class Attend::My::AttendancesControllerTest < ActionDispatch::IntegrationTest
   setup do
-    @attendance = attendances(:one)
+    @attendance = create :attendance
   end
 
   test "should get index" do

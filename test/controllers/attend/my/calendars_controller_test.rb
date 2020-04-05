@@ -1,8 +1,8 @@
 require 'test_helper'
 
-class CalendarsControllerTest < ActionDispatch::IntegrationTest
+class Attend::My::CalendarsControllerTest < ActionDispatch::IntegrationTest
   setup do
-    @calendar = calendars(:one)
+    @calendar = create :calendar
   end
 
   test "should get index" do

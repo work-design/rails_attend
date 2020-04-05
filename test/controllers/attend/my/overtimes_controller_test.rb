@@ -1,8 +1,8 @@
 require 'test_helper'
 
-class OvertimesControllerTest < ActionDispatch::IntegrationTest
+class Attend::My::OvertimesControllerTest < ActionDispatch::IntegrationTest
   setup do
-    @overtime = overtimes(:one)
+    @overtime = create :overtime
   end
 
   test "should get index" do

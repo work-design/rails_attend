@@ -1,8 +1,8 @@
 require 'test_helper'
 
-class Org::AttendanceStatsControllerTest < ActionDispatch::IntegrationTest
+class Attend::Admin::AttendanceStatsControllerTest < ActionDispatch::IntegrationTest
   setup do
-    @hr_attendance_stat = admin_attendance_stats(:one)
+    @attendance_stat = create :attendance_stat
   end
 
   test "should get index" do
@@ -24,23 +24,23 @@ class Org::AttendanceStatsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should show admin_attendance_stat" do
-    get admin_attendance_stat_url(@hr_attendance_stat)
+    get admin_attendance_stat_url(@attendance_stat)
     assert_response :success
   end
 
   test "should get edit" do
-    get edit_admin_attendance_stat_url(@hr_attendance_stat)
+    get edit_admin_attendance_stat_url(@attendance_stat)
     assert_response :success
   end
 
   test "should update admin_attendance_stat" do
-    patch admin_attendance_stat_url(@hr_attendance_stat), params: { admin_attendance_stat: {  } }
-    assert_redirected_to admin_attendance_stat_url(@hr_attendance_stat)
+    patch admin_attendance_stat_url(@attendance_stat), params: { admin_attendance_stat: {  } }
+    assert_redirected_to admin_attendance_stat_url(@attendance_stat)
   end
 
   test "should destroy admin_attendance_stat" do
     assert_difference('AttendanceStat.count', -1) do
-      delete admin_attendance_stat_url(@hr_attendance_stat)
+      delete admin_attendance_stat_url(@attendance_stat)
     end
 
     assert_redirected_to admin_attendance_stats_url

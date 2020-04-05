@@ -49,11 +49,13 @@ module RailsAttend::AttendanceSetting
     end
   end
 
-  def self.time_options
-    [
-      ['09:00', '09:00'],
-      ['08:30', '08:30']
-    ]
+  class_methods do
+    def time_options
+      [
+        ['09:00', '09:00'],
+        ['08:30', '08:30']
+      ]
+    end
   end
 
 end

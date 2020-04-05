@@ -1,8 +1,8 @@
 require 'test_helper'
 
-class Org::ExtraDaysControllerTest < ActionDispatch::IntegrationTest
+class Attend::Admin::ExtraDaysControllerTest < ActionDispatch::IntegrationTest
   setup do
-    @extra_day = extra_days(:one)
+    @extra_day = create :extra_day
   end
 
   test "should get index" do

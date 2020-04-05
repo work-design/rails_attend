@@ -3,7 +3,7 @@
   <%= link_to 'Attendance Stat', admin_attendance_stats_path, class: active_helper(controllers: 'attendance_stats') %>
   <%= link_to 'Attendance Logs', admin_attendance_logs_path, class: active_helper(controllers: 'attendance_logs') %>
   <div class="right menu">
-    <div class="item"><%= link_to 'New Attendance', new_admin_attendance_path, class: 'ui teal button' %></div>
+    <div class="item"><%= link_to 'New Attendance', new_admin_attendance_path, class: 'button is-link is-small' %></div>
     <div class="item"><%= link_to t('.import'), import_data_list_table_lists_path('AttendanceLogImport'), class: 'ui blue button', remote: true %></div>
   </div>
 </div>

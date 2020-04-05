@@ -1,8 +1,8 @@
 require 'test_helper'
 
-class Org::AbsenceStatsControllerTest < ActionDispatch::IntegrationTest
+class Attend::AbsenceStatsControllerTest < ActionDispatch::IntegrationTest
   setup do
-    @hr_absence_stat = admin_absence_stats(:one)
+    @absence_stat = create :absence_stat
   end
 
   test "should get index" do
@@ -24,23 +24,23 @@ class Org::AbsenceStatsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should show admin_absence_stat" do
-    get admin_absence_stat_url(@hr_absence_stat)
+    get admin_absence_stat_url(@absence_stat)
     assert_response :success
   end
 
   test "should get edit" do
-    get edit_admin_absence_stat_url(@hr_absence_stat)
+    get edit_admin_absence_stat_url(@absence_stat)
     assert_response :success
   end
 
   test "should update admin_absence_stat" do
-    patch admin_absence_stat_url(@hr_absence_stat), params: { admin_absence_stat: {  } }
-    assert_redirected_to admin_absence_stat_url(@hr_absence_stat)
+    patch admin_absence_stat_url(@absence_stat), params: { admin_absence_stat: {  } }
+    assert_redirected_to admin_absence_stat_url(@absence_stat)
   end
 
   test "should destroy admin_absence_stat" do
     assert_difference('AbsenceStat.count', -1) do
-      delete admin_absence_stat_url(@hr_absence_stat)
+      delete admin_absence_stat_url(@absence_stat)
     end
 
     assert_redirected_to admin_absence_stats_url
