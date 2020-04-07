@@ -1,0 +1,11 @@
+<%= form_with theme: 'search', model: AttendanceLog.new do |f| %>
+  <div class="field-body">
+    <%= f.text_field :name %>
+    <%= f.text_field :number %>
+    <div class="field is-narrow">
+      <%= f.submit %>
+    </div>
+  </div>
+<% end %>
+
+

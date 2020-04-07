@@ -1,15 +1,15 @@
 <div class="<%= active_helper(modules: 'attend/admin', active_class: 'menu ex-accordion is-active', item_class: 'menu ex-accordion') %>" data-controller="menu">
-  <a class="menu-label" data-action="menu#toggle">
-    <i class="fas fa-calendar-alt fa-fw"></i>
-    <span>出勤管理</span>
-    <i class="fas dropdown"></i>
-  </a>
-  <div class="menu-list">
+  <%= content_tag :div, class: 'menu-list' do -%>
     <%= link_to '考勤设置', admin_financial_months_path, class: active_helper(controllers: ['financial_months', 'extra_days']) %>
     <%= link_to 'Attendances', admin_attendances_path, class: active_helper(controllers: ['attendances', 'attendance_stats', 'attendance_logs']) %>
     <%= link_to '缺席/请假', admin_absences_path, class: active_helper(controllers: 'absences') %>
     <%= link_to 'Absence Stats', admin_absence_stats_path, class: active_helper(controllers: 'absence_stats') %>
     <%= link_to 'Overtimes', admin_overtimes_path, class: active_helper(controllers: 'overtimes') %>
     <%= link_to '出勤设置', admin_attendance_settings_path, class: active_helper(controllers: 'attendance_settings') %>
-  </div>
+  <% end %>>
+  <a class="menu-label" data-action="menu#toggle">
+    <i class="fas fa-calendar-alt fa-fw"></i>
+    <span>出勤管理</span>
+    <i class="fas dropdown"></i>
+  </a>
 </div>

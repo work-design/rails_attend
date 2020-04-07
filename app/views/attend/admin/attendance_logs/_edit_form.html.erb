@@ -1,0 +1,5 @@
+<%= form_with model: @attendance_log, url: admin_attendance_log_path(@attendance_log), method: :patch do |f| %>
+  <%= render 'shared/error_messages', target: @attendance_log %>
+  <%= f.text_area :note %>
+  <%= f.submit %>
+<% end %>

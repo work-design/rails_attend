@@ -5,9 +5,7 @@ gemspec
 gem 'rails'
 gem 'puma'
 gem 'turbolinks'
-#
-# gem 'omniauth-facebook'
-#
+
 gem 'pry-rails'
 gem 'awesome_print'
 gem 'sdoc'
