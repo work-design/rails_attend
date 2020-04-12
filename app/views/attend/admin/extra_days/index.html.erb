@@ -1,12 +1,8 @@
-<div class="ui top attached tabular menu">
-  <%= link_to 'Financial Months', admin_financial_months_path, class: 'item' %>
-  <div class="active item">Workday & Holiday</div>
-</div>
+<%= render 'financial_month_menu' %>
 
 <table class="table is-hoverable is-fullwidth">
   <thead>
     <tr>
-      <th>ID</th>
       <th><%= ExtraDay.human_attribute_name(:the_day) %></th>
       <th><%= ExtraDay.human_attribute_name(:name) %></th>
       <th><%= ExtraDay.human_attribute_name(:kind) %></th>
@@ -21,7 +17,6 @@
   <tbody>
   <% @extra_days.each do |extra_day| %>
     <tr>
-      <td><%= extra_day.id %></td>
       <td><%= extra_day.the_day %></td>
       <td><%= extra_day.name %></td>
       <td><%= extra_day.kind_i18n %></td>
