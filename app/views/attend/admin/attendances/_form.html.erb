@@ -1,21 +1,25 @@
 <%= form_with model: [:admin, @attendance] do |f| %>
   <%= render 'shared/error_messages', target: @attendance %>
-  <div class="inline fields">
+  <div class="field is-horizontal">
     <%= f.label :start_at %>
-    <div class="four wide field">
-      <%= f.date_field :'start_at(date)', can: { wrap_input: false, wrap_all: false }, label: false %>
-    </div>
-    <div class="three wide field">
-      <%= f.time_select :start_at, start_hour: 8, end_hour: 18, minute_step: 30 %>
+    <div class="field-body">
+      <div class="field is-narrow">
+        <%= f.date_field :'start_at(date)', can: { label: false, wrap_input: false, wrap_all: false } %>
+      </div>
+      <div class="field is-narrow select">
+        <%= f.time_select :start_at, start_hour: 8, end_hour: 18, minute_step: 30, can: { label: false, wrap_all: false } %>
+      </div>
     </div>
   </div>
-  <div class="inline fields">
+  <div class="field is-horizontal">
     <%= f.label :finish_at %>
-    <div class="four wide field">
-      <%= f.date_field :'finish_at(date)', can: { wrap_input: false, wrap_all: false }, label: false %>
-    </div>
-    <div class="three wide field">
-      <%= f.time_select :finish_at, start_hour: 8, end_hour: 18, minute_step: 30 %>
+    <div class="field-body control">
+      <div class="field is-narrow">
+        <%= f.date_field :'finish_at(date)', can: { label: false, wrap_input: false, wrap_all: false } %>
+      </div>
+      <div class="field is-narrow select">
+        <%= f.time_select :finish_at, start_hour: 8, end_hour: 18, minute_step: 30, can: { label: false, wrap_all: false } %>
+      </div>
     </div>
   </div>
   <%= f.submit %>

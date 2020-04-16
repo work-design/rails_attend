@@ -27,7 +27,10 @@
       </th>
       <th><%= Attendance.human_attribute_name(:workday) %></th>
       <th><%= Attendance.human_attribute_name(:kind) %></th>
-      <th></th>
+      <th>
+        <%= link_to 'New Attendance', new_admin_attendance_path, remote: true, class: 'button is-link is-small' %>
+        <%= link_to t('.import'), import_data_list_table_lists_path('AttendanceLogImport'), remote: true, class: 'button is-link is-small' %>
+      </th>
     </tr>
   </thead>
 

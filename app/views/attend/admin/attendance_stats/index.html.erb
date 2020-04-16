@@ -5,7 +5,6 @@
 <table class="table is-hoverable is-fullwidth">
   <thead>
     <tr>
-      <th><%= AttendanceStat.human_attribute_name(:id) %></th>
       <th><%= AttendanceStat.human_attribute_name(:member) %></th>
       <th><%= AttendanceStat.human_attribute_name(:financial_month) %></th>
       <th><%= AttendanceStat.human_attribute_name(:allowance_days) %></th>
@@ -21,7 +20,6 @@
   <tbody>
   <% @attendance_stats.each do |attendance_stat| %>
     <tr>
-      <td><%= attendance_stat.id %></td>
       <td><%= attendance_stat.member.name %></td>
       <td>
         <p><%= attendance_stat.financial_month.begin_date %></p>
