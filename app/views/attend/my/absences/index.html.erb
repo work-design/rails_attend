@@ -1,29 +1,29 @@
 <%= render 'nav_absences' %>
 
-<div class="ui attached segment">
-  <%= render 'search_form' %>
-</div>
+<%= render 'filter_form' %>
 
 <table class="table is-hoverable is-fullwidth">
   <thead>
-  <tr>
-    <th>ID</th>
-    <th><%= Absence.human_attribute_name(:type) %></th>
-    <th>
-      <p><%= Absence.human_attribute_name(:start_at) %></p>
-      <p><%= Absence.human_attribute_name(:finish_at) %></p>
-    </th>
-    <th><%= Absence.human_attribute_name(:hours) %></th>
-    <th><%= Absence.human_attribute_name(:note) %></th>
-    <th><%= Absence.human_attribute_name(:state) %></th>
-    <th>Actions</th>
-  </tr>
+    <tr>
+      <th><%= Absence.human_attribute_name(:type) %></th>
+      <th>
+        <p><%= Absence.human_attribute_name(:start_at) %></p>
+        <p><%= Absence.human_attribute_name(:finish_at) %></p>
+      </th>
+      <th><%= Absence.human_attribute_name(:hours) %></th>
+      <th><%= Absence.human_attribute_name(:note) %></th>
+      <th><%= Absence.human_attribute_name(:state) %></th>
+      <th>
+        <%= link_to new_my_absence_path, remote: true, class: 'button is-link is-small' do %>
+          <i class="fas fa-plus"></i><%= t('.title') %>
+        <% end %>
+      </th>
+    </tr>
   </thead>
 
   <tbody>
   <% @absences.each do |absence| %>
     <tr>
-      <td><%= absence.id %></td>
       <td><%= absence.type_i18n %></td>
       <td>
         <p><time data-format="YYYY-MM-DD HH:mm"><%= absence.start_at.to_s(:rfc822) %></time></p>

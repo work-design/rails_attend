@@ -1,9 +1,0 @@
-<%= search_form_with model: Absence.new do |f| %>
-  <div class="fields">
-    <%= f.date_field 'start_at-gte' %>
-    <%= f.date_field 'finish_at-lte' %>
-    <%= f.submit %>
-  </div>
-<% end %>
-
-

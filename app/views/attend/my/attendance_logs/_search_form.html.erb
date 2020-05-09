@@ -1,8 +1,10 @@
-<%= search_form_with model: AttendanceLog.new do |f| %>
-  <div class="fields">
-    <%= f.date_field :'record_at-gte' %>
-    <%= f.date_field :'record_at-lte' %>
-    <%= f.submit %>
+<%= form_with theme: 'search', model: AttendanceLog.new do |f| %>
+  <div class="field-body">
+    <%= f.date_field 'record_at-gte' %>
+    <%= f.date_field 'record_at-lte' %>
+    <div class="field is-narrow">
+      <%= f.submit %>
+    </div>
   </div>
 <% end %>
 

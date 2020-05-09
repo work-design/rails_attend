@@ -1,26 +1,26 @@
 <%= render 'menu' %>
 
-<div class="ui attached segment">
-  <%= render 'search_form' %>
-</div>
+<%= render 'filter_form' %>
 
 <table class="table is-hoverable is-fullwidth">
   <thead>
     <tr>
-      <th><%= Overtime.human_attribute_name(:id) %></th>
       <th><%= Overtime.human_attribute_name(:start_at) %></th>
       <th><%= Overtime.human_attribute_name(:finish_at) %></th>
       <th><%= Overtime.human_attribute_name(:note) %></th>
       <th><%= Overtime.human_attribute_name(:hours) %></th>
       <th><%= Overtime.human_attribute_name(:state) %></th>
-      <th></th>
+      <th>
+        <%= link_to new_my_overtime_path, remote: true, class: 'button is-link is-small' do %>
+          <i class="fas fa-plus"></i><%= t('.new') %>
+        <% end %>
+      </th>
     </tr>
   </thead>
 
   <tbody>
   <% @overtimes.each do |overtime| %>
     <tr>
-      <td><%= overtime.id %></td>
       <td>
         <time data-format="YYYY-MM-DD HH:mm"><%= overtime.start_at.to_s(:rfc822) %></time>
       </td>

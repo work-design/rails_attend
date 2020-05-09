@@ -1,8 +1,6 @@
 <%= render 'nav_attendances' %>
 
-<div class="ui attached segment">
-  <%= render 'search_form' %>
-</div>
+<%= render 'filter_form' %>
 
 <table class="table is-hoverable is-fullwidth">
   <thead>
@@ -26,7 +24,11 @@
         <p><%= Attendance.human_attribute_name(:attend_hours) %></p>
         <p><%= Attendance.human_attribute_name(:overtime_hours) %></p>
       </th>
-      <th></th>
+      <th>
+        <%= link_to new_my_attendance_log_path(attendance_id: params[:attendance_id]), remote: true, class: 'button is-link is-small' do %>
+          <i class="fas fa-plus"></i><%= t('.new') %>
+        <% end %>
+      </th>
     </tr>
   </thead>
 

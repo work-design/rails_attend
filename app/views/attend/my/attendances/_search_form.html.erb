@@ -1,7 +1,0 @@
-<%= search_form_with model: Attendance.new do |f| %>
-  <div class="fields">
-    <%= f.date_field :'attend_on-gte', placeholder: 'Date Start' %>
-    <%= f.date_field :'attend_on-lte', placeholder: 'Date End' %>
-    <%= f.submit %>
-  </div>
-<% end %>
