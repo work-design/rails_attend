@@ -1,20 +1,18 @@
 <%= render 'shared/error_messages', target: @absence %>
 <%= f.select :type, options_for_select(Absence.options_i18n(:type), @absence.type) %>
-<div class="inline fields">
+<div class="field is-horizontal">
   <%= f.label :start_at %>
-  <div class="four wide field">
-    <%= f.date_field :'start_at(date)', can: { wrap_input: false, wrap_all: false }, label: false, required: true %>
-  </div>
-  <div class="three wide field">
+  <div class="field-body control">
+    <%= f.date_field 'start_at(date)', wrap: { input: 'field is-narrow', all: false }, label: nil, required: true %>
     <%= f.time_select :start_at, start_hour: 8, end_hour: 18, minute_step: 30, default: { hour: 8, min: 30 } %>
   </div>
 </div>
-<div class="inline fields">
+<div class="field is-horizontal">
   <%= f.label :finish_at %>
-  <div class="four wide field">
+  <div class="field is-narrow">
     <%= f.date_field :'finish_at(date)', can: { wrap_input: false, wrap_all: false }, label: false, required: true %>
   </div>
-  <div class="three wide field">
+  <div class="field is-narrow">
     <%= f.time_select :finish_at, start_hour: 8, end_hour: 18, minute_step: 30, default: { hour: 17, min: 30 } %>
   </div>
 </div>
@@ -23,6 +21,5 @@
 <% else %>
   <div id="absence_redeeming_days_wrapper"></div>
 <% end %>
-<%= f.text_field :cc_emails, placeholder: 'Separate emails by ,' %>
 <%= f.text_area :note, required: true %>
 <%= f.submit %>

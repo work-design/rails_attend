@@ -5,7 +5,6 @@
 <table class="table is-hoverable is-fullwidth">
   <thead>
     <tr>
-      <th>ID</th>
       <th><%= Attendance.human_attribute_name(:attend_on) %></th>
       <th>
         <p><%= Attendance.human_attribute_name(:start_at) %></p>
@@ -35,7 +34,6 @@
   <tbody>
   <% @attendances.each do |attendance| %>
     <tr>
-      <td><%= attendance.id %></td>
       <td><%= attendance.attend_on %></td>
       <td>
         <p><time data-format="HH:mm"><%= attendance.start_at&.to_s(:rfc822) %></time></p>
