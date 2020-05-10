@@ -14,7 +14,7 @@ module RailsAttend::Member
   end
 
   def attendance_setting(date = Date.today)
-    _attendance_setting = self.attendance_settings.default_where('financial_month.begin_date-lte': date).order(Arel.sql('`financial_months`.`begin_date` desc')).first
+    _attendance_setting = self.attendance_settings.default_where('financial_month.begin_date-lte': date).first
     _attendance_setting || self.attendance_settings.build(financial_month: FinancialMonth.current_month)
   end
 
@@ -26,14 +26,6 @@ module RailsAttend::Member
   def off_time(date = Date.today)
     hour, min = (self.attendance_setting(date).off_time).split(':')
     date.in_time_zone(timezone).change(hour: hour, min: min)
-  end
-
-  def lunch_time
-    return @lunch_time if @lunch_time
-    hour, min = (self.office.lunch_time.presence || LUNCH).split(':')
-    start = Time.now.in_time_zone(timezone).change hour: hour, min: min
-    finish = Time.now.in_time_zone(timezone).change hour: hour.to_i + 1, min: min
-    @lunch_time = [start, finish]
   end
 
 end

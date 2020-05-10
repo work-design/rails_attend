@@ -24,7 +24,6 @@ class Attend::My::AttendancesController < Attend::My::BaseController
 
   def destroy
     @attendance.destroy
-    redirect_to admin_attendances_url
   end
 
   private

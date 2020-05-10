@@ -19,10 +19,9 @@ class Attend::My::AbsencesController < Attend::My::BaseController
   def create
     @absence = current_member.absences.build(absence_params)
 
-    if @absence.save
-      redirect_to my_absences_url
-    else
-      render :new
+    binding.pry
+    unless @absence.save
+      render :new, locals: { model: @absence }, status: :unprocessable_entity
     end
   end
 
@@ -31,10 +30,6 @@ class Attend::My::AbsencesController < Attend::My::BaseController
   end
 
   def show
-    respond_to do |format|
-      format.js
-      format.html
-    end
   end
 
   def edit
@@ -44,16 +39,13 @@ class Attend::My::AbsencesController < Attend::My::BaseController
     @absence.assign_attributes(absence_params)
     @absence.state = 'init' if @absence.changed?
 
-    if @absence.save
-      redirect_to my_absences_url
-    else
-      render :edit
+    unless @absence.save
+      render :edit, locals: { model: @absence }, status: :unprocessable_entity
     end
   end
 
   def destroy
     @absence.destroy
-    redirect_to my_absences_url
   end
 
   private
@@ -68,11 +60,9 @@ class Attend::My::AbsencesController < Attend::My::BaseController
       :start_at,
       :finish_at,
       :note,
-      :cc_emails,
       :updated_at,
       redeeming_days: []
     )
-    q[:cc_emails] = q[:cc_emails].to_s.split(/[,，]\s*/)
     q.fetch(:redeeming_days, []).reject! { |i| i.blank? }
     q
   end

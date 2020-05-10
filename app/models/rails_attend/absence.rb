@@ -1,6 +1,6 @@
 module RailsAttend::Absence
   extend ActiveSupport::Concern
-  
+
   included do
     attribute :type, :string
     attribute :state, :string, default: 'init'
@@ -14,22 +14,22 @@ module RailsAttend::Absence
     attribute :redeeming_days, :string, array: true
     attribute :processed, :boolean, default: false
     attribute :divided, :boolean, default: false
-    
+
     belongs_to :member
     belongs_to :merged, class_name: self.name, optional: true
     has_many :divideds, class_name: self.name, foreign_key: 'merged_id'
-  
+
     composed_of :absent, mapping: [
       ['member_id', 'member_id'],
       ['type', 'type']
     ]
-  
+
     enum state: {
       init: 'init',
       approved: 'approved',
       denied: 'denied'
     }
-  
+
     scope :current_range, -> (begin_date, finish_date) {
       default_where('start_at-gte': begin_date, 'finish_at-lte': finish_date, state: ['init', 'approved'])
     }
@@ -46,14 +46,14 @@ module RailsAttend::Absence
         }
       end.as_json
     }
-  
+
     validate :validate_same_month, if: -> { start_at_changed? || finish_at_changed? }
     validates :start_at, presence: true
     validates :finish_at, presence: true
-  
+
     before_save :compute_hours
     after_create_commit :send_notification
-  
+
     delegate :name, to: :member, prefix: true
     acts_as_notify(
       :default,
@@ -71,7 +71,7 @@ module RailsAttend::Absence
       ]
     )
   end
-  
+
   def do_trigger(params = {})
     self.trigger_to(params.slice(:state))
 
@@ -161,10 +161,6 @@ module RailsAttend::Absence
     end
   end
 
-  def lunch_time
-    @lunch_time ||= self.member.lunch_time[0].to_s(:time)
-  end
-
   def sync_attendance
     self.workdays.each_with_index do |workday, index|
       att = self.member.attendances.find_or_initialize_by('attend_on': workday)
@@ -198,7 +194,7 @@ module RailsAttend::Absence
       self.errors.add :base, 'Start time can not be later than end'
     end
   end
-  
+
   class_methods do
     def available_rest_days
       # todo improve performance, use bsearch
