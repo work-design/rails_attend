@@ -106,15 +106,15 @@ module RailsAttend::Absence
     end
 
     if workdays.size > 1
-      _seconds_start = TimeHelper.interval(start_time, off_time, interval_start: lunch_time)
+      _seconds_start = TimeHelper.interval(start_time, off_time)
       _hours += _seconds_start.div(1800) / 2.0
 
-      _seconds_finish = TimeHelper.interval(on_time, finish_time, interval_start: lunch_time)
+      _seconds_finish = TimeHelper.interval(on_time, finish_time)
       _hours += (_seconds_finish).div(1800) / 2.0
     else
       _start_at = start_time > on_time ? start_time : on_time
       _finish_at = finish_time < off_time ? finish_time : off_time
-      _seconds = TimeHelper.interval(_start_at, _finish_at, interval_start: lunch_time)
+      _seconds = TimeHelper.interval(_start_at, _finish_at)
       _hours = _seconds.div(1800) / 2.0
     end
 
