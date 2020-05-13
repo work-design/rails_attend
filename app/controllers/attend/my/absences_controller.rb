@@ -19,7 +19,6 @@ class Attend::My::AbsencesController < Attend::My::BaseController
   def create
     @absence = current_member.absences.build(absence_params)
 
-    binding.pry
     unless @absence.save
       render :new, locals: { model: @absence }, status: :unprocessable_entity
     end
