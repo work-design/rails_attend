@@ -1,7 +1,7 @@
 <span class="menu-label"><%= t('attend.my.title') %></span>
 <div class="menu-list">
-  <%= link_to 'Attendance Setting', my_attendance_settings_path, class: active_helper(controllers: 'attendance_settings') %>
-  <%= link_to 'Attendance', my_attendances_path, class: active_helper(controllers: ['attendances', 'attendance_stats', 'attendance_logs']) %>
-  <%= link_to 'Holiday application', my_absences_path, class: active_helper(controllers: ['absences']) %>
-  <%= link_to 'Work Overtime', my_overtimes_path, class: active_helper(controllers: ['overtimes']) %>
+  <%= link_to t('attend.my.attendance_settings.index.title'), my_attendance_settings_path, class: active_helper(controllers: 'attendance_settings') %>
+  <%= link_to t('attend.my.attendances.index.title'), my_attendances_path, class: active_helper(controllers: ['attendances', 'attendance_stats', 'attendance_logs']) %>
+  <%= link_to t('attend.my.absences.index.title'), my_absences_path, class: active_helper(controllers: ['absences']) %>
+  <%= link_to t('attend.my.overtimes.index.title'), my_overtimes_path, class: active_helper(controllers: ['overtimes']) %>
 </div>
