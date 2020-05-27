@@ -10,14 +10,15 @@ module RailsAttend::AttendanceLog
     attribute :kind, :string
     attribute :note, :string
     attribute :record_at_str, :string
-    
+    attribute :number, :string
+
     belongs_to :unsure_member, class_name: 'Member', foreign_key: 'number', primary_key: 'attendance_number', optional: true
     belongs_to :member, optional: true
     belongs_to :attendance, optional: true
-  
+
     validates :record_at, presence: true, unless: -> { self.source == 'machine' }
     validates :record_at_str, presence: true, if: -> { self.source == 'machine' }
-  
+
     scope :pending, -> { where(state: 'init', processed: false) }
 
     enum state: {
@@ -46,13 +47,13 @@ module RailsAttend::AttendanceLog
     acts_as_notify :request,
                    only: [:record_at, :note],
                    methods: [:member_name]
-    
+
     after_initialize if: :new_record? do
       self.state ||= 'init'
     end
     before_save :sync_member_id, if: -> { number_changed? }
   end
-  
+
   def sync_member_id
     self.member_id = self.unsure_member&.id
     if self.member
@@ -137,7 +138,7 @@ module RailsAttend::AttendanceLog
       log.save!
     end
   end
-  
+
   class_methods do
     def analyze
       AttendanceLog.where(processed: false).each do |al|
