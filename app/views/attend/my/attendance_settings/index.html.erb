@@ -1,6 +1,6 @@
 <%= render 'nav_attendance_settings' %>
 
-<table class="ui very basic large table">
+<table class="table is-hoverable is-fullwidth">
   <thead>
     <tr>
       <th></th>
@@ -8,7 +8,11 @@
       <th><%= AttendanceSetting.human_attribute_name(:on_time) %></th>
       <th><%= AttendanceSetting.human_attribute_name(:state) %></th>
       <th><%= AttendanceSetting.human_attribute_name(:note) %></th>
-      <th></th>
+      <th>
+        <%= link_to new_my_attendance_setting_path, aria: { label: 'Change On Time' }, class: 'button is-link' do %>
+          <i class="fas fa-cogs"></i>
+        <% end %>
+      </th>
     </tr>
   </thead>
   <tbody>
@@ -42,11 +46,11 @@
         <p><%= attendance_setting.off_time %></p>
       </td>
       <td>
-        <span class="ui label"><%= attendance_setting.state_i18n %></span>
+        <span><%= attendance_setting.state_i18n %></span>
       </td>
       <td><%= attendance_setting.note %></td>
       <td>
-        <%= link_to edit_my_attendance_setting_path(attendance_setting), aria: { label: t('.edit') }, class: 'ui pink mini icon button' do %>
+        <%= link_to edit_my_attendance_setting_path(attendance_setting), aria: { label: t('.edit') }, class: 'button is-small is-rounded' do %>
           <i class="fas fa-pencil-alt"></i>
         <% end %>
       </td>

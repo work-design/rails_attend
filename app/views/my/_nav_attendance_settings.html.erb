@@ -1,11 +1,6 @@
-<div class="ui top attached borderless menu">
-  <%= link_to 'Attendance Setting', my_attendance_settings_path, class: active_helper(controllers: 'my_my/attendance_settings') %>
-  <%= link_to 'Group Attendance Settings', my_admin_attendance_settings_path, class: active_helper('my_admin/attendance_settings': ['my']) %>
-  <div class="right menu">
-    <div class="item">
-      <%= link_to new_my_attendance_setting_path, aria: { label: 'Change On Time' }, class: 'ui brown mini icon button' do %>
-        <i class="cogs icon"></i>
-      <% end %>
-    </div>
-  </div>
+<div class="tabs">
+  <ul>
+    <li><%= link_to 'Attendance Setting', my_attendance_settings_path, class: active_helper(controllers: 'my_my/attendance_settings') %></li>
+    <li><%= link_to 'Group Attendance Settings', my_admin_attendance_settings_path, class: active_helper('my_admin/attendance_settings': ['my']) %></li>
+  </ul>
 </div>
