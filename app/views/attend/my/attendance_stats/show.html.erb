@@ -4,22 +4,22 @@
   <div class="active section">Show</div>
 </div>
 
-<table class="ui very basic large table">
+<table class="table is-hoverable is-fullwidth">
   <tbody>
     <tr>
-      <td class="right aligned three wide"><%= AttendanceStat.human_attribute_name(:free_absence) %></td>
+      <td class="has-text-right three wide"><%= AttendanceStat.human_attribute_name(:free_absence) %></td>
       <td>
         <%= simple_format @attendance_stat.free_absence %>
       </td>
     </tr>
     <tr>
-      <td class="right aligned"><%= AttendanceStat.human_attribute_name(:redeeming_absence) %></td>
+      <td class="has-text-right"><%= AttendanceStat.human_attribute_name(:redeeming_absence) %></td>
       <td>
         <%= simple_format @attendance_stat.redeeming_absence %>
       </td>
     </tr>
     <tr>
-      <td class="right aligned"><%= AttendanceStat.human_attribute_name(:costed_absence) %></td>
+      <td class="has-text-right"><%= AttendanceStat.human_attribute_name(:costed_absence) %></td>
       <td>
         <%= simple_format @attendance_stat.costed_absence %>
       </td>

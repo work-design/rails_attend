@@ -1,15 +1,15 @@
-<table class="ui very basic large table">
+<table class="table is-hoverable is-fullwidth">
   <tbody>
     <tr>
-      <td class="right aligned"><%= AttendanceSetting.human_attribute_name(:on_time) %></td>
+      <td class="has-text-right"><%= AttendanceSetting.human_attribute_name(:on_time) %></td>
       <td><%= @attendance_setting.on_time %></td>
     </tr>
     <tr>
-      <td class="right aligned"><%= AttendanceSetting.human_attribute_name(:state) %></td>
+      <td class="has-text-right"><%= AttendanceSetting.human_attribute_name(:state) %></td>
       <td><%= @attendance_setting.state %></td>
     </tr>
     <tr>
-      <td class="right aligned"><%= AttendanceSetting.human_attribute_name(:note) %></td>
+      <td class="has-text-right"><%= AttendanceSetting.human_attribute_name(:note) %></td>
       <td><%= @attendance_setting.note %></td>
     </tr>
   </tbody>

@@ -1,23 +1,23 @@
 <table class="ui very basic table">
   <tbody>
     <tr>
-      <td class="right aligned"><%= Absence.human_attribute_name(:type) %></td>
+      <td class="has-text-right"><%= Absence.human_attribute_name(:type) %></td>
       <td><%= @absence.type_i18n %></td>
     </tr>
     <tr>
-      <td class="right aligned"><%= Absence.human_attribute_name(:start_at) %></td>
+      <td class="has-text-right"><%= Absence.human_attribute_name(:start_at) %></td>
       <td><time><%= @absence.start_at.to_s(:rfc822) %></time></td>
     </tr>
     <tr>
-      <td class="right aligned"><%= Absence.human_attribute_name(:finish_at) %></td>
+      <td class="has-text-right"><%= Absence.human_attribute_name(:finish_at) %></td>
       <td><time><%= @absence.finish_at.to_s(:rfc822) %></time></td>
     </tr>
     <tr>
-      <td class="right aligned"><%= Absence.human_attribute_name(:hours) %></td>
+      <td class="has-text-right"><%= Absence.human_attribute_name(:hours) %></td>
       <td><%= @absence.hours %></td>
     </tr>
     <tr>
-      <td class="right aligned"><%= Absence.human_attribute_name(:checks) %></td>
+      <td class="has-text-right"><%= Absence.human_attribute_name(:checks) %></td>
       <td>
         <table class="ui very basic table">
           <% @absence.checks.each do |check| %>
