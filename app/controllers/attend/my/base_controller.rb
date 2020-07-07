@@ -1,4 +1,3 @@
-class Attend::My::BaseController < RailsAttend.config.my_controller.constantize
+class Attend::My::BaseController < MyController
 
-
-end
+end unless defined? Attend::My::BaseController

@@ -1,4 +1,3 @@
-class Attend::Admin::BaseController < RailsAttend.config.admin_controller.constantize
+class Attend::Admin::BaseController < AdminController
 
-
-end
+end unless defined? Attend::Admin::BaseController
