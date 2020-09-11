@@ -1,7 +1,7 @@
 <%= form_with theme: 'search', model: Attendance.new do |f| %>
   <div class="field-body">
-    <%= f.date_field :'attend_on-gte' %>
-    <%= f.date_field :'attend_on-lte' %>
+    <%= f.date_field 'attend_on-gte' %>
+    <%= f.date_field 'attend_on-lte' %>
     <div class="field is-narrow">
       <%= f.submit %>
     </div>

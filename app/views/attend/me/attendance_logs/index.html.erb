@@ -1,5 +1,4 @@
 <%= render 'nav_attendances' %>
-
 <%= render 'filter_form' %>
 
 <table class="table is-hoverable is-fullwidth">
@@ -35,10 +34,10 @@
       <td><%= attendance_log.note %></td>
       <td class="ui labels">
         <% if attendance_log.editable? %>
-        <%= link_to edit_my_attendance_log_path(attendance_log), class: 'ui pink mini icon button' do %>
+        <%= link_to edit_me_attendance_log_path(attendance_log), class: 'ui pink mini icon button' do %>
           <i class="fas fa-pencil-alt"></i>
         <% end %>
-        <%= link_to my_attendance_log_path(attendance_log), method: :delete, data: { confirm: t('.confirm') }, class: 'ui red mini icon button' do %>
+        <%= link_to me_attendance_log_path(attendance_log), method: :delete, data: { confirm: t('.confirm') }, class: 'ui red mini icon button' do %>
           <i class="times icon"></i>
         <% end %>
         <% end %>

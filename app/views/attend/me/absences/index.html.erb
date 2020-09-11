@@ -1,5 +1,4 @@
 <%= render 'nav_absences' %>
-
 <%= render 'filter_form' %>
 
 <table class="table is-hoverable is-fullwidth">
@@ -14,7 +13,7 @@
       <th><%= Absence.human_attribute_name(:note) %></th>
       <th><%= Absence.human_attribute_name(:state) %></th>
       <th>
-        <%= link_to new_my_absence_path, remote: true, class: 'button is-link is-small' do %>
+        <%= link_to new_me_absence_path, remote: true, class: 'button is-link is-small' do %>
           <i class="fas fa-plus"></i><%= t('.title') %>
         <% end %>
       </th>
@@ -44,8 +43,8 @@
       </td>
       <td>
         <% unless absence.approved? %>
-          <%= link_to t('.edit'), edit_my_absence_path(absence), class: 'ui pink label' %>
-          <%= link_to t('.destroy'), my_absence_path(absence), method: :delete, data: {confirm: t('.confirm')}, class: 'ui red label' %>
+          <%= link_to t('.edit'), edit_me_absence_path(absence), class: 'ui pink label' %>
+          <%= link_to t('.destroy'), me_absence_path(absence), method: :delete, data: {confirm: t('.confirm')}, class: 'ui red label' %>
         <% end %>
       </td>
     </tr>

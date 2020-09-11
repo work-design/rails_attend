@@ -1,7 +1,7 @@
-<span class="menu-label"><%= t('attend.my.title') %></span>
+<span class="menu-label"><%= t('attend.me.title') %></span>
 <div class="menu-list">
-  <%= link_to t('attend.my.attendance_settings.index.title'), my_attendance_settings_path, class: active_helper(controllers: 'attendance_settings', active: 'is-active') %>
-  <%= link_to t('attend.my.attendances.index.title'), my_attendances_path, class: active_helper(controllers: ['attendances', 'attendance_stats', 'attendance_logs'], active: 'is-active') %>
-  <%= link_to t('attend.my.absences.index.title'), my_absences_path, class: active_helper(controllers: ['absences'], active: 'is-active') %>
-  <%= link_to t('attend.my.overtimes.index.title'), my_overtimes_path, class: active_helper(controllers: ['overtimes'], active: 'is-active') %>
+  <%= link_to t('attend.me.attendance_settings.index.title'), me_attendance_settings_path, class: active_helper(controllers: 'attendance_settings', active: 'is-active') %>
+  <%= link_to t('attend.me.attendances.index.title'), me_attendances_path, class: active_helper(controllers: ['attendances', 'attendance_stats', 'attendance_logs'], active: 'is-active') %>
+  <%= link_to t('attend.me.absences.index.title'), me_absences_path, class: active_helper(controllers: ['absences'], active: 'is-active') %>
+  <%= link_to t('attend.me.overtimes.index.title'), me_overtimes_path, class: active_helper(controllers: ['overtimes'], active: 'is-active') %>
 </div>

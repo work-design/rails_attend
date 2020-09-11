@@ -1,5 +1,4 @@
 <%= render 'menu' %>
-
 <%= render 'filter_form' %>
 
 <table class="table is-hoverable is-fullwidth">
@@ -11,7 +10,7 @@
       <th><%= Overtime.human_attribute_name(:hours) %></th>
       <th><%= Overtime.human_attribute_name(:state) %></th>
       <th>
-        <%= link_to new_my_overtime_path, remote: true, class: 'button is-link is-small' do %>
+        <%= link_to new_me_overtime_path, remote: true, class: 'button is-link is-small' do %>
           <i class="fas fa-plus"></i><%= t('.new') %>
         <% end %>
       </th>
@@ -40,8 +39,8 @@
       </td>
       <td class="ui labels">
         <% unless overtime.approved? %>
-          <%= link_to t('.edit'), edit_my_overtime_path(overtime), class: 'ui pink label' %>
-          <%= link_to t('.destroy'), my_overtime_path(overtime), method: :delete, data: { confirm: t('.confirm') }, class: 'ui red label' %>
+          <%= link_to t('.edit'), edit_me_overtime_path(overtime), class: 'ui pink label' %>
+          <%= link_to t('.destroy'), me_overtime_path(overtime), method: :delete, data: { confirm: t('.confirm') }, class: 'ui red label' %>
         <% end %>
       </td>
     </tr>
