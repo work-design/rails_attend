@@ -2,8 +2,12 @@ class Attend::Me::AttendanceSettingsController < Attend::Me::BaseController
   before_action :set_attendance_setting, only: [:edit, :update]
 
   def index
+    q_params = {
+      'financial_month.begin_date-gt': Date.today
+    }
+
     @attendance_setting = current_member.attendance_setting
-    @attendance_settings = current_member.attendance_settings.default_where('financial_month.begin_date-gt': Date.today).order(financial_month_id: :asc)
+    @attendance_settings = current_member.attendance_settings.default_where(q_params).order(financial_month_id: :asc)
   end
 
   def new
