@@ -1,8 +1,10 @@
-class Attend::My::OvertimesController < Attend::My::BaseController
+class Attend::Me::OvertimesController < Attend::Me::BaseController
   before_action :set_overtime, only: [:show, :edit, :update, :destroy]
 
   def index
-    q_params = params.fetch(:q, {}).permit!
+    q_params = {}
+    q_params.merge! params.permit(:start_at)
+
     @overtimes = current_member.overtimes.default_where(q_params).page(params[:page])
   end
 
@@ -14,7 +16,7 @@ class Attend::My::OvertimesController < Attend::My::BaseController
     @overtime = current_member.overtimes.build(overtime_params)
 
     if @overtime.save
-      redirect_to my_overtimes_url
+      redirect_to me_overtimes_url
     else
       render :new
     end
@@ -31,7 +33,7 @@ class Attend::My::OvertimesController < Attend::My::BaseController
     @overtime.state = 'init' if @overtime.changed?
 
     if @overtime.save
-      redirect_to my_overtimes_url
+      redirect_to me_overtimes_url
     else
       render :edit
     end
@@ -39,7 +41,7 @@ class Attend::My::OvertimesController < Attend::My::BaseController
 
   def destroy
     @overtime.destroy
-    redirect_to my_overtimes_url
+    redirect_to me_overtimes_url
   end
 
   private

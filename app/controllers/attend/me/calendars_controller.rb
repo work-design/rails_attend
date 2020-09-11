@@ -1,12 +1,11 @@
-class Attend::My::CalendarsController < Attend::My::BaseController
+class Attend::Me::CalendarsController < Attend::Me::BaseController
 
   def show
-    @query_params = {
+    q_params = {
       department_id: current_member.department_id
-    }.with_indifferent_access
-    q_params = params.fetch(:q, {}).permit!
-    @query_params.merge! Department.extract_multi_attributes q_params
-    @query_params.merge! q_params
+    }
+    q_params.merge! Department.extract_multi_attributes q_params
+
     @department = Department.find @query_params[:department_id]
   end
 
@@ -24,6 +23,7 @@ class Attend::My::CalendarsController < Attend::My::BaseController
     end
   end
 
+  private
   def calendar_params
     params.fetch(:calendar, {}).permit()
   end

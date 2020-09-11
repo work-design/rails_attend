@@ -1,9 +1,9 @@
-class Attend::My::AttendanceStatsController < Attend::My::BaseController
+class Attend::Me::AttendanceStatsController < Attend::Me::BaseController
   before_action :set_attendance_stat, only: [:show]
 
   def index
-    q_params = {}.with_indifferent_access
-    q_params.merge! params.fetch(:q, {}).permit!
+    q_params = {}
+    q_params.merge! params.permit(:financial_month_id)
     @attendance_stats = current_member.attendance_stats.default_where(q_params).page(params[:page])
   end
 

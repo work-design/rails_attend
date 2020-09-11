@@ -1,4 +1,4 @@
-class Attend::My::AttendanceSettingsController < Attend::My::BaseController
+class Attend::Me::AttendanceSettingsController < Attend::Me::BaseController
   before_action :set_attendance_setting, only: [:edit, :update]
 
   def index

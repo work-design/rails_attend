@@ -1,9 +1,8 @@
-class Attend::My::AttendancesController < Attend::My::BaseController
+class Attend::Me::AttendancesController < Attend::Me::BaseController
   before_action :set_attendance, only: [:show, :edit, :update, :destroy]
 
   def index
-    q_params = {}.with_indifferent_access
-    q_params.merge! params.fetch(:q, {}).permit!
+    q_params = {}
     q_params.merge! params.permit(:id)
     @attendances = current_member.attendances.default_where(q_params).order(attend_on: :desc).page(params[:page])
   end

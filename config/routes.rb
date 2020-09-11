@@ -30,7 +30,7 @@ Rails.application.routes.draw do
     end
   end
 
-  scope :my, module: 'attend/my', as: :my do
+  scope :me, module: 'attend/me', as: :me do
     resource :calendar do
       get :events
     end
