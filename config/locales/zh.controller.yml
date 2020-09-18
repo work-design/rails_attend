@@ -1,10 +1,28 @@
 zh:
   attend:
     admin:
-      title: 区域管理
-      agencies:
+      title: 出勤
+      financial_months:
         index:
-          title: 会员列表
+          title: 月度设置
+      attendances:
+        index:
+          title: 出勤
+      attendance_settings:
+        index:
+          title: 打卡设置
+      absences:
+        index:
+          title: 缺席/请假
+      absence_stats:
+        index:
+          title: 缺席统计
+      extra_days:
+        index:
+          title: 工作日设置
+      overtimes:
+        index:
+          title: 加班统计
     me:
       title: 出勤管理
       attendance_settings:
