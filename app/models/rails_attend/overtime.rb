@@ -23,9 +23,9 @@ module RailsAttend::Overtime
 
     before_save :compute_hours
     after_create_commit :send_notification
-  
+
     validate :validate_same_date
-  
+
     delegate :name, to: :member, prefix: true
 
     acts_as_notify(
@@ -39,14 +39,14 @@ module RailsAttend::Overtime
       methods: [:member_name]
     )
   end
-  
+
   def do_trigger(params = {})
     self.trigger_to state: params[:state]
 
     self.class.transaction do
       self.save!
       to_notification(
-        receiver: self.member,
+        member: self.member,
         link: url_helpers.oa_overtimes_url(id: self.id),
         verbose: true
       )
@@ -55,7 +55,7 @@ module RailsAttend::Overtime
 
   def send_notification
     to_notification(
-      receiver: self.member.parent,
+      member: self.member.parent,
       cc_emails: [
         self.member.office&.absence_email,
         self.member.email,

@@ -33,7 +33,7 @@ module RailsAttend::AttendanceSetting
       self.save!
       member.save!
       to_notification(
-        receiver: member,
+        member: member,
         title: "Your Attendance Setting has been #{self.state_i18n}",
         body: "Your Attendance Setting has been #{self.state_i18n}",
         link: url_helpers.oa_attendance_settings_url

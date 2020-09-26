@@ -82,7 +82,7 @@ module RailsAttend::Absence
     self.class.transaction do
       self.save!
       to_notification(
-        receiver: member,
+        member: member,
         link: url_helpers.oa_absences_url(id: self.id),
         verbose: true
       )
@@ -91,7 +91,7 @@ module RailsAttend::Absence
 
   def send_notification
     to_notification(
-      receiver: member.parent,
+      member: member.parent,
       link: url_helpers.my_admin_absences_url(id: self.id),
       code: :request,
       verbose: true

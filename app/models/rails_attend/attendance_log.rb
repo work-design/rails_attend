@@ -67,7 +67,7 @@ module RailsAttend::AttendanceLog
     self.class.transaction do
       self.save!
       to_notification(
-        receiver: member,
+        member: member,
         link: url_helpers.oa_attendance_logs_url(id: self.id),
         verbose: true,
       )
@@ -76,7 +76,7 @@ module RailsAttend::AttendanceLog
 
   def send_notification
     to_notification(
-      receiver: member.parent,
+      member: member.parent,
       cc_emails: [
         self.member.office&.absence_email
       ],
