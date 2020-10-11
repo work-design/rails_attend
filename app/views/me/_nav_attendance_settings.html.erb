@@ -1,6 +1,8 @@
+<% content_for :breadcrumb do %>
 <div class="tabs">
   <ul>
     <li><%= link_to t('attend.me.attendance_settings.index.title'), me_attendance_settings_path, class: active_helper(controllers: 'attend/my/attendance_settings') %></li>
     <li><%# link_to 'Group Attendance Settings', me_admin_attendance_settings_path, class: active_helper('my_admin/attendance_settings': ['my']) %></li>
   </ul>
 </div>
+<% end %>
