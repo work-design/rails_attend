@@ -1,5 +1,3 @@
-import 'rails_taxon/outer_search'
-
 $(document).ready(function() {
 
   $('#calendar').fullCalendar({
