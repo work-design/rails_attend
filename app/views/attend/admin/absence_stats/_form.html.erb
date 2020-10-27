@@ -1,4 +1,4 @@
-<%= form_with model: [:admin, @absence_stat], local: true do |f| %>
+<%= form_with model: [:admin, @absence_stat] do |f| %>
   <%= render 'shared/error_messages', target: @absence_stat %>
   <%= f.select :member_id, options_for_select([[@absence_stat.member&.name, @absence_stat.member_id]], @absence_stat.member_id), { include_blank: true } %>
   <div class="inline fields">

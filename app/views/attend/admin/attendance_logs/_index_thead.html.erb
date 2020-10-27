@@ -1,0 +1,19 @@
+<th>
+  <%= AttendanceLog.human_attribute_name(:id) %>
+  <%= check_box_tag :attendance_log_all, 1, false, onclick: "toggleAll(this, 'attendance_log_id')", id: nil %>
+</th>
+<th>
+  <p><%= AttendanceLog.human_attribute_name(:name) %></p>
+  <p><%= AttendanceLog.human_attribute_name(:number) %></p>
+</th>
+<th>
+  <p><%= AttendanceLog.human_attribute_name(:record_at) %></p>
+  <p><%= AttendanceLog.human_attribute_name(:created_at) %></p>
+</th>
+<th><%= AttendanceLog.human_attribute_name(:kind) %></th>
+<th>
+  <p><%= AttendanceLog.human_attribute_name(:processed) %></p>
+  <p><%= AttendanceLog.human_attribute_name(:source) %></p>
+</th>
+<th><%= AttendanceLog.human_attribute_name(:state) %></th>
+<th></th>

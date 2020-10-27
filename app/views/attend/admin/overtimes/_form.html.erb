@@ -1,4 +1,3 @@
 <%= render 'shared/error_messages', target: @overtime %>
 <%= f.select :state, options_for_select(Overtime.options_i18n(:state), @overtime.state) %>
 <%= f.text_area :note %>
-<%= f.submit %>

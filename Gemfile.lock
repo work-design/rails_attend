@@ -1,13 +1,13 @@
 GIT
   remote: https://github.com/qinmingyuan/default_form.git
-  revision: acaaf3e9a912a6265159573cdb5ecf53afd9309a
+  revision: 979419809f67974ee7bebce7764eca540a6c73db
   specs:
     default_form (1.5.1)
       rails_com (~> 1.2)
 
 GIT
   remote: https://github.com/work-design/rails_com.git
-  revision: 4be755917536d7951d5ca1b7c68ddbee7bbe3ca3
+  revision: 85e94ae7049dc7db5174611341e44882da4d2a6e
   specs:
     rails_com (1.2.9)
       acme-client
@@ -103,8 +103,9 @@ GEM
     factory_bot_rails (6.1.0)
       factory_bot (~> 6.1.0)
       railties (>= 5.0.0)
-    faraday (1.0.1)
+    faraday (1.1.0)
       multipart-post (>= 1.2, < 3)
+      ruby2_keywords
     globalid (0.4.2)
       activesupport (>= 4.2.0)
     http-2-next (0.2.6)
@@ -180,6 +181,7 @@ GEM
       thor (>= 0.20.3, < 2.0)
     rake (13.0.1)
     rdoc (6.2.1)
+    ruby2_keywords (0.0.2)
     sdoc (1.1.0)
       rdoc (>= 5.0)
     sprockets (4.0.2)

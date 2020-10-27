@@ -1,0 +1,17 @@
+<tr>
+  <td><%= financial_month.begin_date %></td>
+  <td><%= financial_month.end_date %></td>
+  <td><%= financial_month.working_days %></td>
+  <td>
+    <span class="tag" style="background-color: <%= financial_month.color %>"><%= financial_month.color %></span>
+  </td>
+  <td>
+    <%= link_to 'Attendance Setting', attendance_setting_admin_financial_month_path(financial_month), method: :patch, data: { confirm: t('.confirm') }, class: 'button is-small is-rounded is-light' %>
+    <%= link_to admin_financial_month_path(financial_month), remote: true, aria: { label: t('.show') }, class: 'button is-small is-rounded is-light' do %>
+      <i class="fas fa-eye"></i>
+    <% end %>
+    <%= link_to edit_admin_financial_month_path(financial_month), remote: true, aria: { label: t('.edit') }, class: 'button is-small is-rounded is-light' do %>
+      <i class="fas fa-pencil-alt"></i>
+    <% end %>
+  </td>
+</tr>
