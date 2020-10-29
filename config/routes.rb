@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
-  scope :admin, module: 'attend/admin', as: :admin do
+  scope :admin, module: 'attend/admin', as: :admin, defaults: { namespace: 'admin', business: 'attend' } do
     resources :financial_months do
       get :events, on: :collection
       patch :attendance_setting, on: :member
@@ -19,18 +19,24 @@ Rails.application.routes.draw do
       get :my, on: :collection
     end
     resources :attendance_logs do
-      get :my, on: :collection
-      post :check, on: :collection
-      patch :analyze, on: :member
+      collection do
+        get :my
+        post :check
+      end
+      member do
+        patch :analyze
+      end
     end
     resources :attendance_stats
     resources :attendance_settings do
-      get :my, on: :collection
-      post :check, on: :collection
+      collection do
+        get :my
+        post :check
+      end
     end
   end
 
-  scope :me, module: 'attend/me', as: :me do
+  scope :me, module: 'attend/me', as: :me, defaults: { namespace: 'me', business: 'attend' } do
     resource :calendar do
       get :events
     end
@@ -39,8 +45,10 @@ Rails.application.routes.draw do
     resources :attendances
     resources :attendance_logs
     resources :absences do
-      get :dashboard, on: :collection
-      get :redeeming, on: :collection
+      collection do
+        get :dashboard
+        get :redeeming
+      end
     end
     resources :overtimes
   end
