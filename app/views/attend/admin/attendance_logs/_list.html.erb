@@ -43,9 +43,9 @@
         <span class="ui label"><%= attendance_log.state_i18n %></span>
         <% if attendance_log.state_init? %>
           <div class="ui mini buttons">
-            <%= link_to 'Approve', new_check_path('AttendanceLog', attendance_log.id, state: 'valid'), remote: true, class: 'ui positive button' %>
+            <%= link_to 'Approve', new_check_path('AttendanceLog', attendance_log.id, state: 'valid'), class: 'ui positive button' %>
             <div class="or"></div>
-            <%= link_to 'Deny', new_check_path('AttendanceLog', attendance_log.id, state: 'invalid'), remote: true, class: 'ui negative button' %>
+            <%= link_to 'Deny', new_check_path('AttendanceLog', attendance_log.id, state: 'invalid'), class: 'ui negative button' %>
           </div>
         <% end %>
       </td>

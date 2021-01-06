@@ -11,14 +11,14 @@
     <label class="tag"><%= absence.state_i18n %></label>
     <% if absence.init? %>
       <div class="buttons are-small">
-        <%= link_to 'Approve', new_check_path('Absence', absence.id, state: 'approved'), remote: true, class: 'ui positive button' %>
+        <%= link_to 'Approve', new_check_path('Absence', absence.id, state: 'approved'), class: 'ui positive button' %>
         <div class="or"></div>
-        <%= link_to 'Deny', new_check_path('Absence', absence.id, state: 'denied'), remote: true, class: 'ui negative button' %>
+        <%= link_to 'Deny', new_check_path('Absence', absence.id, state: 'denied'), class: 'ui negative button' %>
       </div>
     <% end %>
   </td>
   <td>
-    <%= link_to admin_absence_path(absence), aria: { label: t('.show') }, remote: true, class: 'ui blue mini icon button' do %>
+    <%= link_to admin_absence_path(absence), aria: { label: t('.show') }, class: 'ui blue mini icon button' do %>
       <i class="fas fa-info"></i>
     <% end %>
     <%= link_to edit_admin_absence_path(absence), aria: { label: t('.edit') }, class: 'ui pink mini icon button' do %>

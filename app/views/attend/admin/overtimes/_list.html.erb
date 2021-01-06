@@ -31,14 +31,14 @@
         <label class="ui label"><%= overtime.state_i18n %></label>
         <% if overtime.init? %>
           <div class="ui mini buttons">
-            <%= link_to 'Approve', new_check_path('Overtime', overtime.id, state: 'approved'), remote: true, class: 'ui positive button' %>
+            <%= link_to 'Approve', new_check_path('Overtime', overtime.id, state: 'approved'), class: 'ui positive button' %>
             <div class="or"></div>
-            <%= link_to 'Reject', new_check_path('Overtime', overtime.id, state: 'denied'), remote: true, class: 'ui negative button' %>
+            <%= link_to 'Reject', new_check_path('Overtime', overtime.id, state: 'denied'), class: 'ui negative button' %>
           </div>
         <% end %>
       </td>
       <td class="ui labels">
-        <%= link_to t('.edit'), edit_admin_overtime_path(overtime), remote: true, class: 'ui pink label' %>
+        <%= link_to t('.edit'), edit_admin_overtime_path(overtime), class: 'ui pink label' %>
       </td>
     </tr>
   <% end %>

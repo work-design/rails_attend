@@ -7,10 +7,10 @@
   </td>
   <td>
     <%= link_to 'Attendance Setting', attendance_setting_admin_financial_month_path(financial_month), method: :patch, data: { confirm: t('.confirm') }, class: 'button is-small is-rounded is-light' %>
-    <%= link_to admin_financial_month_path(financial_month), remote: true, aria: { label: t('.show') }, class: 'button is-small is-rounded is-light' do %>
+    <%= link_to admin_financial_month_path(financial_month), aria: { label: t('.show') }, class: 'button is-small is-rounded is-light' do %>
       <i class="fas fa-info"></i>
     <% end %>
-    <%= link_to edit_admin_financial_month_path(financial_month), remote: true, aria: { label: t('.edit') }, class: 'button is-small is-rounded is-light' do %>
+    <%= link_to edit_admin_financial_month_path(financial_month), aria: { label: t('.edit') }, class: 'button is-small is-rounded is-light' do %>
       <i class="fas fa-pencil-alt"></i>
     <% end %>
   </td>

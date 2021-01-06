@@ -9,7 +9,7 @@
       <th><%= AttendanceSetting.human_attribute_name(:state) %></th>
       <th><%= AttendanceSetting.human_attribute_name(:note) %></th>
       <th>
-        <%= link_to new_me_attendance_setting_path, aria: { label: 'Change On Time' }, remote: true, class: 'button is-link' do %>
+        <%= link_to new_me_attendance_setting_path, aria: { label: 'Change On Time' }, class: 'button is-link' do %>
           <i class="fas fa-cogs"></i>
         <% end %>
       </th>
