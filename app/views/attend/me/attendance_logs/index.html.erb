@@ -4,15 +4,7 @@
 <table class="table is-hoverable is-fullwidth">
   <thead>
     <tr>
-      <th><%= AttendanceLog.human_attribute_name(:id) %></th>
-      <th><%= AttendanceLog.human_attribute_name(:record_at) %></th>
-      <th><%= AttendanceLog.human_attribute_name(:kind) %></th>
-      <th>
-        <p><%= AttendanceLog.human_attribute_name(:source) %></p>
-        <p><%= AttendanceLog.human_attribute_name(:state) %></p>
-      </th>
-      <th><%= AttendanceLog.human_attribute_name(:note) %></th>
-      <th>Actions</th>
+    
     </tr>
   </thead>
   <tbody>
@@ -21,7 +13,7 @@
       <td><%= attendance_log.id %></td>
       <td>
         <% if attendance_log.record_at %>
-          <time data-format="YYYY-MM-DD HH:mm"><%= attendance_log.record_at.to_s(:rfc822) %></time>
+          <time data-controller="time" data-format="YYYY-MM-DD HH:mm"><%= attendance_log.record_at.to_s(:rfc822) %></time>
         <% else %>
           <%= attendance_log.record_at_str %>
         <% end %>

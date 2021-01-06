@@ -1,0 +1,49 @@
+<td><%= model.attend_on %></td>
+<td>
+  <p><time data-controller="time" data-format="HH:mm"><%= model.start_at&.to_s(:rfc822) %></time></p>
+  <p>
+    <% if model.finish_at %>
+      <time data-controller="time" data-format="HH:mm"><%= model.finish_at.to_s(:rfc822) %></time>
+    <% elsif model.finish_at.blank? && model.start_at.present? %>
+      <%= link_to 'Re-Punch', new_me_attendance_log_path(attendance_id: model.id), class: 'ui teal mini button' %>
+    <% end %>
+  </p>
+</td>
+<td>
+  <p><time data-controller="time" data-format="HH:mm"><%= model.interval_start_at&.to_s(:rfc822) %></time></p>
+  <p>
+    <% if model.interval_finish_at %>
+      <time data-controller="time" data-format="HH:mm"><%= model.interval_finish_at.to_s(:rfc822) %></time>
+    <% elsif model.interval_finish_at.blank? && model.interval_start_at.present? %>
+      <%= link_to 'Re-Punch', new_me_attendance_log_path(attendance_id: model.id), class: 'ui teal mini button' %>
+    <% end %>
+  </p>
+</td>
+<td>
+  <% if model.interval_absence_id %>
+    <p><%= link_to model.interval_hours.to_f.to_s(:human), me_absence_path(model.interval_absence_id), class: 'ui green label' %></p>
+  <% elsif model.interval_hours.to_f > 0 %>
+    <p><span class="tag"><%= model.interval_hours %></span></p>
+  <% end %>
+</td>
+<td class="ui labels">
+  <% if model.late_absence_id %>
+    <p><%= link_to model.late_minutes.to_i.minutes.inspect, me_absence_path(model.late_absence_id), class: 'ui green label' %></p>
+  <% elsif model.late_minutes.to_i > 0 %>
+    <p><span class="tag">Be late: <%= model.late_minutes.to_i.minutes.inspect %></span></p>
+  <% end %>
+  <% if model.leave_absence_id %>
+    <p>
+      <%= link_to model.late_minutes.to_i.minutes.inspect, me_absence_path(model.leave_absence_id), class: 'ui green label' %>
+    </p>
+  <% elsif model.leave_minutes.to_i > 0 %>
+    <p><span class="tag">Leave early: <%= model.leave_minutes.to_i.minutes.inspect %></span></p>
+  <% end %>
+</td>
+<td>
+  <p><%= model.attend_hours.to_d.to_s(:human) %>h</p>
+  <p><%= model.overtime_hours.to_d.to_s(:human) %>h</p>
+</td>
+<td>
+  <%= link_to 'logs', me_attendance_logs_path(attendance_id: model.id), class: 'label' %>
+</td>
