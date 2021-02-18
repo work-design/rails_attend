@@ -1,5 +1,5 @@
 module Attend
-  module RailsAttend::ExtraDay
+  module Model::ExtraDay
     extend ActiveSupport::Concern
 
     included do

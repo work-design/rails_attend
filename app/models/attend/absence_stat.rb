@@ -1,5 +1,5 @@
 module Attend
   class AbsenceStat < ApplicationRecord
-    include RailsAttend::AbsenceStat
+    include Model::AbsenceStat
   end
 end

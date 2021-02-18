@@ -1,5 +1,5 @@
 module Attend
-  module RailsAttend::FinancialMonth
+  module Model::FinancialMonth
     extend ActiveSupport::Concern
 
     included do

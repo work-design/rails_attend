@@ -1,5 +1,5 @@
 module Attend
-  module RailsAttend::AttendanceStat
+  module Model::AttendanceStat
     extend ActiveSupport::Concern
 
     included do

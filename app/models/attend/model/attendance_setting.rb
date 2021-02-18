@@ -1,5 +1,5 @@
 module Attend
-  module RailsAttend::AttendanceSetting
+  module Model::AttendanceSetting
     extend ActiveSupport::Concern
 
     included do
