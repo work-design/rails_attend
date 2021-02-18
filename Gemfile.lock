@@ -1,13 +1,13 @@
 GIT
   remote: https://github.com/qinmingyuan/default_form.git
-  revision: 1e72c95dd3d13dbfa70661d63bdf644169c8d03f
+  revision: 8368c576e145bfb5d6175e8fc7b64a6557883d09
   specs:
     default_form (1.5.1)
       rails_com (~> 1.2)
 
 GIT
   remote: https://github.com/work-design/rails_com.git
-  revision: 46c19b3da2378918c46cf732cce13c46f2017d08
+  revision: df466071e8849505947fe4bc61b02c2d6d68099e
   specs:
     rails_com (1.2.9)
       acme-client
@@ -111,12 +111,12 @@ GEM
       faraday-net_http (~> 1.0)
       multipart-post (>= 1.2, < 3)
       ruby2_keywords
-    faraday-net_http (1.0.0)
+    faraday-net_http (1.0.1)
     globalid (0.4.2)
       activesupport (>= 4.2.0)
     http-2-next (0.3.0)
     http-form_data (2.3.0)
-    httpx (0.10.2)
+    httpx (0.11.3)
       http-2-next (>= 0.1.2)
       timers
     i18n (1.8.7)
@@ -189,7 +189,7 @@ GEM
       thor (~> 1.0)
     rake (13.0.3)
     rdoc (6.3.0)
-    ruby2_keywords (0.0.2)
+    ruby2_keywords (0.0.4)
     sdoc (2.0.3)
       rdoc (>= 5.0)
     sprockets (4.0.2)
@@ -201,7 +201,7 @@ GEM
       sprockets (>= 3.0.0)
     sqlite3 (1.4.2)
     thor (1.0.1)
-    timers (4.3.2)
+    timers (4.3.3)
     turbolinks (5.2.1)
       turbolinks-source (~> 5.2)
     turbolinks-source (5.2.0)
