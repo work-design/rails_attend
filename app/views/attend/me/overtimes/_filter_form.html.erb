@@ -1,4 +1,4 @@
-<%= form_with theme: 'search', model: Overtime.new do |f| %>
+<%= form_with theme: 'search', model: Attend::Overtime.new do |f| %>
   <div class="field-body">
     <%= f.date_field 'start_at-gte' %>
     <%= f.date_field 'finish_at-lte' %>
