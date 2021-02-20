@@ -1,3 +1,4 @@
-class Attend::Me::BaseController < MeController
-
-end unless defined? Attend::Me::BaseController
+module Attend
+  class Me::BaseController < MeController
+  end
+end
