@@ -1,4 +1,4 @@
-<%= form_with theme: 'search', model: AttendanceSetting.new do |f| %>
+<%= form_with theme: 'search', model: Attend::AttendanceSetting.new do |f| %>
   <div class="field-body">
     <%= f.text_field 'member.name' %>
     <%= f.text_field 'member.email' %>

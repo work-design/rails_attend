@@ -1,0 +1,15 @@
+<td>
+  <%= model.id %>
+  <%= check_box_tag :attendance_setting_id, model.id, model.approved?, id: nil %>
+</td>
+<td><%= model.member.name %></td>
+<td>
+  <% if model.financial_month %>
+    <%= model.financial_month.month %>
+  <% end %>
+</td>
+<td><%= model.on_time %></td>
+<td>
+  <span class="ui label"><%= model.state_i18n %></span>
+</td>
+<td><%= model.note %></td>

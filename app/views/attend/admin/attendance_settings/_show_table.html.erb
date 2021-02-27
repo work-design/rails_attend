@@ -1,16 +1,12 @@
-<table class="table is-hoverable is-fullwidth">
-  <tbody>
-    <tr>
-      <td class="has-text-right"><%= AttendanceSetting.human_attribute_name(:on_time) %></td>
-      <td><%= @attendance_setting.on_time %></td>
-    </tr>
-    <tr>
-      <td class="has-text-right"><%= AttendanceSetting.human_attribute_name(:state) %></td>
-      <td><%= @attendance_setting.state %></td>
-    </tr>
-    <tr>
-      <td class="has-text-right"><%= AttendanceSetting.human_attribute_name(:note) %></td>
-      <td><%= @attendance_setting.note %></td>
-    </tr>
-  </tbody>
-</table>
+<tr>
+  <td class="has-text-right"><%= Attend::AttendanceSetting.human_attribute_name(:on_time) %></td>
+  <td><%= @attendance_setting.on_time %></td>
+</tr>
+<tr>
+  <td class="has-text-right"><%= Attend::AttendanceSetting.human_attribute_name(:state) %></td>
+  <td><%= @attendance_setting.state %></td>
+</tr>
+<tr>
+  <td class="has-text-right"><%= Attend::AttendanceSetting.human_attribute_name(:note) %></td>
+  <td><%= @attendance_setting.note %></td>
+</tr>

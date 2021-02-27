@@ -1,0 +1,10 @@
+<th>
+  <%= Attend::AttendanceSetting.human_attribute_name(:id) %>
+  <%= check_box_tag :attendance_setting_all, 1, false, onclick: "toggleAll(this, 'attendance_setting_id')", id: nil %>
+</th>
+<th><%= Attend::AttendanceSetting.human_attribute_name(:member) %></th>
+<th><%= Attend::AttendanceSetting.human_attribute_name(:financial_month) %></th>
+<th><%= Attend::AttendanceSetting.human_attribute_name(:on_time) %></th>
+<th><%= Attend::AttendanceSetting.human_attribute_name(:state) %></th>
+<th><%= Attend::AttendanceSetting.human_attribute_name(:note) %></th>
+<th></th>

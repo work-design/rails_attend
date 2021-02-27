@@ -1,42 +1,42 @@
 zh:
   activerecord:
     enum:
-      absence:
+      attend/absence:
         compensatory:
           never: 不补班
           previous: 提前补班
           later: 补班
         type:
-          BusinessTrip: 出差
-          PersonalLeave: 事假
-          AnnualLeave: 年假
-          CompensatoryLeave: 调休
-          BereavementLeave: 丧假
-          ChildrenDayLeave: 儿童日
-          MarriageLeave: 婚假
-          MaternityLeave: 产假
-          ParentalLeave: 陪产假
-          PrenatalLeave: 产前假
-          SickLeave: 病假
+          Attend::BusinessTrip: 出差
+          Attend::PersonalLeave: 事假
+          Attend::AnnualLeave: 年假
+          Attend::CompensatoryLeave: 调休
+          Attend::BereavementLeave: 丧假
+          Attend::ChildrenDayLeave: 儿童日
+          Attend::MarriageLeave: 婚假
+          Attend::MaternityLeave: 产假
+          Attend::ParentalLeave: 陪产假
+          Attend::PrenatalLeave: 产前假
+          Attend::SickLeave: 病假
         state:
           init: 申请
           approved: 批准
           denied: 拒绝
-      attendance:
+      attend/attendance:
         kind:
           start: Start
           finish: Finish
         status:
           init: Pending
-      attendance_setting:
+      attend/attendance_setting:
         state:
           init: Pending
           approved: Approved
-      extra_day:
+      attend/extra_day:
         kind:
           workday: 工作日
           holiday: 假日
-      overtime:
+      attend/overtime:
         state:
           init: 申请
           approved: 批准

@@ -1,7 +1,7 @@
 zh:
   activerecord:
     attributes:
-      absence:
+      attend/absence:
         hours: 时长(小时）
         member: 职员
         member_name: 姓名
@@ -10,7 +10,7 @@ zh:
         start_at: 开始时间
         finish_at: 结束时间
         note: 说明
-      attendance:
+      attend/attendance:
         member: 职员
         start_at: Start
         finish_at: Leave
@@ -20,12 +20,12 @@ zh:
         late_minutes: Late
         leave_minutes: Leave
         overtime_hours: Overtime
-      attendance_log:
+      attend/attendance_log:
         member_name: 姓名
         record_at: 时间
         note: 说明
         state_i18n: 状态
-      overtime:
+      attend/overtime:
         member: 职员
         member_name: 姓名
         start_at: 开始时间
