@@ -1,3 +1,3 @@
-<%= link_to new_me_attendance_log_path(attendance_id: params[:attendance_id]), class: 'button is-link is-small' do %>
+<%= link_to({ controller: 'attendance_logs', action: 'new', attendance_id: params[:attendance_id] }, data: { turbo_frame: 'modal' }, class: 'button is-link is-small') do %>
   <i class="fas fa-plus"></i><span><%= t('.new') %></span>
 <% end %>

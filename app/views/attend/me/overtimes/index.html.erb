@@ -1,51 +1,7 @@
 <%= render 'menu' %>
-<%= render 'filter_form' %>
 
-<table class="table is-hoverable is-fullwidth">
-  <thead>
-    <tr>
-      <th><%= Attend::Overtime.human_attribute_name(:start_at) %></th>
-      <th><%= Attend::Overtime.human_attribute_name(:finish_at) %></th>
-      <th><%= Attend::Overtime.human_attribute_name(:note) %></th>
-      <th><%= Attend::Overtime.human_attribute_name(:hours) %></th>
-      <th><%= Attend::Overtime.human_attribute_name(:state) %></th>
-      <th>
-        <%= link_to new_me_overtime_path, class: 'button is-link is-small' do %>
-          <i class="fas fa-plus"></i><%= t('.new') %>
-        <% end %>
-      </th>
-    </tr>
-  </thead>
-
-  <tbody>
-  <% @overtimes.each do |overtime| %>
-    <tr>
-      <td>
-        <time data-format="YYYY-MM-DD HH:mm"><%= overtime.start_at.to_s(:rfc822) %></time>
-      </td>
-      <td>
-        <time data-format="YYYY-MM-DD HH:mm"><%= overtime.finish_at.to_s(:rfc822) %></time>
-      </td>
-      <td><%= simple_format overtime.note %></td>
-      <td><%= overtime.hours %></td>
-      <td>
-        <% if overtime.init? %>
-          <span class="ui label"><%= overtime.state_i18n %></span>
-        <% elsif overtime.approved? %>
-          <span class="ui green label"><%= overtime.state_i18n %></span>
-        <% elsif overtime.denied? %>
-          <span class="ui red label"><%= overtime.state_i18n %></span>
-        <% end %>
-      </td>
-      <td class="ui labels">
-        <% unless overtime.approved? %>
-          <%= link_to t('.edit'), edit_me_overtime_path(overtime), class: 'ui pink label' %>
-          <%= link_to t('.destroy'), me_overtime_path(overtime), method: :delete, data: { confirm: t('.confirm') }, class: 'ui red label' %>
-        <% end %>
-      </td>
-    </tr>
-  <% end %>
-  </tbody>
-</table>
+<%= render layout: 'index_table', locals: { cache_key: Attend::Overtime.column_names.hash } do %>
+  <%= render partial: 'index_tbody', layout: 'index_tr', collection: @overtimes, as: :model %>
+<% end %>
 
 <%= paginate @overtimes %>

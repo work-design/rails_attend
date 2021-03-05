@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
-  scope :admin, module: 'attend/admin', as: :admin, defaults: { namespace: 'admin', business: 'attend' } do
+  scope :admin, module: 'attend/admin', as: :admin, defaults: { business: 'attend', namespace: 'admin' } do
     resources :financial_months do
       get :events, on: :collection
       patch :attendance_setting, on: :member
@@ -36,7 +36,7 @@ Rails.application.routes.draw do
     end
   end
 
-  scope :me, module: 'attend/me', as: :me, defaults: { namespace: 'me', business: 'attend' } do
+  scope :me, module: 'attend/me', as: :me, defaults: { business: 'attend', namespace: 'me' } do
     resource :calendar do
       get :events
     end

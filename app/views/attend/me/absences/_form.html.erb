@@ -1,5 +1,5 @@
 <%= render 'shared/error_messages', target: @absence %>
-<%= f.select :type, options_for_select(Absence.options_i18n(:type), @absence.type) %>
+<%= f.select :type, options_for_select(Attend::Absence.options_i18n(:type), @absence.type) %>
 <div class="field is-horizontal">
   <%= f.label :start_at %>
   <div class="field-body control">
@@ -25,7 +25,7 @@
   </div>
 </div>
 <% if @absence.type == 'CompensatoryLeave' %>
-  <%= f.select :redeeming_days, options_for_select(Absence.available_rest_days, @absence.redeeming_days), { can: { wrap_id: true } }, multiple: true %>
+  <%= f.select :redeeming_days, options_for_select(Attend::Absence.available_rest_days, @absence.redeeming_days), { can: { wrap_id: true } }, multiple: true %>
 <% else %>
   <div id="absence_redeeming_days_wrapper"></div>
 <% end %>

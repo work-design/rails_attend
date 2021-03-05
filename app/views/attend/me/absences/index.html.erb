@@ -1,1 +1,7 @@
 <%= render 'nav_absences' %>
+
+<%= render layout: 'index_table', locals: { cache_key: Attend::Absence.column_names.hash } do %>
+  <%= render partial: 'index_tbody', layout: 'index_tr', collection: @absences, as: :model %>
+<% end %>
+
+<%= paginate @absences %>

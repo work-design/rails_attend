@@ -1,0 +1,23 @@
+<td>
+  <time data-controller="time" data-format="YYYY-MM-DD HH:mm"><%= overtime.start_at.to_s(:rfc822) %></time>
+</td>
+<td>
+  <time data-controller="time" data-format="YYYY-MM-DD HH:mm"><%= overtime.finish_at.to_s(:rfc822) %></time>
+</td>
+<td><%= simple_format overtime.note %></td>
+<td><%= overtime.hours %></td>
+<td>
+  <% if overtime.init? %>
+    <span class="ui label"><%= overtime.state_i18n %></span>
+  <% elsif overtime.approved? %>
+    <span class="ui green label"><%= overtime.state_i18n %></span>
+  <% elsif overtime.denied? %>
+    <span class="ui red label"><%= overtime.state_i18n %></span>
+  <% end %>
+</td>
+<td class="ui labels">
+  <% unless overtime.approved? %>
+    <%= link_to t('.edit'), edit_me_overtime_path(overtime), class: 'ui pink label' %>
+    <%= link_to t('.destroy'), me_overtime_path(overtime), method: :delete, data: { confirm: t('.confirm') }, class: 'ui red label' %>
+  <% end %>
+</td>
