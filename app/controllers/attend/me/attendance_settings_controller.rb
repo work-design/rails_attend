@@ -3,12 +3,11 @@ module Attend
     before_action :set_attendance_setting, only: [:edit, :update]
 
     def index
-      q_params = {
-        'financial_month.begin_date-gt': Date.today
-      }
+      q_params = {}
+      #q_params.merge! 'financial_month.begin_date-gt': Date.today
 
       @attendance_setting = current_member.attendance_setting
-      @attendance_settings = current_member.attendance_settings.default_where(q_params).order(financial_month_id: :asc)
+      @attendance_settings = current_member.attendance_settings.includes(:financial_month).default_where(q_params).order(financial_month_id: :asc)
     end
 
     def new
@@ -18,9 +17,7 @@ module Attend
     def create
       @attendance_setting = current_member.attendance_settings.build(attendance_setting_params)
 
-      if @attendance_setting.save
-        redirect_to my_attendance_settings_url
-      else
+      unless @attendance_setting.save
         render :new
       end
     end
