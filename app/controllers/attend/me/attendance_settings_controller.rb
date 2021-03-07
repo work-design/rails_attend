@@ -6,8 +6,8 @@ module Attend
       q_params = {}
       #q_params.merge! 'financial_month.begin_date-gt': Date.today
 
-      @attendance_setting = current_member.attendance_setting
-      @attendance_settings = current_member.attendance_settings.includes(:financial_month).default_where(q_params).order(financial_month_id: :asc)
+      @attendance_setting = current_member.attendance_settings.first
+      @attendance_settings = current_member.attendance_settings.default_where(q_params).order(financial_month_id: :asc)
     end
 
     def new

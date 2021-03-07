@@ -1,4 +1,4 @@
-<%= form_with model: @attendance_setting, url: me_attendance_settings_path do |f| %>
+<%= form_with model: @attendance_setting, url: { action: 'create' } do |f| %>
   <%= render 'shared/error_messages', target: @attendance_setting %>
   <%= f.collection_select :financial_month_id, FinancialMonth.next_all, :id, :date_range %>
   <%= f.select :on_time, options_for_select(AttendanceSetting.time_options, @attendance_setting.on_time) %>

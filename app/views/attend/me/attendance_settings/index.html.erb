@@ -3,16 +3,7 @@
 <table class="table is-hoverable is-fullwidth">
   <thead>
     <tr>
-      <th></th>
-      <th><%= Attend::AttendanceSetting.human_attribute_name(:financial_month) %></th>
-      <th><%= Attend::AttendanceSetting.human_attribute_name(:on_time) %></th>
-      <th><%= Attend::AttendanceSetting.human_attribute_name(:state) %></th>
-      <th><%= Attend::AttendanceSetting.human_attribute_name(:note) %></th>
-      <th>
-        <%= link_to new_me_attendance_setting_path, aria: { label: 'Change On Time' }, class: 'button is-link' do %>
-          <i class="fas fa-cogs"></i>
-        <% end %>
-      </th>
+    
     </tr>
   </thead>
   <tbody>
@@ -32,7 +23,7 @@
       <td><%= @attendance_setting.note %></td>
       <td></td>
     </tr>
-    <% @attendance_settings.each_with_index do |attendance_setting| %>
+    <% @attendance_settings.each do |attendance_setting| %>
     <tr>
       <td>
         <span>Next Financial Months</span>
