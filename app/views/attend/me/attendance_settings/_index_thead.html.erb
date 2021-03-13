@@ -1,6 +1,12 @@
 <th></th>
-<th><%= Attend::AttendanceSetting.human_attribute_name(:financial_month) %></th>
-<th><%= Attend::AttendanceSetting.human_attribute_name(:on_time) %></th>
+<th>
+  <p><%= Attend::AttendanceSetting.human_attribute_name(:effect_on) %></p>
+  <p><%= Attend::AttendanceSetting.human_attribute_name(:expire_on) %></p>
+</th>
+<th>
+  <p><%= Attend::AttendanceSetting.human_attribute_name(:on_time) %></p>
+  <p><%= Attend::AttendanceSetting.human_attribute_name(:off_time) %></p>
+</th>
 <th><%= Attend::AttendanceSetting.human_attribute_name(:state) %></th>
 <th><%= Attend::AttendanceSetting.human_attribute_name(:note) %></th>
 <th></th>

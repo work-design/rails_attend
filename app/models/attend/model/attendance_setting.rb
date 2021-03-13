@@ -3,12 +3,13 @@ module Attend
     extend ActiveSupport::Concern
 
     included do
+      attribute :effect_on, :date
+      attribute :expire_on, :date
       attribute :on_time, :string, default: '08:30'
       attribute :off_time, :string
       attribute :note, :string
 
       belongs_to :member
-      belongs_to :financial_month
 
       validates :member_id, uniqueness: { scope: :financial_month_id }
 

@@ -3,11 +3,12 @@ module Attend
     before_action :set_attendance_setting, only: [:edit, :update]
 
     def index
-      q_params = {}
-      #q_params.merge! 'financial_month.begin_date-gt': Date.today
+      q_params = {
+        'effect_on-lt': Date.today,
+        'expire_on-gt': Date.today
+      }
 
-      @attendance_setting = current_member.attendance_settings.first
-      @attendance_settings = current_member.attendance_settings.default_where(q_params).order(financial_month_id: :asc)
+      @attendance_settings = current_member.attendance_settings.default_where(q_params)
     end
 
     def new
