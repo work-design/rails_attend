@@ -3,8 +3,9 @@ module Attend
     before_action :set_attendance_stat, only: [:show, :edit, :update, :destroy]
 
     def index
-      q_params = {}.with_indifferent_access
-      q_params.merge! params.fetch(:q, {}).permit!
+      q_params = {}
+      q_params.merge! params.permit!
+
       @attendance_stats = AttendanceStat.includes(:member).default_where(q_params).page(params[:page])
     end
 

@@ -1,0 +1,12 @@
+<turbo-frame id="modal">
+  <%= render layout: 'modal' do %>
+    <div
+      class="content"
+      data-controller="calendar"
+      data-calendar-url-value="<%= url_for(action: 'events', format: 'json') %>"
+      data-calendar-start-value="<%= @financial_month.begin_date %>"
+      data-calendar-end-value="<%= @financial_month.end_date %>"
+    >
+    </div>
+  <% end %>
+</turbo-frame>
