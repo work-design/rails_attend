@@ -11,8 +11,6 @@ module Attend
 
       belongs_to :member
 
-      validates :member_id, uniqueness: { scope: :financial_month_id }
-
       enum state: {
         init: 'init',
         approved: 'approved',

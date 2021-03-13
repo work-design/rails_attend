@@ -2,6 +2,6 @@
   <%= render 'shared/error_messages', target: @attendance_setting %>
   <%= f.text_field :on_time %>
   <%= f.text_field :state %>
-  <%= f.text_field :note %>
+  <%= f.text_area :note %>
   <%= f.submit %>
 <% end %>
