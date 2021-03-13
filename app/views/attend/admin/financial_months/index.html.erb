@@ -1,7 +1,7 @@
 <%= render 'financial_month_menu' %>
 
 <%= render layout: 'index_table', locals: { cache_key: Attend::FinancialMonth.column_names.hash } do %>
-  <%= render partial: 'index_tbody', collection: @financial_months, as: :model %>
+  <%= render partial: 'index_tbody', layout: 'index_tr', collection: @financial_months, as: :model %>
 <% end %>
 
 <%= paginate @financial_months %>

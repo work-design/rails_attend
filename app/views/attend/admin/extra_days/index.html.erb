@@ -1,7 +1,7 @@
 <%= render 'financial_month_menu' %>
 
 <%= render layout: 'index_table', locals: { cache_key: Attend::ExtraDay.column_names.hash } do %>
-  <%= render partial: 'index_tbody', collection: @extra_days, as: :model %>
+  <%= render partial: 'index_tbody', layout: 'index_tr', collection: @extra_days, as: :model %>
 <% end %>
 
 <%= paginate @extra_days %>

@@ -1,6 +1,10 @@
 <div class="tabs">
   <ul>
-    <li class="<%= active_helper(controllers: 'financial_months', active: 'is-active') %>"><%= link_to t('attend.admin.financial_months.index.title'), admin_financial_months_path %></li>
-    <li class="<%= active_helper(controllers: 'extra_days', active: 'is-active') %>"><%= link_to t('attend.admin.extra_days.index.title'), admin_extra_days_path %></li>
+    <li class="<%= active_helper(controllers: 'financial_months', active: 'is-active') %>">
+      <%= link_to t('attend.admin.financial_months.index.title'), { controller: 'financial_months' } %>
+    </li>
+    <li class="<%= active_helper(controllers: 'extra_days', active: 'is-active') %>">
+      <%= link_to t('attend.admin.extra_days.index.title'), { controller: 'extra_days' } %>
+    </li>
   </ul>
 </div>

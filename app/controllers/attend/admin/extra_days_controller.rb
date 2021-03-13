@@ -3,7 +3,9 @@ module Attend
     before_action :set_extra_day, only: [:show, :edit, :update, :destroy]
 
     def index
-      q_params = default_params.merge! params.fetch(:q, {}).permit!
+      q_params = {}
+      q_params.merge! default_params
+
       @extra_days = ExtraDay.default_where(q_params).page(params[:page])
     end
 
