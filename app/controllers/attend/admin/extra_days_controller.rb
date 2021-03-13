@@ -17,7 +17,7 @@ module Attend
       @extra_day = ExtraDay.new(extra_day_params)
 
       if @extra_day.save
-        redirect_to admin_extra_days_url
+        render 'create'
       else
         render :new
       end
@@ -30,8 +30,10 @@ module Attend
     end
 
     def update
-      if @extra_day.update(extra_day_params)
-        redirect_to admin_extra_days_url
+      @extra_day.assign_attributes(extra_day_params)
+
+      if @extra_day.save
+        render 'update'
       else
         render :edit
       end
@@ -39,7 +41,6 @@ module Attend
 
     def destroy
       @extra_day.destroy
-      redirect_to admin_extra_days_url
     end
 
     private
