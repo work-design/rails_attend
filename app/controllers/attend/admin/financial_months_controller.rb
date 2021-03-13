@@ -1,20 +1,15 @@
 module Attend
   class Admin::FinancialMonthsController < Admin::BaseController
-    before_action :set_financial_month, only: [:show, :attendance_setting, :edit, :update, :destroy]
+    before_action :set_financial_month, only: [:show, :events, :attendance_setting, :edit, :update, :destroy]
 
     def index
-      q_params = default_params
+      q_params = {}
+      q_params.merge! default_params
+
       @financial_months = FinancialMonth.default_where(q_params).page(params[:page])
     end
 
     def events
-      @financial_month = FinancialMonth.default_where('begin_date-gte': params[:start], 'end_date-lte': params[:end]).first
-
-      if @financial_month
-        render 'events'
-      else
-        render json: { events: [] }
-      end
     end
 
     def new
@@ -25,7 +20,7 @@ module Attend
       @financial_month = FinancialMonth.new(financial_month_params)
 
       if @financial_month.save
-        redirect_to admin_financial_months_url
+        render 'create'
       else
         render :new
       end
@@ -33,7 +28,6 @@ module Attend
 
     def attendance_setting
       @financial_month.reset_attendance_settings
-      redirect_to admin_financial_months_url
     end
 
     def show
@@ -43,8 +37,10 @@ module Attend
     end
 
     def update
-      if @financial_month.update(financial_month_params)
-        redirect_to admin_financial_months_url
+      @financial_month.assign_attributes(financial_month_params)
+
+      if @financial_month.save
+        render 'update'
       else
         render :edit
       end
@@ -52,7 +48,6 @@ module Attend
 
     def destroy
       @financial_month.destroy
-      redirect_to admin_financial_months_url
     end
 
     private

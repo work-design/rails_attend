@@ -2,21 +2,33 @@ Rails.application.routes.draw do
 
   scope :admin, module: 'attend/admin', as: :admin, defaults: { business: 'attend', namespace: 'admin' } do
     resources :financial_months do
-      get :events, on: :collection
-      patch :attendance_setting, on: :member
+      member do
+        get :events
+        patch :attendance_setting
+      end
     end
     resources :absence_stats
     resources :extra_days
     resources :absences do
-      get :my, on: :collection
-      patch :trigger, on: :member
+      collection do
+        get :my
+      end
+      member do
+        patch :trigger
+      end
     end
     resources :overtimes, except: [:new, :create] do
-      get :my, on: :collection
-      patch :trigger, on: :member
+      collection do
+        get :my
+      end
+      member do
+        patch :trigger
+      end
     end
     resources :attendances do
-      get :my, on: :collection
+      collection do
+        get :my
+      end
     end
     resources :attendance_logs do
       collection do
