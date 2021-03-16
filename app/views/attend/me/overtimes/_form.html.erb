@@ -3,14 +3,14 @@
   <%= f.label :start_at %>
   <div class="field-body control">
     <%= f.date_field 'start_at(date)', wrap: { input: false, all: false }, label: false, required: true %>
-    <%= f.time_select :start_at, start_hour: 8, end_hour: 18, minute_step: 30, default: { hour: 8, min: 30 } %>
+    <%= f.time_select :start_at, start_hour: 8, end_hour: 18, minute_step: 30, default: { hour: 8, min: 30 }, label: nil, wrap: { select: 'select' } %>
   </div>
 </div>
 <div class="field is-horizontal">
   <%= f.label :finish_at %>
   <div class="field-body control">
     <%= f.date_field 'finish_at(date)', wrap: { input: false, all: false }, label: false, required: true %>
-    <%= f.time_select :finish_at, start_hour: 8, end_hour: 18, minute_step: 30, default: { hour: 17, min: 30 } %>
+    <%= f.time_select :finish_at, start_hour: 8, end_hour: 18, minute_step: 30, default: { hour: 17, min: 30 }, label: nil, wrap: { select: 'select' } %>
   </div>
 </div>
 <%= f.text_area :note %>
