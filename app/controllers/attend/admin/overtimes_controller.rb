@@ -26,21 +26,21 @@ module Attend
     end
 
     def update
-      if @overtime.update(overtime_params)
-        redirect_to admin_overtimes_url
+      @overtime.assign_attributes overtime_params
+
+      if @overtime.save
+        render 'update'
       else
-        render :edit
+        render :edit, locals: { model: @overtime }, status: :unprocessable_entity
       end
     end
 
     def trigger
       @overtime.do_trigger(state: params[:state], auditor_id: current_member.id)
-      redirect_to admin_overtimes_url(member_id: @overtime.member_id)
     end
 
     def destroy
       @overtime.destroy
-      redirect_to admin_overtimes_url
     end
 
     private
