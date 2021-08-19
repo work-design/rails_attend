@@ -1,5 +1,5 @@
 <%= form_with model: @attendance_setting, url: admin_attendance_settings_path do |f| %>
-  <%= render 'shared/error_messages', target: @attendance_setting %>
+  <%= render 'error_messages', target: @attendance_setting %>
   <%= f.select :member_id, options_for_select([[@attendance_setting.member&.name, @attendance_setting.member_id]], @attendance_setting.member_id) %>
   <%= f.collection_select :financial_month_id, FinancialMonth.current_all, :id, :date_range %>
   <%= f.select :on_time, options_for_select(AttendanceSetting.time_options, @attendance_setting.on_time) %>

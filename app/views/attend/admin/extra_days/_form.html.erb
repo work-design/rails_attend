@@ -1,4 +1,4 @@
-<%= render 'shared/error_messages', target: f.object %>
+<%= render 'error_messages', target: f.object %>
 <%= f.text_field :name %>
 <%= f.date_field :the_day %>
 <%= f.select :kind, options_for_select(Attend::ExtraDay.options_i18n(:kind), f.object.kind) %>

@@ -1,5 +1,5 @@
 <%= form_with model: @attendance_setting, url: { action: 'create' } do |f| %>
-  <%= render 'shared/error_messages', target: @attendance_setting %>
+  <%= render 'error_messages', target: @attendance_setting %>
   <%= f.date_field :effect_on %>
   <%= f.date_field :expire_on %>
   <%= f.select :on_time, options_for_select(Attend::AttendanceSetting.time_options, @attendance_setting.on_time) %>

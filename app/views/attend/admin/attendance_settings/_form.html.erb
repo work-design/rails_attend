@@ -1,5 +1,5 @@
 <%= form_with model: [:admin, @attendance_setting] do |f| %>
-  <%= render 'shared/error_messages', target: @attendance_setting %>
+  <%= render 'error_messages', target: @attendance_setting %>
   <%= f.text_field :on_time %>
   <%= f.text_field :state %>
   <%= f.text_area :note %>

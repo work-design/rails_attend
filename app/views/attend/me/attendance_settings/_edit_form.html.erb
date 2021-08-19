@@ -1,5 +1,5 @@
 <%= form_with model: @attendance_setting, url: { action: 'update' } do |f| %>
-  <%= render 'shared/error_messages', target: @attendance_setting %>
+  <%= render 'error_messages', target: @attendance_setting %>
   <%= f.select :on_time, options_for_select(AttendanceSetting.time_options, @attendance_setting.on_time) %>
   <%= f.text_area :note %>
   <%= f.submit %>

@@ -1,4 +1,4 @@
-<%= render 'shared/error_messages', target: @absence %>
+<%= render 'error_messages', target: @absence %>
 <%= f.select :type, options_for_select(Attend::Absence.options_i18n(:type), @absence.type) %>
 <div class="field is-horizontal">
   <%= f.label :start_at %>
