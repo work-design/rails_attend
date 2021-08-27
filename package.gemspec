@@ -1,9 +1,6 @@
-$:.push File.expand_path('lib', __dir__)
-require 'rails_attend/version'
-
 Gem::Specification.new do |s|
   s.name = 'rails_attend'
-  s.version = RailsAttend::VERSION
+  s.version = '0.0.1'
   s.authors = ['qinmingyuan']
   s.email = ['mingyuan0715@foxmail.com']
   s.homepage = 'https://github.com/work-design/rails_attend'
