@@ -2,10 +2,18 @@ source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 gemspec
 
-gem 'pry-rails'
-gem 'awesome_print'
-gem 'sdoc'
+gem 'puma'
+gem 'pg'
+gem 'jbuilder'
+
 
 gem 'viter', github: 'qinmingyuan/viter'
+gem 'rails_extend', github: 'work-design/rails_extend'
 gem 'rails_com', github: 'work-design/rails_com'
-gem 'jbuilder'
+
+gem 'amazing_print'
+
+group :development, :test do
+  gem 'debug'
+  gem 'sdoc'
+end
