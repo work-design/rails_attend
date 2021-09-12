@@ -1,8 +1,8 @@
 # RailsAttend
 
-[![测试](https://github.com/work-design/rails_dingtalk/actions/workflows/test.yml/badge.svg)](https://github.com/work-design/rails_dingtalk/actions/workflows/test.yml)
-[![Docker构建](https://github.com/work-design/rails_dingtalk/actions/workflows/cd.yml/badge.svg)](https://github.com/work-design/rails_dingtalk/actions/workflows/cd.yml)
-[![Gem](https://github.com/work-design/rails_dingtalk/actions/workflows/gempush.yml/badge.svg)](https://github.com/work-design/rails_dingtalk/actions/workflows/gempush.yml)
+[![测试](https://github.com/work-design/rails_attend/actions/workflows/test.yml/badge.svg)](https://github.com/work-design/rails_attend/actions/workflows/test.yml)
+[![Docker构建](https://github.com/work-design/rails_attend/actions/workflows/cd.yml/badge.svg)](https://github.com/work-design/rails_attend/actions/workflows/cd.yml)
+[![Gem](https://github.com/work-design/rails_attend/actions/workflows/gempush.yml/badge.svg)](https://github.com/work-design/rails_attend/actions/workflows/gempush.yml)
 
 人员出勤，签到管理
 
