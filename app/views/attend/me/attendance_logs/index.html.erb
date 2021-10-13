@@ -27,7 +27,7 @@
       <td class="ui labels">
         <% if attendance_log.editable? %>
         <%= link_to edit_me_attendance_log_path(attendance_log), class: 'ui pink mini icon button' do %>
-          <i class="fas fa-pencil-alt"></i>
+          <i class="fa-light fa-pencil"></i>
         <% end %>
         <%= link_to me_attendance_log_path(attendance_log), method: :delete, data: { confirm: t('.confirm') }, class: 'ui red mini icon button' do %>
           <i class="times icon"></i>
