@@ -1,8 +1,8 @@
 <% content_for :breadcrumb do %>
 <div class="tabs">
   <ul>
-    <li><%= link_to 'My Holiday Application', me_absences_path, class: active_helper('attend/me/absences': ['index']) %></li>
-    <li><%= link_to 'My Dashboard', dashboard_me_absences_path, class: active_helper('attend/me/absences': ['dashboard']) %></li>
+    <li><%= link_to 'My Holiday Application', { controller: 'absences' }, class: active_helper('attend/me/absences': ['index']) %></li>
+    <li><%= link_to 'My Dashboard', { controller: 'absences', action: 'dashboard' }, class: active_helper('attend/me/absences': ['dashboard']) %></li>
     <li><%# link_to 'Group Holiday Application', me_admin_absences_path, class: active_helper('attend/admin/absences': ['me']) %></li>
   </ul>
 </div>

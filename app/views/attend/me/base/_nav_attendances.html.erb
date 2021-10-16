@@ -1,10 +1,10 @@
 <% content_for :breadcrumb do %>
 <div class="tabs">
   <ul>
-    <li><%= link_to 'Attendances', me_attendances_path, class: active_helper(controllers: 'attend/me/attendances') %></li>
+    <li><%= link_to 'Attendances', { controller: 'attendances' }, class: active_helper(controllers: 'attend/me/attendances') %></li>
     <li><%# link_to 'Group Attendance', me_admin_attendance_logs_path, class: active_helper('me_admin/attendance_logs': 'me') %></li>
-    <li><%= link_to 'Attendance Stat', me_attendance_stats_path, class: active_helper(controllers: 'attend/me/attendance_stats') %></li>
-    <li><%= link_to 'Attendance Logs', me_attendance_logs_path, class: active_helper(controllers: 'attend/me/attendance_logs') %></li>
+    <li><%= link_to 'Attendance Stat', { controller: 'attendance_stats' }, class: active_helper(controllers: 'attend/me/attendance_stats') %></li>
+    <li><%= link_to 'Attendance Logs', { controller: 'attendance_logs' }, class: active_helper(controllers: 'attend/me/attendance_logs') %></li>
   </ul>
 </div>
 <% end %>

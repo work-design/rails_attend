@@ -1,7 +1,7 @@
 <% content_for :breadcrumb do %>
 <div class="tabs">
   <ul>
-    <li><%= link_to 'Work Overtime', me_overtimes_path, class: active_helper('attend/me/overtimes': ['index']) %></li>
+    <li><%= link_to 'Work Overtime', { controller: 'overtimes' }, class: active_helper('attend/me/overtimes': ['index']) %></li>
     <li><%# link_to 'Group Work Overtime', me_admin_overtimes_path, class: active_helper('me_admin/overtimes': ['me']) %></li>
   </ul>
 </div>
