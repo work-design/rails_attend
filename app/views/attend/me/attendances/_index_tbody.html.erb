@@ -1,19 +1,19 @@
 <td><%= model.attend_on %></td>
 <td>
-  <p><time data-controller="time" data-format="HH:mm"><%= model.start_at&.to_s(:rfc822) %></time></p>
+  <p><time data-controller="time" data-format="HH:mm"><%= model.start_at&.to_s(:iso8601) %></time></p>
   <p>
     <% if model.finish_at %>
-      <time data-controller="time" data-format="HH:mm"><%= model.finish_at.to_s(:rfc822) %></time>
+      <time data-controller="time" data-format="HH:mm"><%= model.finish_at.to_s(:iso8601) %></time>
     <% elsif model.finish_at.blank? && model.start_at.present? %>
       <%= link_to 'Re-Punch', new_me_attendance_log_path(attendance_id: model.id), class: 'ui teal mini button' %>
     <% end %>
   </p>
 </td>
 <td>
-  <p><time data-controller="time" data-format="HH:mm"><%= model.interval_start_at&.to_s(:rfc822) %></time></p>
+  <p><time data-controller="time" data-format="HH:mm"><%= model.interval_start_at&.to_s(:iso8601) %></time></p>
   <p>
     <% if model.interval_finish_at %>
-      <time data-controller="time" data-format="HH:mm"><%= model.interval_finish_at.to_s(:rfc822) %></time>
+      <time data-controller="time" data-format="HH:mm"><%= model.interval_finish_at.to_s(:iso8601) %></time>
     <% elsif model.interval_finish_at.blank? && model.interval_start_at.present? %>
       <%= link_to 'Re-Punch', new_me_attendance_log_path(attendance_id: model.id), class: 'ui teal mini button' %>
     <% end %>

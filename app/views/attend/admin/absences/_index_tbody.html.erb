@@ -1,8 +1,8 @@
 <td><%= model.member.name %></td>
 <td><%= model.type_i18n %></td>
 <td>
-  <p><time data-controller="time" data-format="YYYY-MM-DD HH:mm"><%= model.start_at.to_s(:rfc822) %></time></p>
-  <p><time data-controller="time" data-format="YYYY-MM-DD HH:mm"><%= model.finish_at.to_s(:rfc822) %></time></p>
+  <p><time data-controller="time"><%= model.start_at.to_s(:iso8601) %></time></p>
+  <p><time data-controller="time"><%= model.finish_at.to_s(:iso8601) %></time></p>
 </td>
 <td><%= model.hours %></td>
 <td><%= model.comment %></td>
