@@ -4,8 +4,8 @@ gemspec
 
 gem 'puma'
 gem 'pg'
+gem 'propshaft'
 
-gem 'rails_vite', github: 'work-design/rails_vite'
 gem 'rails_extend', github: 'work-design/rails_extend'
 gem 'rails_com', github: 'work-design/rails_com'
 
