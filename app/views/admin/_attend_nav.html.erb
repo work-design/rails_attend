@@ -1,15 +1,15 @@
-<div class="<%= active_helper(modules: 'attend/admin', active: 'menu ex-accordion is-active', item: 'menu ex-accordion') %>" data-controller="menu">
-  <%= content_tag :div, class: 'menu-list' do %>
-    <%= link_to t('attend.admin.financial_months.index.title'), admin_financial_months_path, class: active_helper(controllers: ['financial_months', 'extra_days'], active: 'is-active') %>
-    <%= link_to t('attend.admin.attendances.index.title'), admin_attendances_path, class: active_helper(controllers: ['attendances', 'attendance_stats', 'attendance_logs'], active: 'is-active') %>
-    <%= link_to t('attend.admin.absences.index.title'), admin_absences_path, class: active_helper(controllers: 'absences', active: 'is-active') %>
-    <%= link_to t('attend.admin.absence_stats.index.title'), admin_absence_stats_path, class: active_helper(controllers: 'absence_stats', active: 'is-active') %>
-    <%= link_to t('attend.admin.overtimes.index.title'), admin_overtimes_path, class: active_helper(controllers: 'overtimes', active: 'is-active') %>
-    <%= link_to t('attend.admin.attendance_settings.index.title'), admin_attendance_settings_path, class: active_helper(controllers: 'attendance_settings', active: 'is-active') -%>
-  <% end %>
+<div class="<%= active_helper(modules: 'attend/admin', active: 'menu ex-accordion is-active', item: 'menu ex-accordion') %>" data-controller="menu empty">
   <a class="menu-label" data-action="menu#toggle">
-    <i class="fa-light fa-calendar-alt fa-fw"></i>
+    <i class="fa-solid fa-fw fa-calendar-alt"></i>
     <span><%= t('attend.admin.title') %></span>
-    <i class="fa-light dropdown"></i>
+    <i class="fa-solid dropdown"></i>
   </a>
+  <div class="menu-list" data-empty-target="content">
+    <%= link_to t('attend.admin.financial_months.index.title'), { controller: 'attend/admin/financial_months' }, class: active_helper(controllers: ['financial_months', 'extra_days'], active: 'is-active') %>
+    <%= link_to t('attend.admin.attendances.index.title'), { controller: 'attend/admin/attendances' }, class: active_helper(controllers: ['attendances', 'attendance_stats', 'attendance_logs'], active: 'is-active') %>
+    <%= link_to t('attend.admin.absences.index.title'), { controller: 'attend/admin/absences' }, class: active_helper(controllers: 'absences', active: 'is-active') %>
+    <%= link_to t('attend.admin.absence_stats.index.title'), { controller: 'attend/admin/absence_stats' }, class: active_helper(controllers: 'absence_stats', active: 'is-active') %>
+    <%= link_to t('attend.admin.overtimes.index.title'), { controller: 'attend/admin/overtimes' }, class: active_helper(controllers: 'overtimes', active: 'is-active') %>
+    <%= link_to t('attend.admin.attendance_settings.index.title'), { controller: 'attend/admin/attendance_settings' }, class: active_helper(controllers: 'attendance_settings', active: 'is-active') -%>
+  </div>
 </div>
