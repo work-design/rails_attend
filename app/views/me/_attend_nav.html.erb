@@ -1,12 +1,14 @@
-<div class="menu-label">
-  <span><%= t('attend.me.title') %></span>
-  <%= link_to({ controller: 'attend/admin/financial_months' }, aria: { label: '管理' }) do %>
-    <i class="fa-solid fa-cog"></i>
-  <% end %>
-</div>
-<div class="menu-list">
-  <%= link_to t('attend.me.attendance_settings.index.title'), { controller: 'attend/me/attendance_settings' }, class: active_helper(controllers: 'attendance_settings', active: 'is-active') %>
-  <%= link_to t('attend.me.attendances.index.title'), { controller: 'attend/me/attendances' }, class: active_helper(controllers: ['attendances', 'attendance_stats', 'attendance_logs'], active: 'is-active') %>
-  <%= link_to t('attend.me.absences.index.title'), { controller: 'attend/me/absences' }, class: active_helper(controllers: ['absences'], active: 'is-active') %>
-  <%= link_to t('attend.me.overtimes.index.title'), { controller: 'attend/me/overtimes' }, class: active_helper(controllers: ['overtimes'], active: 'is-active') %>
-</div>
+<% if role_permit?(business: 'attend', namespace: 'me') %>
+  <div class="menu-label">
+    <span><%= t('attend.me.title') %></span>
+    <%= link_to({ controller: 'attend/admin/financial_months' }, aria: { label: '管理' }) do %>
+      <i class="fa-solid fa-cog"></i>
+    <% end %>
+  </div>
+  <div class="menu-list">
+    <%= link_to t('attend.me.attendance_settings.index.title'), { controller: 'attend/me/attendance_settings' }, class: active_helper(controllers: 'attendance_settings', active: 'is-active') %>
+    <%= link_to t('attend.me.attendances.index.title'), { controller: 'attend/me/attendances' }, class: active_helper(controllers: ['attendances', 'attendance_stats', 'attendance_logs'], active: 'is-active') %>
+    <%= link_to t('attend.me.absences.index.title'), { controller: 'attend/me/absences' }, class: active_helper(controllers: ['absences'], active: 'is-active') %>
+    <%= link_to t('attend.me.overtimes.index.title'), { controller: 'attend/me/overtimes' }, class: active_helper(controllers: ['overtimes'], active: 'is-active') %>
+  </div>
+<% end %>
