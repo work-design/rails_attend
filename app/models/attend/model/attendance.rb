@@ -27,7 +27,7 @@ module Attend
       belongs_to :leave_absence, class_name: 'Absence', optional: true
       has_many :attendance_logs, dependent: :nullify
 
-      enum kind: {
+      enum :kind, {
         belated: 'belated',
         asked_leave: 'asked_leave',
         no_meal: 'no_meal',

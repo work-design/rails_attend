@@ -10,7 +10,7 @@ module Attend
 
       belongs_to :organ, optional: true
 
-      enum kind: {
+      enum :kind, {
         holiday: 'holiday',
         workday: 'workday'
       }

@@ -22,20 +22,20 @@ module Attend
 
       scope :pending, -> { where(state: 'init', processed: false) }
 
-      enum state: {
+      enum :state, {
         init: 'init',
         valid: 'valid',
         invalid: 'invalid'
-      }, _prefix: true
+      }, prefix: true
 
-      enum kind: {
+      enum :kind, {
         start_at: 'start_at',
         finish_at: 'finish_at',
         interval_start_at: 'interval_start_at',
         interval_finish_at: 'interval_finish_at'
       }
 
-      enum source: {
+      enum :source, {
         machine: 'machine',
         myself: 'myself',
         admin: 'admin'

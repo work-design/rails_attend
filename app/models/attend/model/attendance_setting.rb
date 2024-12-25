@@ -11,11 +11,11 @@ module Attend
 
       belongs_to :member
 
-      enum state: {
+      enum :state, {
         init: 'init',
         approved: 'approved',
         denied: 'denied'
-      }, _default: 'init'
+      }, default: 'init'
 
       after_initialize do
         self.compute_off_time

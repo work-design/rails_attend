@@ -25,7 +25,7 @@ module Attend
         ['type', 'type']
       ]
 
-      enum state: {
+      enum :state, {
         init: 'init',
         approved: 'approved',
         denied: 'denied'

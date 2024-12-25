@@ -9,12 +9,12 @@ module Attend
       attribute :comment, :string, limit: 1024
       attribute :hours, :float
 
-      enum state: {
+      enum :state, {
         init: 'init',
         approved: 'approved',
         denied: 'denied',
         confirmed: 'confirmed'
-      }, _default: 'init'
+      }, default: 'init'
 
       belongs_to :member, class_name: 'Org::Member'
 
