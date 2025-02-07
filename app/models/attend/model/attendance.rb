@@ -17,7 +17,7 @@ module Attend
       attribute :kind, :string
       attribute :absence_minutes, :integer
       attribute :absence_redeeming, :boolean
-      attribute :lost_logs, :string, array: true
+      attribute :lost_logs, :json
       attribute :workday, :boolean, default: true
       attribute :processed, :boolean, default: false
 

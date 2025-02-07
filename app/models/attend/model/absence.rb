@@ -12,7 +12,7 @@ module Attend
       attribute :note, :string, limit: 2048
       attribute :comment, :string, limit: 2048
       attribute :redeeming, :boolean
-      attribute :redeeming_days, :string, array: true
+      attribute :redeeming_days, :json
       attribute :processed, :boolean, default: false
       attribute :divided, :boolean, default: false
 
